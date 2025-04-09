@@ -3,7 +3,28 @@ family:
   # Spouses (current and past)
   spouses:
     - relation: "current_spouse"  # or "wife" (alternatively "husband" depending on gender)
-      name: "Susan Marie Doe (née McCalister)"
+      vcard:
+        fn: "Susan Marie Doe (née McCalister)"  # Full name
+        n:
+          family: "Doe"
+          given: "Susan Marie"
+          additional: "McCalister"
+          prefix: ""
+          suffix: ""
+        bday: "1988-06-05"  # Birthday in ISO 8601
+        adr:
+          - type: "home"  # Same as primary person's home address
+            street: "123 Maple Street"
+            city: "Allentown"
+            state: "PA"
+            zip: "18101"
+            country: "USA"
+        tel:
+          - type: "home"
+            value: "(555) 987-6543"
+        email:
+          - type: "home"
+            value: "susan.doe@email.com"
       status: "current"  # current, separated, divorced, deceased
       relationship:
         marriage_date: "2014-06-15"
@@ -11,15 +32,19 @@ family:
         marriage_place: "Boston, Massachusetts"
         divorce_date: null
       birth:
-        date: "1988-06-05"
         place: "Boston, Massachusetts"
-      contact:
-        email: "susan.doe@email.com"
-        phone: "(555) 987-6543"
       notes: "Second marriage"
       
     - relation: "ex_spouse"  # or "ex_wife"/"ex_husband"
-      name: "Jane Elizabeth Smith"
+      vcard:
+        fn: "Jane Elizabeth Smith"  # Full name
+        n:
+          family: "Smith"
+          given: "Jane Elizabeth"
+          additional: ""
+          prefix: ""
+          suffix: ""
+        bday: "1985-10-15"  # Birthday in ISO 8601
       status: "divorced"
       relationship:
         marriage_date: "2005-06-10"
@@ -27,92 +52,149 @@ family:
         marriage_place: "Philadelphia, Pennsylvania"
         divorce_date: "2012-03-15"
       birth:
-        date: "1985-10-15"
         place: "Chicago, Illinois"
       notes: "First marriage"
   
   # Children
   children:
     - relation: "daughter"
-      name: "Emily Rose Doe"
+      vcard:
+        fn: "Emily Rose Doe"  # Full name
+        n:
+          family: "Doe"
+          given: "Emily Rose"
+          additional: ""
+          prefix: ""
+          suffix: ""
+        bday: "2008-03-22"  # Birthday in ISO 8601
       birth:
-        date: "2008-03-22" 
         place: "Philadelphia, PA"
       parents: ["John Edwards Doe", "Jane Elizabeth Smith"]
       notes: "Shared custody with Jane"
       
     - relation: "son"
-      name: "Michael James Doe"
+      vcard:
+        fn: "Michael James Doe"  # Full name
+        n:
+          family: "Doe"
+          given: "Michael James"
+          additional: ""
+          prefix: ""
+          suffix: ""
+        bday: "2016-09-12"  # Birthday in ISO 8601
       birth:
-        date: "2016-09-12"
         place: "Allentown, PA" 
       parents: ["John Edwards Doe", "Susan Marie Doe"]
   
   # Parents
   parents:
     - relation: "father"
-      name: "David James Doe"
-      birth:
-        date: "1951-08-30"
-        place: "Pittsburgh, PA"
+      vcard:
+        fn: "David James Doe"  # Full name
+        n:
+          family: "Doe"
+          given: "David James"
+          additional: ""
+          prefix: ""
+          suffix: ""
+        bday: "1951-08-30"  # Birthday in ISO 8601
       status: "deceased"
+      birth:
+        place: "Pittsburgh, PA"
       death:
         date: "2021-03-12"
         cause: "Complications from heart disease"
         place: "Allentown, PA"
       
     - relation: "mother"
-      name: "Elizabeth Ann Doe (née Williams)"
-      birth:
-        date: "1953-07-22"
-        place: "Philadelphia, PA"
+      vcard:
+        fn: "Elizabeth Ann Doe (née Williams)"  # Full name
+        n:
+          family: "Doe"
+          given: "Elizabeth Ann"
+          additional: "Williams"
+          prefix: ""
+          suffix: ""
+        bday: "1953-07-22"  # Birthday in ISO 8601
+        adr:
+          - type: "home"
+            street: "456 Oak Lane"
+            city: "Allentown"
+            state: "PA"
+            zip: "18101"
+            country: "USA"
+        tel:
+          - type: "home" 
+            value: "(555) 234-5678"
       status: "living"
-      contact:
-        address: 
-          street: "456 Oak Lane"
-          city: "Allentown"
-          state: "PA"
-          zip: "18101"
-        phone: "(555) 234-5678"
+      birth:
+        place: "Philadelphia, PA"
   
   # Siblings
   siblings:
     - relation: "brother"
-      name: "Elias Michael Doe"
-      birth:
-        date: "1991-04-17"
-        place: "Allentown, PA"
+      vcard:
+        fn: "Elias Michael Doe"  # Full name
+        n:
+          family: "Doe"
+          given: "Elias Michael"
+          additional: ""
+          prefix: ""
+          suffix: ""
+        bday: "1991-04-17"  # Birthday in ISO 8601
+        adr:
+          - type: "home"
+            street: "789 Chestnut St"
+            city: "Philadelphia"
+            state: "PA"
+            zip: "19103"
+            country: "USA"
+        tel:
+          - type: "home"
+            value: "(555) 345-6789"
       status: "living"
+      birth:
+        place: "Allentown, PA"
       occupation: "Master Carpenter at Keystone Woodworking"
-      contact:
-        address:
-          street: "789 Chestnut St"
-          city: "Philadelphia"
-          state: "PA"
-          zip: "19103"
-        phone: "(555) 345-6789"
       family: []  # No spouse or children
       
     - relation: "sister"
-      name: "Miranda Elizabeth Davies (née Doe)"
-      birth:
-        date: "1995-10-23"
-        place: "Allentown, PA"
+      vcard:
+        fn: "Miranda Elizabeth Davies (née Doe)"  # Full name
+        n:
+          family: "Davies"
+          given: "Miranda Elizabeth"
+          additional: "Doe"
+          prefix: ""
+          suffix: ""
+        bday: "1995-10-23"  # Birthday in ISO 8601
+        adr:
+          - type: "home"
+            street: "101 Cedar Road"
+            city: "Allentown"
+            state: "PA"
+            zip: "18101"
+            country: "USA"
+        tel:
+          - type: "home"
+            value: "(555) 456-7890"
       status: "living"
+      birth:
+        place: "Allentown, PA"
       occupation: "Marketing Manager at Digital Insights"
-      contact:
-        address:
-          street: "101 Cedar Road"
-          city: "Allentown"
-          state: "PA"
-          zip: "18101"
-        phone: "(555) 456-7890"
       family:
         spouse:
-          name: "Phillip Andrew Davies"
+          vcard:
+            fn: "Phillip Andrew Davies"  # Full name
+            n:
+              family: "Davies"
+              given: "Phillip Andrew"
+              additional: ""
+              prefix: ""
+              suffix: ""
+            bday: "1992-09-05"  # Birthday in ISO 8601
           relation: "brother-in-law"
           birth:
-            date: "1992-09-05"
             place: "Hartford, CT"
           occupation: "Software Engineer at TechSolutions"
           relationship:
@@ -127,6 +209,7 @@ family:
       - type: "Dog"
         name: "Max"
         breed: "Golden Retriever"
+        aliases: ["Maxie", "Maximus"]
         age: 7  # Convenience for templates
         birth_date: "2017-05-10"
         vet:
@@ -141,13 +224,15 @@ family:
       - type: "Dog"
         name: "Buddy"
         breed: "Labrador Retriever"
+        aliases: ["Buddy Boy", "BudMan", "Budweiser"]
         birth_date: "2005-06-15"
         death_date: "2017-08-22"
         cause_of_death: "Old age"
-      
       - type: "Cat"
         name: "Whiskers"
         breed: "Siamese"
+        aliases: ["Mr. Whiskers", "Emperor Whiskers", "Whiskey Tango Foxtrot"]
         birth_date: "2010-03-30"
         death_date: "2020-11-05"
         cause_of_death: "Kidney disease"
+

@@ -1,142 +1,239 @@
-## Family
-{% if family %}
-  {% if family.spouses %}
-- **Spouse(s)**:
-  {% for spouse in family.spouses %}
-  - {{ spouse.name }}{% if spouse.status %} ({{ spouse.status }}){% endif %}
-    {% if spouse.relation %}- Relation: {{ spouse.relation }}{% endif %}
-    {% if spouse.relationship %}
-      {% if spouse.relationship.marriage_date %}- Marriage Date: {{ spouse.relationship.marriage_date }}{% endif %}
-      {% if spouse.relationship.marriage_venue %}- Marriage Venue: {{ spouse.relationship.marriage_venue }}{% endif %}
-      {% if spouse.relationship.marriage_place %}- Marriage Place: {{ spouse.relationship.marriage_place }}{% endif %}
-      {% if spouse.relationship.divorce_date %}- Divorce Date: {{ spouse.relationship.divorce_date }}{% endif %}
-    {% endif %}
-    {% if spouse.birth %}
-    - Birth Information:
-      {% if spouse.birth.date %}- Date: {{ spouse.birth.date }}{% endif %}
-      {% if spouse.birth.place %}- Place: {{ spouse.birth.place }}{% endif %}
-    {% endif %}
-    {% if spouse.contact %}
-    - Contact:
-      {% if spouse.contact.email %}- Email: {{ spouse.contact.email }}{% endif %}
-      {% if spouse.contact.phone %}- Phone: {{ spouse.contact.phone }}{% endif %}
-    {% endif %}
-    {% if spouse.notes %}- Notes: {{ spouse.notes }}{% endif %}
-  {% endfor %}
-  {% endif %}
+## Family Information
 
-  {% if family.children %}
-- **Children**:
-  {% for child in family.children %}
-  - {{ child.name }}{% if child.relation %} ({{ child.relation }}){% endif %}
-    {% if child.birth %}
-    - Birth Information:
-      {% if child.birth.date %}- Date: {{ child.birth.date }}{% endif %}
-      {% if child.birth.place %}- Place: {{ child.birth.place }}{% endif %}
-    {% endif %}
-    {% if child.parents %}- Parents: {{ child.parents | join(", ") }}{% endif %}
-    {% if child.notes %}- Notes: {{ child.notes }}{% endif %}
-  {% endfor %}
-  {% endif %}
+Below is information about the individual's family members.
 
-  {% if family.parents %}
-- **Parents**:
-  {% for parent in family.parents %}
-  - {{ parent.relation | capitalize }}: {{ parent.name }}
-    {% if parent.birth %}
-    - Birth Information:
-      {% if parent.birth.date %}- Date: {{ parent.birth.date }}{% endif %}
-      {% if parent.birth.place %}- Place: {{ parent.birth.place }}{% endif %}
-    {% endif %}
-    {% if parent.status %}- Status: {{ parent.status }}{% endif %}
-    {% if parent.status == "deceased" and parent.death %}
-    - Death Information:
-      {% if parent.death.date %}- Date: {{ parent.death.date }}{% endif %}
-      {% if parent.death.cause %}- Cause: {{ parent.death.cause }}{% endif %}
-      {% if parent.death.place %}- Place: {{ parent.death.place }}{% endif %}
-    {% endif %}
-    {% if parent.contact %}
-    - Contact:
-      {% if parent.contact.address %}
-      - Address: {{ parent.contact.address.street }}, {{ parent.contact.address.city }}, {{ parent.contact.address.state }} {{ parent.contact.address.zip }}
-      {% endif %}
-      {% if parent.contact.phone %}- Phone: {{ parent.contact.phone }}{% endif %}
-    {% endif %}
-  {% endfor %}
-  {% endif %}
+### Spouses
 
-  {% if family.siblings %}
-- **Siblings**:
-  {% for sibling in family.siblings %}
-  - {{ sibling.relation | capitalize }}: {{ sibling.name }}
-    {% if sibling.birth %}
-    - Birth Information:
-      {% if sibling.birth.date %}- Date: {{ sibling.birth.date }}{% endif %}
-      {% if sibling.birth.place %}- Place: {{ sibling.birth.place }}{% endif %}
-    {% endif %}
-    {% if sibling.status %}- Status: {{ sibling.status }}{% endif %}
-    {% if sibling.occupation %}- Occupation: {{ sibling.occupation }}{% endif %}
-    {% if sibling.contact %}
-    - Contact:
-      {% if sibling.contact.address %}
-      - Address: {{ sibling.contact.address.street }}, {{ sibling.contact.address.city }}, {{ sibling.contact.address.state }} {{ sibling.contact.address.zip }}
-      {% endif %}
-      {% if sibling.contact.phone %}- Phone: {{ sibling.contact.phone }}{% endif %}
-    {% endif %}
-    {% if sibling.family %}
-      {% if sibling.family.spouse %}
-    - Spouse Information:
-      - Name: {{ sibling.family.spouse.name }}
-      {% if sibling.family.spouse.relation %}- Relation: {{ sibling.family.spouse.relation }}{% endif %}
-      {% if sibling.family.spouse.birth %}
-      - Birth: {{ sibling.family.spouse.birth.date }}{% if sibling.family.spouse.birth.place %} in {{ sibling.family.spouse.birth.place }}{% endif %}
-      {% endif %}
-      {% if sibling.family.spouse.occupation %}- Occupation: {{ sibling.family.spouse.occupation }}{% endif %}
-      {% if sibling.family.spouse.relationship %}
-      - Marriage: {{ sibling.family.spouse.relationship.marriage_date }}{% if sibling.family.spouse.relationship.marriage_venue %} at {{ sibling.family.spouse.relationship.marriage_venue }}{% endif %}
-      {% endif %}
-      {% endif %}
-      {% if sibling.family.children %}
-    - Children:
-      {% for child in sibling.family.children %}
-      - {{ child.name }}{% if child.age %} ({{ child.age }} years){% endif %}
-      {% endfor %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-  {% endif %}
+{% if family is defined and family.spouses is defined and family.spouses -%}
+Information about the individual's current and past spouses.
 
-  {% if family.pets %}
-- **Pets**:
-    {% if family.pets.current %}
-  - Current Pets:
-    {% for pet in family.pets.current %}
-    - {{ pet.type }}: {{ pet.name }}
-      {% if pet.breed %}- Breed: {{ pet.breed }}{% endif %}
-      {% if pet.age %}- Age: {{ pet.age }} years{% endif %}
-      {% if pet.birth_date %}- Birth Date: {{ pet.birth_date }}{% endif %}
-      {% if pet.vet %}
-      - Veterinary Care:
-        {% if pet.vet.name %}- Clinic: {{ pet.vet.name }}{% endif %}
-        {% if pet.vet.doctor %}- Doctor: {{ pet.vet.doctor }}{% endif %}
-        {% if pet.vet.phone %}- Phone: {{ pet.vet.phone }}{% endif %}
-      {% endif %}
-      {% if pet.care %}
-      - Care Information:
-        {% if pet.care.pet_sitter %}- Pet Sitter: {{ pet.care.pet_sitter }}{% endif %}
-        {% if pet.care.pet_sitter_phone %}- Sitter's Phone: {{ pet.care.pet_sitter_phone }}{% endif %}
-      {% endif %}
-    {% endfor %}
-    {% endif %}
-    {% if family.pets.past %}
-  - Past Pets:
-    {% for pet in family.pets.past %}
-    - {{ pet.type }}: {{ pet.name }}
-      {% if pet.breed %}- Breed: {{ pet.breed }}{% endif %}
-      {% if pet.birth_date %}- Birth Date: {{ pet.birth_date }}{% endif %}
-      {% if pet.death_date %}- Death Date: {{ pet.death_date }}{% endif %}
-      {% if pet.cause_of_death %}- Cause of Death: {{ pet.cause_of_death }}{% endif %}
-    {% endfor %}
-    {% endif %}
-  {% endif %}
+| Relation | Full Name | Date of Birth | Birthplace | Status | Marriage Date | Divorce Date |
+|----------|-----------|--------------|------------|--------|---------------|--------------|
+{% for spouse in family.spouses -%}
+| {{ spouse.relation | capitalize }} | {{ spouse.vcard.fn or 'N/A' }} | `{{ spouse.vcard.bday or 'N/A' }}` | {{ spouse.birth.place if spouse.birth is defined and spouse.birth.place is defined else 'N/A' }} | {{ spouse.status | capitalize if spouse.status is defined else 'N/A' }} | `{{ spouse.relationship.marriage_date if spouse.relationship is defined and spouse.relationship.marriage_date is defined else 'N/A' }}` | `{{ spouse.relationship.divorce_date if spouse.relationship is defined and spouse.relationship.divorce_date is defined else 'N/A' }}` |
+{% endfor %}
+
+{% for spouse in family.spouses -%}
+#### {{ spouse.vcard.fn }} ({{ spouse.relation | capitalize }})
+
+{% if spouse.relationship is defined and (spouse.relationship.marriage_venue is defined or spouse.relationship.marriage_place is defined) -%}
+- **Marriage Details:** {{ spouse.relationship.marriage_venue or 'N/A' }}, {{ spouse.relationship.marriage_place or 'N/A' }}
+{% endif -%}
+{% if spouse.notes is defined -%}
+- **Notes:** {{ spouse.notes }}
+{% endif %}
+
+{% if spouse.vcard is defined and (spouse.vcard.tel is defined or spouse.vcard.email is defined or spouse.vcard.adr is defined) -%}
+##### Contact Information
+
+{% if spouse.vcard.tel is defined and spouse.vcard.tel -%}
+| Type | Phone Number |
+|------|--------------|
+{% for phone in spouse.vcard.tel -%}
+| {{ phone.type | capitalize }} | {{ phone.value }} |
+{% endfor %}
+{% endif -%}
+
+{% if spouse.vcard.email is defined and spouse.vcard.email -%}
+| Type | Email Address |
+|------|--------------|
+{% for email in spouse.vcard.email -%}
+| {{ email.type | capitalize }} | {{ email.value }} |
+{% endfor %}
+{% endif -%}
+
+{% if spouse.vcard.adr is defined and spouse.vcard.adr -%}
+| Street | City | State | ZIP | Country |
+|--------|------|-------|-----|---------|
+{% for address in spouse.vcard.adr -%}
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} |
+{% endfor %}
+{% endif -%}
+{% endif %}
+
+{% endfor %}
+{% else %}
+- No spouse information available.
+{% endif %}
+
+### Children
+
+{% if family is defined and family.children is defined and family.children -%}
+Information about the individual's children.
+
+| Relation | Full Name | Date of Birth | Birthplace | Parents |
+|----------|-----------|--------------|------------|---------|
+{% for child in family.children -%}
+| {{ child.relation | capitalize }} | {{ child.vcard.fn or 'N/A' }} | `{{ child.vcard.bday or 'N/A' }}` | {{ child.birth.place if child.birth is defined and child.birth.place is defined else 'N/A' }} | {{ child.parents | join(", ") if child.parents is defined and child.parents else 'N/A' }} |
+{% endfor %}
+
+{% for child in family.children -%}
+{% if child.notes is defined and child.notes -%}
+#### {{ child.vcard.fn }}
+- **Notes:** {{ child.notes }}
+{% endif %}
+{% endfor %}
+{% else %}
+- No children information available.
+{% endif %}
+
+### Parents
+
+{% if family is defined and family.parents is defined and family.parents -%}
+Information about the individual's parents.
+
+| Relation | Full Name | Date of Birth | Birthplace | Status | Death Date | Cause of Death |
+|----------|-----------|--------------|------------|--------|------------|----------------|
+{% for parent in family.parents -%}
+| {{ parent.relation | capitalize }} | {{ parent.vcard.fn or 'N/A' }} | `{{ parent.vcard.bday or 'N/A' }}` | {{ parent.birth.place if parent.birth is defined and parent.birth.place is defined else 'N/A' }} | {{ parent.status | capitalize if parent.status is defined else 'N/A' }} | `{{ parent.death.date if parent.status is defined and parent.status == "deceased" and parent.death is defined and parent.death.date is defined else 'N/A' }}` | {{ parent.death.cause if parent.status is defined and parent.status == "deceased" and parent.death is defined and parent.death.cause is defined else 'N/A' }} |
+{% endfor %}
+
+{% for parent in family.parents -%}
+{% if parent.vcard is defined and (parent.vcard.tel is defined or parent.vcard.adr is defined) -%}
+#### {{ parent.vcard.fn }} Contact Information
+
+{% if parent.vcard.tel is defined and parent.vcard.tel -%}
+| Type | Phone Number |
+|------|--------------|
+{% for phone in parent.vcard.tel -%}
+| {{ phone.type | capitalize }} | {{ phone.value }} |
+{% endfor %}
+{% endif -%}
+
+{% if parent.vcard.adr is defined and parent.vcard.adr -%}
+| Street | City | State | ZIP | Country |
+|--------|------|-------|-----|---------|
+{% for address in parent.vcard.adr -%}
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} |
+{% endfor %}
+{% endif -%}
+{% endif %}
+{% endfor %}
+{% else %}
+- No parent information available.
+{% endif %}
+
+### Siblings
+
+{% if family is defined and family.siblings is defined and family.siblings -%}
+Information about the individual's siblings.
+
+| Relation | Full Name | Date of Birth | Birthplace | Status | Occupation |
+|----------|-----------|--------------|------------|--------|------------|
+{% for sibling in family.siblings -%}
+| {{ sibling.relation | capitalize }} | {{ sibling.vcard.fn or 'N/A' }} | `{{ sibling.vcard.bday or 'N/A' }}` | {{ sibling.birth.place if sibling.birth is defined and sibling.birth.place is defined else 'N/A' }} | {{ sibling.status | capitalize if sibling.status is defined else 'N/A' }} | {{ sibling.occupation if sibling.occupation is defined else 'N/A' }} |
+{% endfor %}
+
+{% for sibling in family.siblings -%}
+#### {{ sibling.vcard.fn }} Details
+
+{% if sibling.vcard is defined and (sibling.vcard.tel is defined or sibling.vcard.adr is defined) -%}
+##### Contact Information
+
+{% if sibling.vcard.tel is defined and sibling.vcard.tel -%}
+| Type | Phone Number |
+|------|--------------|
+{% for phone in sibling.vcard.tel -%}
+| {{ phone.type | capitalize }} | {{ phone.value }} |
+{% endfor %}
+{% endif -%}
+
+{% if sibling.vcard.adr is defined and sibling.vcard.adr -%}
+| Street | City | State | ZIP | Country |
+|--------|------|-------|-----|---------|
+{% for address in sibling.vcard.adr -%}
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} |
+{% endfor %}
+{% endif -%}
+{% endif %}
+
+{% if sibling.family is defined and sibling.family.spouse is defined -%}
+##### Family
+
+###### Spouse
+
+| Relation | Full Name | Date of Birth | Birthplace | Occupation | Marriage Date |
+|----------|-----------|--------------|------------|------------|---------------|
+| {{ sibling.family.spouse.relation | capitalize if sibling.family.spouse.relation is defined else 'Spouse' }} | {{ sibling.family.spouse.vcard.fn or 'N/A' }} | `{{ sibling.family.spouse.vcard.bday or 'N/A' }}` | {{ sibling.family.spouse.birth.place if sibling.family.spouse.birth is defined and sibling.family.spouse.birth.place is defined else 'N/A' }} | {{ sibling.family.spouse.occupation if sibling.family.spouse.occupation is defined else 'N/A' }} | `{{ sibling.family.spouse.relationship.marriage_date if sibling.family.spouse.relationship is defined and sibling.family.spouse.relationship.marriage_date is defined else 'N/A' }}` |
+
+{% if sibling.family.spouse.relationship is defined and (sibling.family.spouse.relationship.marriage_venue is defined or sibling.family.spouse.relationship.marriage_place is defined) -%}
+- **Marriage Details:** {{ sibling.family.spouse.relationship.marriage_venue or 'N/A' }}, {{ sibling.family.spouse.relationship.marriage_place or 'N/A' }}
+{% endif %}
+{% endif %}
+
+{% if sibling.family is defined and sibling.family.children is defined and sibling.family.children -%}
+###### Children
+
+| Name | Relation |
+|------|----------|
+{% for child in sibling.family.children -%}
+| {{ child.name or 'N/A' }} | {{ child.relation or 'N/A' }} |
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% else %}
+- No sibling information available.
+{% endif %}
+
+### Pets
+
+{% if family is defined and family.pets is defined -%}
+
+#### Current Pets
+
+{% if family.pets.current is defined and family.pets.current -%}
+| Name | Type | Breed | Age | Birth Date |
+|------|------|-------|-----|------------|
+{% for pet in family.pets.current -%}
+| {{ pet.name }} | {{ pet.type }} | {{ pet.breed or 'N/A' }} | {{ pet.age or 'N/A' }} | `{{ pet.birth_date or 'N/A' }}` |
+{% endfor %}
+
+{% for pet in family.pets.current -%}
+##### {{ pet.name }} Details
+
+{% if pet.aliases is defined and pet.aliases -%}
+| Also Known As |
+|---------------|
+| {{ pet.aliases | join(", ") }} |
+{% endif %}
+
+{% if pet.vet is defined or pet.care is defined -%}
+| Role | Name | Contact |
+|------|------|---------|
+{% if pet.vet is defined and pet.vet -%}
+| Veterinarian | {{ pet.vet.doctor or 'N/A' }} ({{ pet.vet.name or 'N/A' }}) | {{ pet.vet.phone or 'N/A' }} |
+{% endif -%}
+{% if pet.care is defined and pet.care.pet_sitter is defined -%}
+| Pet Sitter | {{ pet.care.pet_sitter or 'N/A' }} | {{ pet.care.pet_sitter_phone or 'N/A' }} |
+{% endif -%}
+{% endif %}
+
+{% endfor %}
+{% else %}
+- No current pets.
+{% endif %}
+
+#### Past Pets
+
+{% if family.pets.past is defined and family.pets.past -%}
+| Name | Type | Breed | Birth Date | Death Date | Cause of Death |
+|------|------|-------|------------|------------|----------------|
+{% for pet in family.pets.past -%}
+| {{ pet.name }} | {{ pet.type }} | {{ pet.breed or 'N/A' }} | `{{ pet.birth_date or 'N/A' }}` | `{{ pet.death_date or 'N/A' }}` | {{ pet.cause_of_death or 'N/A' }} |
+{% endfor %}
+
+{% for pet in family.pets.past -%}
+{% if pet.aliases is defined and pet.aliases -%}
+##### {{ pet.name }} Aliases
+| Also Known As |
+|---------------|
+| {{ pet.aliases | join(", ") }} |
+{% endif %}
+{% endfor %}
+{% else %}
+- No past pets.
+{% endif %}
+{% else %}
+- No pet information available.
 {% endif %}

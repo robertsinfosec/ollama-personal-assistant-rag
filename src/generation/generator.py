@@ -93,9 +93,14 @@ def render_section(yaml_path: str, template_path: str) -> str:
         
         # Extract timezone abbreviation from timezone name
         tz_name = now.tzname()
+
         if tz_name:
-            # Extract first letter of each word in timezone name (e.g., EDT from "Eastern Daylight Time")
-            tz_abbr = ''.join([word[0] for word in tz_name.split()])
+            if ' ' in tz_name:
+                # It's a multi-word name like "Eastern Daylight Time"
+                tz_abbr = ''.join([word[0] for word in tz_name.split()])
+            else:
+                # It's already an abbreviation or single word
+                tz_abbr = tz_name
         else:
             # Fallback if tzname() doesn't return anything useful
             tz_abbr = now.strftime("%Z")

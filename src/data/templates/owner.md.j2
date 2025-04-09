@@ -1,15 +1,19 @@
 ## Personal Information
 
+Below is the personal dossier of the individual you are assisting.
+
 ### About Me
 
 - **Full Name:** {{ owner.vcard.fn or 'N/A' }}
 - **Nickname:** {{ owner.vcard.nickname or 'N/A' }}
-- **Date of Birth:** {{ owner.vcard.bday or 'N/A' }}
+- **Date of Birth:** `{{ owner.vcard.bday or 'N/A' }}`
 - **Birthplace:** {{ owner.birthplace.city or 'N/A' }}, {{ owner.birthplace.state or 'N/A' }}, {{ owner.birthplace.country or 'N/A' }}
-- **Age:** {{ owner.age or 'N/A' }}
+- **Age:** `{{ owner.age or 'N/A' }}`
 - **Citizenship:** {{ owner.citizenship or 'N/A' }}
 
 ### Languages
+
+Information about spoken languages and proficiency levels.
 
 {% if owner.vcard.lang -%}
 | Language   | Proficiency       |
@@ -23,7 +27,14 @@
 
 ### Contact Information
 
+Below are the contact details for the individual.
+
 {% if owner.vcard.email -%}
+
+#### Email Addresses
+
+Below are the email addresses associated with the individual.
+
 | Type        | Email Address         |
 |-------------|-----------------------|
 {% for email in owner.vcard.email -%}
@@ -34,6 +45,11 @@
 {% endif -%}
 
 {% if owner.vcard.tel -%}
+
+#### Phone Numbers
+
+Below are the phone numbers associated with the individual.
+
 | Type        | Phone Number          |
 |-------------|-----------------------|
 {% for phone in owner.vcard.tel -%}
@@ -44,6 +60,8 @@
 {% endif -%}
 
 #### Social Media
+
+Below are the social media accounts associated with the individual.
 
 {% if owner.vcard.social -%}
 | Platform    | Handle/Link           |
@@ -57,11 +75,13 @@
 
 ### Current Address
 
+Information about the current address of the individual.
+
 {% if owner.vcard.adr -%}
 | Street Address       | City         | State | ZIP   | Country | Since       |
 |----------------------|--------------|-------|-------|---------|-------------|
 {% for address in owner.vcard.adr if address.type == "home" -%}
-| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} | {{ address.start_date }} |
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} | `{{ address.start_date }}` |
 {% endfor %}
 {% else %}
 - No current address listed.
@@ -69,12 +89,15 @@
 
 ### Previous Addresses
 
+Information about previous addresses of the individual.
+
 {% if owner.vcard.adr -%}
 | Street Address       | City         | State | ZIP   | Country | Duration                |
 |----------------------|--------------|-------|-------|---------|-------------------------|
 {% for address in owner.vcard.adr if address.type == "previous" -%}
-| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} | {{ address.start_date }} - {{ address.end_date }} |
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} | `{{ address.start_date }}` - `{{ address.end_date }}` |
 {% endfor %}
 {% else %}
 - No previous addresses listed.
-{% endif -%}
+{% endif %}
+
