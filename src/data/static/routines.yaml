@@ -1,0 +1,33 @@
+# Daily routines
+routines:
+  weekday:
+    morning:
+      - time: "06:00"
+        activity: "Wake up"
+      - time: "06:15-07:00"
+        activity: "Exercise"
+      - time: "07:15"
+        activity: "Shower and get ready"
+      - time: "07:45"
+        activity: "Breakfast"
+      - time: "08:30"
+        activity: "Start work"
+    evening:
+      - time: "17:30"
+        activity: "End work"
+      - time: "18:30"
+        activity: "Dinner"
+      - time: "21:00"
+        activity: "Wind down with reading or TV"
+      - time: "22:30"
+        activity: "Bedtime"
+  
+  weekend:
+    saturday:
+      - "Morning run"
+      - "Farmers market"
+      - "Household projects"
+    sunday:
+      - "Family time"
+      - "Meal prep for week"
+      - "Evening yoga"

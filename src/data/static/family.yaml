@@ -1,0 +1,153 @@
+# Family information
+family:
+  # Spouses (current and past)
+  spouses:
+    - relation: "current_spouse"  # or "wife" (alternatively "husband" depending on gender)
+      name: "Susan Marie Doe (née McCalister)"
+      status: "current"  # current, separated, divorced, deceased
+      relationship:
+        marriage_date: "2014-06-15"
+        marriage_venue: "St. Paul's Cathedral, Boston"
+        marriage_place: "Boston, Massachusetts"
+        divorce_date: null
+      birth:
+        date: "1988-06-05"
+        place: "Boston, Massachusetts"
+      contact:
+        email: "susan.doe@email.com"
+        phone: "(555) 987-6543"
+      notes: "Second marriage"
+      
+    - relation: "ex_spouse"  # or "ex_wife"/"ex_husband"
+      name: "Jane Elizabeth Smith"
+      status: "divorced"
+      relationship:
+        marriage_date: "2005-06-10"
+        marriage_venue: "City Hall"
+        marriage_place: "Philadelphia, Pennsylvania"
+        divorce_date: "2012-03-15"
+      birth:
+        date: "1985-10-15"
+        place: "Chicago, Illinois"
+      notes: "First marriage"
+  
+  # Children
+  children:
+    - relation: "daughter"
+      name: "Emily Rose Doe"
+      birth:
+        date: "2008-03-22" 
+        place: "Philadelphia, PA"
+      parents: ["John Edwards Doe", "Jane Elizabeth Smith"]
+      notes: "Shared custody with Jane"
+      
+    - relation: "son"
+      name: "Michael James Doe"
+      birth:
+        date: "2016-09-12"
+        place: "Allentown, PA" 
+      parents: ["John Edwards Doe", "Susan Marie Doe"]
+  
+  # Parents
+  parents:
+    - relation: "father"
+      name: "David James Doe"
+      birth:
+        date: "1951-08-30"
+        place: "Pittsburgh, PA"
+      status: "deceased"
+      death:
+        date: "2021-03-12"
+        cause: "Complications from heart disease"
+        place: "Allentown, PA"
+      
+    - relation: "mother"
+      name: "Elizabeth Ann Doe (née Williams)"
+      birth:
+        date: "1953-07-22"
+        place: "Philadelphia, PA"
+      status: "living"
+      contact:
+        address: 
+          street: "456 Oak Lane"
+          city: "Allentown"
+          state: "PA"
+          zip: "18101"
+        phone: "(555) 234-5678"
+  
+  # Siblings
+  siblings:
+    - relation: "brother"
+      name: "Elias Michael Doe"
+      birth:
+        date: "1991-04-17"
+        place: "Allentown, PA"
+      status: "living"
+      occupation: "Master Carpenter at Keystone Woodworking"
+      contact:
+        address:
+          street: "789 Chestnut St"
+          city: "Philadelphia"
+          state: "PA"
+          zip: "19103"
+        phone: "(555) 345-6789"
+      family: []  # No spouse or children
+      
+    - relation: "sister"
+      name: "Miranda Elizabeth Davies (née Doe)"
+      birth:
+        date: "1995-10-23"
+        place: "Allentown, PA"
+      status: "living"
+      occupation: "Marketing Manager at Digital Insights"
+      contact:
+        address:
+          street: "101 Cedar Road"
+          city: "Allentown"
+          state: "PA"
+          zip: "18101"
+        phone: "(555) 456-7890"
+      family:
+        spouse:
+          name: "Phillip Andrew Davies"
+          relation: "brother-in-law"
+          birth:
+            date: "1992-09-05"
+            place: "Hartford, CT"
+          occupation: "Software Engineer at TechSolutions"
+          relationship:
+            marriage_date: "2018-05-12"
+            marriage_venue: "Riverside Gardens"
+            marriage_place: "Allentown, PA"
+        children: []  # No children yet
+
+  # Pets (current and past)
+  pets:
+    current:
+      - type: "Dog"
+        name: "Max"
+        breed: "Golden Retriever"
+        age: 7  # Convenience for templates
+        birth_date: "2017-05-10"
+        vet:
+          name: "Allentown Animal Hospital"
+          doctor: "Dr. Sarah Jenkins"
+          phone: "(555) 444-3333"
+        care:
+          pet_sitter: "Maria Rodriguez"
+          pet_sitter_phone: "(555) 321-7654"
+    
+    past:
+      - type: "Dog"
+        name: "Buddy"
+        breed: "Labrador Retriever"
+        birth_date: "2005-06-15"
+        death_date: "2017-08-22"
+        cause_of_death: "Old age"
+      
+      - type: "Cat"
+        name: "Whiskers"
+        breed: "Siamese"
+        birth_date: "2010-03-30"
+        death_date: "2020-11-05"
+        cause_of_death: "Kidney disease"

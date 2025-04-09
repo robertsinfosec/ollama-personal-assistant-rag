@@ -1,0 +1,76 @@
+# Owner - Direct information about the primary person
+owner:
+  vcard:
+    fn: "John Edwards Doe"  # Full name
+    n:
+      family: "Doe"
+      given: "John Edwards"
+      additional: ""
+      prefix: ""
+      suffix: ""
+    nickname: "Johnny"
+    bday: "1985-01-01"  # Birthday
+    adr:
+      - type: "home"
+        street: "123 Maple Street"
+        city: "Allentown"
+        state: "PA"
+        zip: "18101"
+        country: "USA"
+        start_date: "2018-07-15"
+      - type: "previous"
+        street: "45 Pine Avenue"
+        city: "Philadelphia"
+        state: "PA"
+        zip: "19103"
+        country: "USA"
+        start_date: "2010-03-01"
+        end_date: "2018-07-14"
+      - type: "previous"
+        street: "789 College Drive"
+        city: "Pittsburgh"
+        state: "PA"
+        zip: "15213"
+        country: "USA"
+        start_date: "2003-08-15"
+        end_date: "2010-02-28"
+    tel:
+      - type: "home"
+        value: "(555) 123-4567"
+      - type: "work"
+        value: "(555) 987-6543"
+    email:
+      - type: "home"
+        value: "john.doe@email.com"
+      - type: "work"
+        value: "j.doe@company.com"
+    lang:
+      - type: "native"
+        value: "English"
+      - type: "conversational"
+        value: "Spanish"
+      - type: "basic"
+        value: "German"
+    social:
+      - type: "LinkedIn"
+        value: "linkedin.com/in/johndoe"
+      - type: "Twitter/X"
+        value: "@john_doe_real"
+      - type: "Instagram"
+        value: "@johnny.adventures"
+    note: "Citizen of the United States"
+
+  # Additional non-vCard elements
+  birthplace:
+    city: "Allentown"
+    state: "Pennsylvania"
+    country: "USA"
+  spoken_languages:
+    - name: "English"
+      proficiency: "native"
+    - name: "Spanish"
+      proficiency: "conversational"
+    - name: "German"
+      proficiency: "basic"
+  age: 40  # Can be calculated, but simpler for templates if provided directly
+  citizenship: "United States"

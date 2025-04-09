@@ -1,0 +1,17 @@
+education:
+  degrees:
+    - type: "MBA"
+      institution: "University of Pennsylvania"
+      years: "2008-2010"
+    - type: "BS in Computer Science"
+      institution: "Penn State University"
+      years: "2003-2007"
+  certifications:
+    - name: "Certified Scrum Product Owner"
+      expiration: "November 2025"
+    - name: "Google Analytics Certification"
+      expiration: "March 2026"
+  continuing_education:
+    - course: "Advanced Product Strategy"
+      format: "online"
+      completion_date: "November 2025"

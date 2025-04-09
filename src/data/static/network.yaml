@@ -1,0 +1,40 @@
+# Extended network
+network:
+  friends:
+    - name: "Michael Thompson"
+      known_since: "2003-09-01"  # College start date
+      contact:
+        phone: "(555) 222-8888"
+        email: "mike.t@email.com"
+      birthday: "05-12"
+      notes: "Best friend, weekly golf partner"
+    
+    - name: "Jennifer Garcia"
+      spouse: "Robert Garcia"
+      relation: "neighbors"
+      known_since: "2018-08-01"  # Move-in date
+      contact:
+        phone: "(555) 333-9999"
+      children:
+        - name: "Emma"
+          age: 8
+          birth_date: "2016-07-14"
+        - name: "Lucas"
+          age: 6
+          birth_date: "2018-09-22"
+  
+  professional_contacts:
+    - name: "David Wilson"
+      relation: "mentor"
+      known_since: "2015-04-01"
+      contact:
+        email: "david.wilson@corp.com"
+      notes: "Former manager, meet quarterly for coffee"
+    
+    - name: "Sophia Chen"
+      relation: "industry contact"
+      known_since: "2022-10-15"
+      contact:
+        linkedin: "linkedin.com/in/sophiachen"
+      notes: "Potential collaborator on upcoming project"
+

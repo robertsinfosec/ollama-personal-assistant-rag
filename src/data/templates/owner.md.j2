@@ -1,0 +1,80 @@
+## Personal Information
+
+### About Me
+
+- **Full Name:** {{ owner.vcard.fn or 'N/A' }}
+- **Nickname:** {{ owner.vcard.nickname or 'N/A' }}
+- **Date of Birth:** {{ owner.vcard.bday or 'N/A' }}
+- **Birthplace:** {{ owner.birthplace.city or 'N/A' }}, {{ owner.birthplace.state or 'N/A' }}, {{ owner.birthplace.country or 'N/A' }}
+- **Age:** {{ owner.age or 'N/A' }}
+- **Citizenship:** {{ owner.citizenship or 'N/A' }}
+
+### Languages
+
+{% if owner.vcard.lang -%}
+| Language   | Proficiency       |
+|------------|-------------------|
+{% for language in owner.vcard.lang -%}
+| {{ language.value }} | {{ language.type }} |
+{% endfor %}
+{% else %}
+- No languages listed.
+{% endif -%}
+
+### Contact Information
+
+{% if owner.vcard.email -%}
+| Type        | Email Address         |
+|-------------|-----------------------|
+{% for email in owner.vcard.email -%}
+| {{ email.type.capitalize() }} | {{ email.value }} |
+{% endfor %}
+{% else %}
+- No email addresses listed.
+{% endif -%}
+
+{% if owner.vcard.tel -%}
+| Type        | Phone Number          |
+|-------------|-----------------------|
+{% for phone in owner.vcard.tel -%}
+| {{ phone.type.capitalize() }} | {{ phone.value }} |
+{% endfor %}
+{% else %}
+- No phone numbers listed.
+{% endif -%}
+
+#### Social Media
+
+{% if owner.vcard.social -%}
+| Platform    | Handle/Link           |
+|-------------|-----------------------|
+{% for account in owner.vcard.social -%}
+| {{ account.type }} | {{ account.value }} |
+{% endfor %}
+{% else %}
+- No social media accounts listed.
+{% endif -%}
+
+### Current Address
+
+{% if owner.vcard.adr -%}
+| Street Address       | City         | State | ZIP   | Country | Since       |
+|----------------------|--------------|-------|-------|---------|-------------|
+{% for address in owner.vcard.adr if address.type == "home" -%}
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} | {{ address.start_date }} |
+{% endfor %}
+{% else %}
+- No current address listed.
+{% endif -%}
+
+### Previous Addresses
+
+{% if owner.vcard.adr -%}
+| Street Address       | City         | State | ZIP   | Country | Duration                |
+|----------------------|--------------|-------|-------|---------|-------------------------|
+{% for address in owner.vcard.adr if address.type == "previous" -%}
+| {{ address.street }} | {{ address.city }} | {{ address.state }} | {{ address.zip }} | {{ address.country }} | {{ address.start_date }} - {{ address.end_date }} |
+{% endfor %}
+{% else %}
+- No previous addresses listed.
+{% endif -%}

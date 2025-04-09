@@ -1,0 +1,142 @@
+## Family
+{% if family %}
+  {% if family.spouses %}
+- **Spouse(s)**:
+  {% for spouse in family.spouses %}
+  - {{ spouse.name }}{% if spouse.status %} ({{ spouse.status }}){% endif %}
+    {% if spouse.relation %}- Relation: {{ spouse.relation }}{% endif %}
+    {% if spouse.relationship %}
+      {% if spouse.relationship.marriage_date %}- Marriage Date: {{ spouse.relationship.marriage_date }}{% endif %}
+      {% if spouse.relationship.marriage_venue %}- Marriage Venue: {{ spouse.relationship.marriage_venue }}{% endif %}
+      {% if spouse.relationship.marriage_place %}- Marriage Place: {{ spouse.relationship.marriage_place }}{% endif %}
+      {% if spouse.relationship.divorce_date %}- Divorce Date: {{ spouse.relationship.divorce_date }}{% endif %}
+    {% endif %}
+    {% if spouse.birth %}
+    - Birth Information:
+      {% if spouse.birth.date %}- Date: {{ spouse.birth.date }}{% endif %}
+      {% if spouse.birth.place %}- Place: {{ spouse.birth.place }}{% endif %}
+    {% endif %}
+    {% if spouse.contact %}
+    - Contact:
+      {% if spouse.contact.email %}- Email: {{ spouse.contact.email }}{% endif %}
+      {% if spouse.contact.phone %}- Phone: {{ spouse.contact.phone }}{% endif %}
+    {% endif %}
+    {% if spouse.notes %}- Notes: {{ spouse.notes }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if family.children %}
+- **Children**:
+  {% for child in family.children %}
+  - {{ child.name }}{% if child.relation %} ({{ child.relation }}){% endif %}
+    {% if child.birth %}
+    - Birth Information:
+      {% if child.birth.date %}- Date: {{ child.birth.date }}{% endif %}
+      {% if child.birth.place %}- Place: {{ child.birth.place }}{% endif %}
+    {% endif %}
+    {% if child.parents %}- Parents: {{ child.parents | join(", ") }}{% endif %}
+    {% if child.notes %}- Notes: {{ child.notes }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if family.parents %}
+- **Parents**:
+  {% for parent in family.parents %}
+  - {{ parent.relation | capitalize }}: {{ parent.name }}
+    {% if parent.birth %}
+    - Birth Information:
+      {% if parent.birth.date %}- Date: {{ parent.birth.date }}{% endif %}
+      {% if parent.birth.place %}- Place: {{ parent.birth.place }}{% endif %}
+    {% endif %}
+    {% if parent.status %}- Status: {{ parent.status }}{% endif %}
+    {% if parent.status == "deceased" and parent.death %}
+    - Death Information:
+      {% if parent.death.date %}- Date: {{ parent.death.date }}{% endif %}
+      {% if parent.death.cause %}- Cause: {{ parent.death.cause }}{% endif %}
+      {% if parent.death.place %}- Place: {{ parent.death.place }}{% endif %}
+    {% endif %}
+    {% if parent.contact %}
+    - Contact:
+      {% if parent.contact.address %}
+      - Address: {{ parent.contact.address.street }}, {{ parent.contact.address.city }}, {{ parent.contact.address.state }} {{ parent.contact.address.zip }}
+      {% endif %}
+      {% if parent.contact.phone %}- Phone: {{ parent.contact.phone }}{% endif %}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if family.siblings %}
+- **Siblings**:
+  {% for sibling in family.siblings %}
+  - {{ sibling.relation | capitalize }}: {{ sibling.name }}
+    {% if sibling.birth %}
+    - Birth Information:
+      {% if sibling.birth.date %}- Date: {{ sibling.birth.date }}{% endif %}
+      {% if sibling.birth.place %}- Place: {{ sibling.birth.place }}{% endif %}
+    {% endif %}
+    {% if sibling.status %}- Status: {{ sibling.status }}{% endif %}
+    {% if sibling.occupation %}- Occupation: {{ sibling.occupation }}{% endif %}
+    {% if sibling.contact %}
+    - Contact:
+      {% if sibling.contact.address %}
+      - Address: {{ sibling.contact.address.street }}, {{ sibling.contact.address.city }}, {{ sibling.contact.address.state }} {{ sibling.contact.address.zip }}
+      {% endif %}
+      {% if sibling.contact.phone %}- Phone: {{ sibling.contact.phone }}{% endif %}
+    {% endif %}
+    {% if sibling.family %}
+      {% if sibling.family.spouse %}
+    - Spouse Information:
+      - Name: {{ sibling.family.spouse.name }}
+      {% if sibling.family.spouse.relation %}- Relation: {{ sibling.family.spouse.relation }}{% endif %}
+      {% if sibling.family.spouse.birth %}
+      - Birth: {{ sibling.family.spouse.birth.date }}{% if sibling.family.spouse.birth.place %} in {{ sibling.family.spouse.birth.place }}{% endif %}
+      {% endif %}
+      {% if sibling.family.spouse.occupation %}- Occupation: {{ sibling.family.spouse.occupation }}{% endif %}
+      {% if sibling.family.spouse.relationship %}
+      - Marriage: {{ sibling.family.spouse.relationship.marriage_date }}{% if sibling.family.spouse.relationship.marriage_venue %} at {{ sibling.family.spouse.relationship.marriage_venue }}{% endif %}
+      {% endif %}
+      {% endif %}
+      {% if sibling.family.children %}
+    - Children:
+      {% for child in sibling.family.children %}
+      - {{ child.name }}{% if child.age %} ({{ child.age }} years){% endif %}
+      {% endfor %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if family.pets %}
+- **Pets**:
+    {% if family.pets.current %}
+  - Current Pets:
+    {% for pet in family.pets.current %}
+    - {{ pet.type }}: {{ pet.name }}
+      {% if pet.breed %}- Breed: {{ pet.breed }}{% endif %}
+      {% if pet.age %}- Age: {{ pet.age }} years{% endif %}
+      {% if pet.birth_date %}- Birth Date: {{ pet.birth_date }}{% endif %}
+      {% if pet.vet %}
+      - Veterinary Care:
+        {% if pet.vet.name %}- Clinic: {{ pet.vet.name }}{% endif %}
+        {% if pet.vet.doctor %}- Doctor: {{ pet.vet.doctor }}{% endif %}
+        {% if pet.vet.phone %}- Phone: {{ pet.vet.phone }}{% endif %}
+      {% endif %}
+      {% if pet.care %}
+      - Care Information:
+        {% if pet.care.pet_sitter %}- Pet Sitter: {{ pet.care.pet_sitter }}{% endif %}
+        {% if pet.care.pet_sitter_phone %}- Sitter's Phone: {{ pet.care.pet_sitter_phone }}{% endif %}
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% if family.pets.past %}
+  - Past Pets:
+    {% for pet in family.pets.past %}
+    - {{ pet.type }}: {{ pet.name }}
+      {% if pet.breed %}- Breed: {{ pet.breed }}{% endif %}
+      {% if pet.birth_date %}- Birth Date: {{ pet.birth_date }}{% endif %}
+      {% if pet.death_date %}- Death Date: {{ pet.death_date }}{% endif %}
+      {% if pet.cause_of_death %}- Cause of Death: {{ pet.cause_of_death }}{% endif %}
+    {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endif %}

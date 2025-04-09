@@ -1,0 +1,15 @@
+weather:
+  today:
+    condition: "Partly cloudy"
+    high_temp: 75
+    low_temp: 62
+    precipitation: "20%"
+  forecast:
+    - date: "2025-04-09"
+      condition: "Sunny"
+      high_temp: 78
+      low_temp: 60
+    - date: "2025-04-12"
+      condition: "Rain showers"
+      high_temp: 70
+      low_temp: 58

@@ -1,0 +1,41 @@
+# Transportation
+transportation:
+  vehicles:
+    - type: "Car"
+      make: "Toyota"
+      model: "RAV4 Hybrid"
+      year: 2023
+      purchase_date: "2023-02-15"
+      license_plate: "ABC-1234"
+      primary_driver: "John Edwards Doe"
+      insurance:
+        company: "State Farm"
+        policy: "SF9876543"
+        renewal_date: "2025-03-15"
+      maintenance:
+        last_service_date: "2024-08-10"
+        next_service_date: "2025-02-10"
+        next_service_miles: 32000
+    
+    - type: "Car"
+      make: "Honda"
+      model: "Civic"
+      year: 2018
+      purchase_date: "2018-06-10"
+      license_plate: "XYZ-5678"
+      primary_driver: "Susan Marie Doe"
+      insurance:
+        company: "State Farm"
+        policy: "SF9876543"  # Same policy
+      maintenance:
+        last_service_date: "2024-07-20"
+        next_service_date: "2024-12-20"
+        next_service_miles: 65000
+  
+  travel_preferences:
+    preferred_airline: "United"
+    airline_status: "Gold"
+    membership_number: "UA1234567"
+    preferred_hotel_chain: "Marriott"
+    hotel_status: "Silver"
+    hotel_membership: "MR7654321"

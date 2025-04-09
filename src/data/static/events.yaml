@@ -1,0 +1,43 @@
+# Important dates
+important_dates:
+  personal:
+    - event: "Birthday"
+      date: "01-01"
+      annual: true
+    - event: "Wedding Anniversary"
+      date: "06-15"
+      annual: true
+  
+  family:
+    - person: "Susan Marie Doe"
+      relation: "wife"
+      event: "Birthday"
+      date: "06-05"
+      annual: true
+    - person: "Emily Rose Doe"
+      relation: "daughter"
+      event: "Birthday"
+      date: "03-22"
+      annual: true
+    - person: "Michael James Doe"
+      relation: "son"
+      event: "Birthday"
+      date: "09-12"
+      annual: true
+    - person: "David James Doe"
+      relation: "father"
+      event: "Death Anniversary"
+      date: "03-12"
+      annual: true
+  
+  upcoming_events:
+    - event: "Business Conference"
+      location: "Chicago"
+      start_date: "2025-11-15"
+      end_date: "2025-11-18"
+      type: "work"
+    - event: "Anniversary Weekend"
+      location: "New York City"
+      start_date: "2026-06-13"
+      end_date: "2026-06-16"
+      type: "personal"

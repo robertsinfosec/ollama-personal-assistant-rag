@@ -1,0 +1,40 @@
+## Transportation
+{% if transportation %}
+  {% if transportation.vehicles %}
+- **Vehicles**:
+  {% for vehicle in transportation.vehicles %}
+  - {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.year }}{% if vehicle.primary %} (Primary){% endif %}
+    {% if vehicle.purchase_date %}- Purchased: {{ vehicle.purchase_date }}{% endif %}
+    {% if vehicle.license_plate %}- License Plate: {{ vehicle.license_plate }}{% endif %}
+    {% if vehicle.primary_driver %}- Primary Driver: {{ vehicle.primary_driver }}{% endif %}
+    {% if vehicle.insurance %}
+    - Insurance:
+      {% if vehicle.insurance.company %}- Company: {{ vehicle.insurance.company }}{% endif %}
+      {% if vehicle.insurance.policy %}- Policy: {{ vehicle.insurance.policy }}{% endif %}
+      {% if vehicle.insurance.renewal_date %}- Renewal: {{ vehicle.insurance.renewal_date }}{% endif %}
+    {% endif %}
+    {% if vehicle.maintenance %}
+    - Maintenance:
+      {% if vehicle.maintenance.last_service_date %}- Last Service: {{ vehicle.maintenance.last_service_date }}{% endif %}
+      {% if vehicle.maintenance.next_service_date %}- Next Service: {{ vehicle.maintenance.next_service_date }}{% endif %}
+      {% if vehicle.maintenance.next_service_miles %}- Next Service Due at: {{ vehicle.maintenance.next_service_miles }} miles{% endif %}
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if transportation.public_transit %}- **Public Transit**: {{ transportation.public_transit }}{% endif %}
+
+  {% if transportation.travel_preferences %}
+- **Travel Preferences**:
+  {% if transportation.travel_preferences.preferred_airline %}
+  - Airline: {{ transportation.travel_preferences.preferred_airline }}
+    {% if transportation.travel_preferences.airline_status %}- Status: {{ transportation.travel_preferences.airline_status }}{% endif %}
+    {% if transportation.travel_preferences.membership_number %}- Member #: {{ transportation.travel_preferences.membership_number }}{% endif %}
+  {% endif %}
+  {% if transportation.travel_preferences.preferred_hotel_chain %}
+  - Hotel: {{ transportation.travel_preferences.preferred_hotel_chain }}
+    {% if transportation.travel_preferences.hotel_status %}- Status: {{ transportation.travel_preferences.hotel_status }}{% endif %}
+    {% if transportation.travel_preferences.hotel_membership %}- Member #: {{ transportation.travel_preferences.hotel_membership }}{% endif %}
+  {% endif %}
+  {% endif %}
+{% endif %}

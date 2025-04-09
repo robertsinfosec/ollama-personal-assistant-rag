@@ -1,0 +1,47 @@
+## Finance
+{% if finance %}
+  {% if finance.accounts %}
+- **Bank Accounts**:
+  {% for account in finance.accounts %}
+  - {{ account.type }}{% if account.primary %} (Primary){% endif %}
+    {% if account.institution %}- Institution: {{ account.institution }}{% endif %}
+    {% if account.account_number %}- Account: {{ account.account_number }}{% endif %}
+    {% if account.opened_date %}- Opened: {{ account.opened_date }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if finance.credit_cards %}
+- **Credit Cards**:
+  {% for card in finance.credit_cards %}
+  - {{ card.issuer }}{% if card.type %} {{ card.type }}{% endif %}
+    {% if card.last_four %}- Last Four: {{ card.last_four }}{% endif %}
+    {% if card.expiration %}- Expires: {{ card.expiration }}{% endif %}
+    {% if card.opened_date %}- Opened: {{ card.opened_date }}{% endif %}
+    {% if card.primary %}- Primary Card{% endif %}
+    {% if card.payment_due %}- Payment Due: {{ card.payment_due }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if finance.retirement %}
+- **Retirement Accounts**:
+  {% for account in finance.retirement %}
+  - {{ account.type }}
+    {% if account.provider %}- Provider: {{ account.provider }}{% endif %}
+    {% if account.contributions %}- Contributions: {{ account.contributions }}{% endif %}
+    {% if account.opened_date %}- Opened: {{ account.opened_date }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if finance.bills %}
+- **Bills & Recurring Payments**:
+  {% for bill in finance.bills %}
+  - {{ bill.name }}
+    {% if bill.amount %}- Amount: ${{ bill.amount }}{% endif %}
+    {% if bill.frequency %}- Frequency: {{ bill.frequency }}{% endif %}
+    {% if bill.due_date %}- Due: {{ bill.due_date }}{% endif %}
+    {% if bill.autopay is defined %}- Autopay: {% if bill.autopay %}Enabled{% else %}Disabled{% endif %}{% endif %}
+    {% if bill.start_date %}- Started: {{ bill.start_date }}{% endif %}
+    {% if bill.end_date %}- Ends: {{ bill.end_date }}{% endif %}
+  {% endfor %}
+  {% endif %}
+{% endif %}

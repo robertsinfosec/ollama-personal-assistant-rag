@@ -1,0 +1,54 @@
+# Career information
+career:
+  current:
+    position: "Senior Product Manager"
+    company: "Innovatech Solutions"
+    location: "Allentown, PA"
+    start_date: "2018-03-15"
+    responsibilities:
+      - "Product roadmap development"
+      - "Market research and analysis"
+      - "Cross-functional team leadership"
+    schedule: "Monday-Friday, 8:30 AM - 5:30 PM, hybrid (WFH Tuesday/Thursday)"
+    contact:
+      address: 
+        street: "555 Technology Drive"
+        city: "Allentown"
+        state: "PA"
+        zip: "18101"
+      phone: "(555) 777-8888"
+      website: "www.innovatech.com"
+    supervisor:
+      name: "Victoria Martinez"
+      title: "VP of Product"
+      email: "v.martinez@innovatech.com"
+    direct_reports:
+      - name: "Emily Chen"
+        title: "Design Lead"
+        email: "e.chen@innovatech.com"
+      - name: "Marcus Johnson"
+        title: "Development Lead"
+        email: "m.johnson@innovatech.com"
+  
+  previous:
+    - position: "Product Manager"
+      company: "TechForward Inc."
+      location: "Philadelphia, PA"
+      start_date: "2015-04-01"
+      end_date: "2018-03-10"
+    - position: "Associate Product Manager"
+      company: "Digital Innovations LLC"
+      location: "Pittsburgh, PA"
+      start_date: "2012-07-15"
+      end_date: "2015-03-28"
+  
+  skills:
+    - "Product roadmapping"
+    - "Agile methodologies"
+    - "Market analysis"
+    - "SQL, basic Python"
+  
+  goals:
+    short_term: "Complete Product Management certification by December"
+    mid_term: "Lead a major product launch in Q2 next year"
+    long_term: "Advance to Director of Product within 3 years"

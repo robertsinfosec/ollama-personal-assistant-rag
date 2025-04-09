@@ -1,0 +1,50 @@
+# Financial information
+finance:
+  accounts:
+    - type: "Checking"
+      institution: "First National Bank"
+      account_number: "xxxx1234"
+      primary: true
+      opened_date: "2012-05-10"
+    - type: "Savings"
+      institution: "First National Bank"
+      account_number: "xxxx5678"
+      opened_date: "2012-05-10"
+    - type: "Investment"
+      institution: "Vanguard"
+      account_number: "xxxx9012"
+      opened_date: "2016-11-22"
+  
+  credit_cards:
+    - issuer: "Chase"
+      type: "Sapphire Preferred"
+      last_four: "4321"
+      expiration: "2027-04-30"
+      opened_date: "2019-04-15"
+      primary: true
+      payment_due: "15th of month"
+  
+  retirement:
+    - type: "401(k)"
+      provider: "Fidelity"
+      contributions: "10% of salary"
+      opened_date: "2018-04-15"
+    - type: "IRA"
+      provider: "Vanguard"
+      contributions: "$500/month"
+      opened_date: "2015-01-10"
+  
+  bills:
+    - name: "Mortgage"
+      amount: 2100.00
+      frequency: "monthly"
+      due_date: "1st"
+      autopay: true
+      start_date: "2018-08-01"
+    - name: "Car payment"
+      amount: 450.00
+      frequency: "monthly"
+      due_date: "10th"
+      autopay: true
+      start_date: "2023-02-15"
+      end_date: "2028-02-15"

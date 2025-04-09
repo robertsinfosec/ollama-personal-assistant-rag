@@ -1,0 +1,618 @@
+core_identity:
+  full_name: "John Edwards Doe"
+  preferred_name: "Johnny"
+  professional_name: "John"
+  date_of_birth: "January 1, 1985"
+  age: 40
+  place_of_birth: "Allentown, Pennsylvania"
+  citizenship: "United States"
+  languages:
+    - name: "English"
+      proficiency: "native"
+    - name: "Spanish"
+      proficiency: "conversational"
+    - name: "German"
+      proficiency: "basic"
+  current_address: "123 Maple Street, Allentown, PA 18101"
+  previous_addresses:
+    - street: "45 Pine Avenue"
+      city: "Philadelphia"
+      state: "PA"
+      years: "2010-2018"
+    - street: "789 College Drive"
+      city: "Pittsburgh"
+      state: "PA"
+      years: "2003-2010"
+  personal_email: "john.doe@email.com"
+  work_email: "j.doe@company.com"
+  personal_phone: "(555) 123-4567"
+  work_phone: "(555) 987-6543"
+  social_media:
+    - name: "LinkedIn"
+      handle: "linkedin.com/in/johndoe"
+    - name: "Twitter/X"
+      handle: "@john_doe_real"
+    - name: "Instagram"
+      handle: "@johnny.adventures"
+
+family:
+  spouses:
+    - name: "Susan Marie McCalister Doe"
+      birth_year: 1988
+      marriage_date: "June 15, 2014"
+      divorce_date: null
+      death_year: null
+      cause_of_death: null
+      anniversary_of_passing: null
+      gift_preferences:
+        - "Handmade jewelry"
+        - "Books on architecture"
+    - name: "Jane Elizabeth Smith"
+      birth_year: 1985
+      marriage_date: "June 10, 2005"
+      divorce_date: "March 15, 2012"
+      death_year: null
+      cause_of_death: null
+      anniversary_of_passing: null
+      gift_preferences:
+        - "Art supplies"
+        - "Cooking gadgets"
+  children:
+    - name: "Emily Rose Doe"
+      birth_year: 2008
+      parents:
+        - "John Edwards Doe"
+        - "Jane Elizabeth Smith"
+    - name: "Michael James Doe"
+      birth_year: 2016
+      parents:
+        - "John Edwards Doe"
+        - "Susan Marie McCalister Doe"
+  father:
+    name: "David James Doe"
+    birth_year: 1951
+    death_year: 2021
+    cause_of_death: "Complications from heart disease"
+    anniversary_of_passing: "March 12, 2021"
+  mother:
+    name: "Elizabeth Ann Doe (née Williams)"
+    birth_year: 1953
+    residence: "456 Oak Lane, Allentown, PA"
+    phone: "(555) 234-5678"
+  siblings:
+    - relation: "Brother"
+      name: "Elias Michael Doe"
+      birth_year: 1991
+      death_year: null
+      occupation: "Master Carpenter at Keystone Woodworking"
+      residence: "789 Chestnut St, Philadelphia, PA"
+      phone: "(555) 345-6789"
+      birthday: "April 17"
+    - relation: "Sister"
+      name: "Miranda Elizabeth Davies (née Doe)"
+      birth_year: 1995
+      death_year: null
+      occupation: "Marketing Manager at Digital Insights"
+      residence: "101 Cedar Road, Allentown, PA"
+      phone: "(555) 456-7890"
+      birthday: "October 23"
+      spouse:
+        relation: "Husband"
+        name: "Phillip Andrew Davies"
+        birth_year: 1992
+        death_year: null
+        occupation: "Software Engineer at TechSolutions"
+  pets:
+    - type: "Dog"
+      name: "Max"
+      breed: "Golden Retriever"
+      age: 7
+      vet_name: "Allentown Animal Hospital"
+      vet_doctor: "Dr. Sarah Jenkins"
+      medications: "Joint supplement daily"
+      pet_sitter: "Maria Rodriguez (555-321-7654)"
+  past_pets:
+    - type: "Dog"
+      name: "Buddy"
+      breed: "Labrador Retriever"
+      birth_year: 2005
+      death_year: 2017
+      cause_of_death: "Old age"
+    - type: "Cat"
+      name: "Whiskers"
+      breed: "Siamese"
+      birth_year: 2010
+      death_year: 2020
+      cause_of_death: "Kidney disease"
+
+health:
+  blood_type: "O+"
+  allergies:
+    - name: "Penicillin"
+      severity: "severe"
+    - name: "Peanuts"
+      severity: "mild"
+    - name: "Seasonal pollen"
+      severity: "moderate"
+  medical_conditions:
+    - name: "Mild asthma"
+      year: 1997
+    - name: "Occasional migraine headaches"
+      year: null
+  medications:
+    - name: "Albuterol inhaler"
+      purpose: "as needed"
+    - name: "Sumatriptan"
+      purpose: "for migraines, as needed"
+  primary_care:
+    name: "Dr. Michael Chen"
+    facility: "Lehigh Valley Health Network"
+    phone: "(555) 111-2222"
+    last_checkup: "September 10, 2024"
+  specialists:
+    - type: "Allergist"
+      name: "Dr. Amelia Washington"
+      phone: "(555-222-3333)"
+    - type: "Ophthalmologist"
+      name: "Dr. James Wilson"
+      phone: "(555-333-4444)"
+  emergency_contact:
+    name: "Susan Doe"
+    relation: "wife"
+    phone: "(555) 987-6543"
+  insurance:
+    provider: "BlueCross BlueShield"
+    policy: "JD78901234"
+    group: "LVT5678"
+  exercise_routine:
+    - activity: "Morning runs"
+      schedule: "Tuesday, Thursday, Saturday"
+    - activity: "Weight training"
+      schedule: "Monday, Wednesday, Friday"
+    - activity: "Yoga"
+      schedule: "Sunday"
+
+career:
+  current_position: "Senior Product Manager"
+  employer:
+    name: "Innovatech Solutions"
+    address: "555 Technology Drive, Allentown, PA"
+    phone: "(555) 777-8888"
+    start_date: "March 2018"
+  work_schedule: "Monday-Friday, 8:30 AM - 5:30 PM, hybrid (WFH Tuesday/Thursday)"
+  direct_reports:
+    - name: "Emily Chen"
+      title: "Design Lead"
+    - name: "Marcus Johnson"
+      title: "Development Lead"
+    - name: "Sarah Williams"
+      title: "QA Lead"
+  manager:
+    name: "Victoria Martinez"
+    title: "VP of Product"
+  previous_employment:
+    - position: "Product Manager"
+      company: "TechForward Inc."
+      years: "2015-2018"
+    - position: "Associate Product Manager"
+      company: "Digital Innovations LLC"
+      years: "2012-2015"
+    - position: "Business Analyst"
+      company: "Strategic Solutions Inc."
+      years: "2010-2012"
+  skills:
+    - "Product roadmapping"
+    - "Agile methodologies"
+    - "Market analysis"
+    - "User experience design"
+    - "SQL, basic Python"
+    - "Public speaking"
+  professional_goals:
+    short_term: "Complete Product Management certification by December"
+    mid_term: "Lead a major product launch in Q2 next year"
+    long_term: "Advance to Director of Product within 3 years"
+
+education:
+  degrees:
+    - type: "MBA"
+      institution: "University of Pennsylvania"
+      years: "2008-2010"
+    - type: "BS in Computer Science"
+      institution: "Penn State University"
+      years: "2003-2007"
+  certifications:
+    - name: "Certified Scrum Product Owner"
+      expiration: "November 2025"
+    - name: "Google Analytics Certification"
+      expiration: "March 2026"
+  continuing_education:
+    - course: "Advanced Product Strategy"
+      format: "online"
+      completion_date: "November 2025"
+
+finance:
+  banking:
+    - type: "Primary Checking"
+      institution: "First National Bank"
+      account_number: "xxxx1234"
+    - type: "Savings"
+      institution: "First National Bank"
+      account_number: "xxxx5678"
+    - type: "Investment Account"
+      institution: "Vanguard"
+      account_number: "xxxx9012"
+  credit_cards:
+    - name: "Chase Sapphire"
+      purpose: "primary"
+      due_date: "15th of month"
+    - name: "American Express"
+      purpose: "business expenses"
+      payment: "company pays"
+    - name: "Discover"
+      purpose: "backup"
+      usage: "rarely used"
+  retirement:
+    - type: "401(k)"
+      provider: "through employer"
+    - type: "IRA"
+      provider: "Fidelity"
+  financial_goals:
+    - description: "Pay off student loans"
+      target_date: 2026
+    - description: "Save for home renovation"
+      amount: "$30,000"
+      target_date: 2027
+    - description: "Increase retirement contributions to 15%"
+      target_date: "next year"
+  bills:
+    - name: "Mortgage"
+      amount: "$2,100"
+      due_date: "1st of month"
+    - name: "Car payment"
+      amount: "$450"
+      due_date: "10th of month"
+    - name: "Utilities"
+      amount: "~$300"
+      note: "varies"
+      due_date: "15th of month"
+    - name: "Internet/Cable"
+      amount: "$150"
+      due_date: "22nd of month"
+    - name: "Cell phone"
+      amount: "$120"
+      due_date: "5th of month"
+    - name: "Streaming services"
+      amount: "~$75"
+      note: "total"
+      due_date: "various dates"
+
+home:
+  property_details:
+    type: "3-bedroom, 2.5-bath colonial"
+    purchased: 2018
+    mortgage_lender: "First National Mortgage"
+  home_systems:
+    - name: "HVAC service"
+      schedule: "twice yearly (spring/fall)"
+    - name: "Water heater"
+      replaced: 2023
+    - name: "Roof"
+      installed: 2019
+  service_providers:
+    - name: "Lawn care"
+      company: "GreenScapes"
+      schedule: "bi-weekly, April-October"
+    - name: "Cleaning service"
+      company: "Bright & Clean"
+      schedule: "every other Thursday"
+    - name: "Plumber"
+      company: "Wilson Plumbing"
+      phone: "(555-444-3333)"
+    - name: "Electrician"
+      company: "Johnson Electric"
+      phone: "(555-666-7777)"
+  smart_home:
+    - device: "Nest thermostat"
+    - device: "Ring doorbell"
+    - device: "Philips Hue lighting"
+      location: "main living areas"
+    - device: "Alexa"
+      locations: ["kitchen", "living room", "master bedroom"]
+
+transportation:
+  vehicles:
+    - type: "2023 Toyota RAV4 Hybrid"
+      primary: true
+      license_plate: "ABC-1234"
+      insurance:
+        company: "State Farm"
+        policy: "SF9876543"
+      maintenance: "due for oil change in 2,000 miles"
+    - type: "2018 Honda Civic"
+      owner: "spouse"
+      license_plate: "XYZ-5678"
+      insurance:
+        company: "State Farm"
+        note: "same policy"
+  public_transit: "Rarely used except when visiting Philadelphia or NYC"
+  travel_preferences:
+    airline:
+      name: "United"
+      member_number: "UA1234567"
+      status: "Gold"
+    hotel_chain:
+      name: "Marriott"
+      member_number: "MR7654321"
+      status: "Silver"
+    tsa_precheck: 
+      status: "Yes"
+      expiration: "July 2026"
+
+digital_life:
+  devices:
+    - type: "Work laptop"
+      model: "Dell XPS 15"
+      year: 2024
+    - type: "Personal laptop"
+      model: "MacBook Pro"
+      year: 2022
+    - type: "Smartphone"
+      model: "iPhone 15 Pro"
+      year: 2023
+    - type: "Tablet"
+      model: "iPad Air"
+      year: 2023
+  important_accounts:
+    - service: "Apple ID"
+      username: "john.doe@email.com"
+    - service: "Google"
+      username: "john.doe@gmail.com"
+    - service: "Microsoft"
+      username: "jdoe@outlook.com"
+    - service: "Amazon"
+      username: "john.doe@email.com"
+      note: "Prime member"
+  subscriptions:
+    - "Netflix"
+    - "Hulu"
+    - "Disney+"
+    - "Spotify Premium"
+    - "Microsoft 365"
+    - "iCloud"
+    - "Amazon Prime"
+  password_manager: "LastPass"
+
+preferences:
+  food:
+    favorite_cuisines:
+      - "Italian"
+      - "Thai"
+      - "Mexican"
+    dietary_restrictions: "None, but trying to reduce red meat"
+    favorite_restaurants:
+      - name: "Bella Italia"
+        address: "252 Main St, Allentown"
+        purpose: "special occasions"
+      - name: "Thai Spice"
+        address: "45 Market St"
+        purpose: "takeout"
+      - name: "Green Garden"
+        address: "78 Park Ave"
+        purpose: "lunch"
+    coffee_order: "Medium Americano with a splash of oat milk"
+  entertainment:
+    music:
+      genres:
+        - "Classic rock"
+        - "Alternative"
+        - "Jazz"
+      artists:
+        - "Foo Fighters"
+        - "The National"
+        - "Miles Davis"
+    tv_shows:
+      - "Breaking Bad"
+      - "The Office"
+      - "Succession"
+    movies:
+      - "The Shawshank Redemption"
+      - "The Dark Knight"
+      - "Inception"
+    books:
+      - title: "East of Eden"
+        author: "Steinbeck"
+      - title: "The Hitchhiker's Guide"
+        author: "Adams"
+  shopping:
+    clothing:
+      stores:
+        - "Nordstrom"
+        - "Banana Republic"
+      sizes:
+        shirts: "M"
+        pants: "32x32"
+    electronics:
+      stores:
+        - "Best Buy"
+        - "Amazon"
+    groceries:
+      stores:
+        - "Whole Foods"
+        - "Trader Joe's"
+  colors:
+    favorite:
+      - "Navy blue"
+      - "Forest green"
+    home_decor: "Neutral tones with blue accents"
+
+personal_style:
+  clothing: "Business casual at work, comfortable casual at home"
+  brands:
+    - "Patagonia"
+    - "Levi's"
+    - "Nike"
+  accessories:
+    - type: "Watch"
+      brand: "Citizen"
+      usage: "everyday"
+    - type: "Sunglasses"
+      brand: "Ray-Ban"
+
+routines:
+  morning:
+    wake_up:
+      weekdays: "6:00 AM"
+      weekends: "7:30 AM"
+    exercise:
+      time: "6:15-7:00 AM"
+      days: "weekdays"
+    breakfast: "Usually oatmeal or eggs with coffee"
+  evening:
+    dinner: "Around 6:30 PM"
+    wind_down: "Reading or TV from 9:00 PM"
+    bedtime: "~10:30 PM"
+  weekend:
+    saturday: "Morning run, farmers market, household projects"
+    sunday: "Family time, meal prep for week, evening yoga"
+
+relationships:
+  close_friends:
+    - name: "Michael Thompson"
+      history: "since college"
+      phone: "(555) 222-8888"
+      birthday: "May 12"
+    - name: "Jennifer and Robert Garcia"
+      relation: "neighbors/friends"
+      phone: "(555) 333-9999"
+      children:
+        - name: "Emma"
+          age: 8
+        - name: "Lucas"
+          age: 6
+  professional_network:
+    - name: "David Wilson"
+      relation: "mentor, former manager"
+    - name: "Sophia Chen"
+      relation: "industry contact, potential collaborator"
+  service_providers:
+    - service: "Barber"
+      name: "Tony"
+      location: "Classic Cuts"
+      schedule: "appointments every 4 weeks"
+    - service: "Financial advisor"
+      name: "Sarah Johnson"
+      company: "Prudential"
+      schedule: "annual review in October"
+
+important_dates:
+  personal:
+    - event: "Birthday"
+      date: "January 1"
+    - event: "Wedding anniversary"
+      date: "June 15"
+    - event: "Father's death anniversary"
+      date: "March 12"
+  family_birthdays:
+    - person: "Susan (wife)"
+      date: "March 8"
+    - person: "Elizabeth (mother)"
+      date: "July 22"
+    - person: "Elias (brother)"
+      date: "April 17"
+    - person: "Miranda (sister)"
+      date: "October 23"
+    - person: "Phillip (brother-in-law)"
+      date: "September 5"
+  annual_events:
+    - event: "Family reunion"
+      date: "Labor Day weekend"
+    - event: "College friends getaway"
+      date: "First weekend in May"
+    - event: "Home maintenance weekends"
+      dates: ["Memorial Day", "Columbus Day"]
+
+personal_development:
+  goals:
+    - description: "Learn Spanish fluently"
+      timeframe: "within 2 years"
+    - description: "Run a half marathon"
+      timeframe: "next spring"
+    - description: "Read 24 books this year"
+      progress: "currently at 18"
+  hobbies:
+    - name: "Photography"
+      equipment: "Canon EOS R camera"
+    - name: "Homebrewing"
+      equipment: "equipment in garage"
+    - name: "Hiking"
+      favorite_trail: "Lehigh Gorge"
+    - name: "Cooking"
+      specialties: ["homemade pasta", "grilled meats"]
+  organizations:
+    - name: "Lehigh Valley Product Managers Association"
+      role: "Board member"
+    - name: "Allentown Running Club"
+      since: 2020
+    - name: "Penn State Alumni Association"
+
+places:
+  frequently_visited:
+    - name: "Lehigh Parkway"
+      purpose: "weekend walks"
+    - name: "Central Market"
+      schedule: "Saturday mornings"
+    - name: "Oak Hills Country Club"
+      activity: "golf"
+      frequency: "occasional Sundays"
+    - name: "Community Library"
+      schedule: "Thursday evenings"
+  vacation_spots:
+    - season: "Summer"
+      location: "Cape May, NJ"
+      accommodation: "beach rental"
+    - season: "Winter"
+      location: "Pocono Mountains"
+      activity: "skiing"
+    - type: "Dream destination"
+      location: "New Zealand"
+      planned: 2026
+
+travel:
+  upcoming_trips:
+    - purpose: "Business conference"
+      location: "Chicago"
+      dates: "November 15-18, 2025"
+    - purpose: "Holiday visit to in-laws"
+      dates: "December 23-27, 2025"
+    - purpose: "Anniversary weekend"
+      location: "NYC"
+      dates: "June 13-16, 2026"
+  preferences:
+    - type: "Plane seating"
+      preference: "Window seat"
+    - type: "Hotel rooms"
+      preference: "Higher floors"
+    - type: "Flight timing"
+      preference: "Early morning flights"
+
+communication_style:
+  language_patterns: "Short sentences, often starts emails with 'Hey there!', frequently uses rhetorical questions"
+  humor_style: "Dry, sarcastic humor with frequent pop culture references"
+  reference_preferences:
+    - type: "Movies"
+      description: "Frequently quotes lines from classic sci-fi movies, especially Star Wars and The Princess Bride"
+    - type: "Music"
+      description: "Often references 80s and 90s rock songs, particularly by Foo Fighters and Nirvana"
+    - type: "TV Shows"
+      description: "Makes references to The Office, Parks and Recreation, and Brooklyn Nine-Nine"
+  expressions:
+    - phrase: "That's what I'm talking about!"
+      context: "excited or celebrating a win"
+    - phrase: "Let's circle back on that"
+      context: "wanting to postpone a discussion"
+    - phrase: "Here's the thing..."
+      context: "about to explain something complex or deliver unwelcome news"
+  quirks:
+    - "Tends to use 'literally' for emphasis, even when speaking figuratively"
+    - "Often trails off mid-sentence when distracted"
+    - "Uses air quotes frequently during in-person conversations"

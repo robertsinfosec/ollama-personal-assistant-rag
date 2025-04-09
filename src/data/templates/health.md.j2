@@ -1,0 +1,56 @@
+## Health
+{% if health %}
+  {% if health.blood_type %}- **Blood Type**: {{ health.blood_type }}{% endif %}
+
+  {% if health.allergies %}
+- **Allergies**:
+  {% for allergy in health.allergies %}
+  - {{ allergy.name }}{% if allergy.severity %} ({{ allergy.severity }}){% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if health.medical_conditions %}
+- **Medical Conditions**:
+  {% for condition in health.medical_conditions %}
+  - {{ condition.name }}
+    {% if condition.diagnosed %}- Diagnosed: {{ condition.diagnosed }}{% endif %}
+    {% if condition.treatments %}- Treatments: {{ condition.treatments | join(", ") }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if health.healthcare_providers %}
+- **Healthcare Providers**:
+    {% if health.healthcare_providers.primary_doctor %}
+  - Primary Doctor: {{ health.healthcare_providers.primary_doctor.name }}
+    {% if health.healthcare_providers.primary_doctor.facility %}- Facility: {{ health.healthcare_providers.primary_doctor.facility }}{% endif %}
+    {% if health.healthcare_providers.primary_doctor.phone %}- Phone: {{ health.healthcare_providers.primary_doctor.phone }}{% endif %}
+    {% if health.healthcare_providers.primary_doctor.last_visit %}- Last Visit: {{ health.healthcare_providers.primary_doctor.last_visit }}{% endif %}
+    {% endif %}
+
+    {% if health.healthcare_providers.specialists %}
+  - Specialists:
+    {% for specialist in health.healthcare_providers.specialists %}
+    - {{ specialist.specialty }}: {{ specialist.name }}
+      {% if specialist.phone %}- Phone: {{ specialist.phone }}{% endif %}
+      {% if specialist.last_visit %}- Last Visit: {{ specialist.last_visit }}{% endif %}
+    {% endfor %}
+    {% endif %}
+  {% endif %}
+
+  {% if health.insurance %}
+- **Insurance**:
+  {% if health.insurance.provider %}- Provider: {{ health.insurance.provider }}{% endif %}
+  {% if health.insurance.policy_number %}- Policy Number: {{ health.insurance.policy_number }}{% endif %}
+  {% if health.insurance.group_number %}- Group Number: {{ health.insurance.group_number }}{% endif %}
+  {% if health.insurance.expiration %}- Expiration: {{ health.insurance.expiration }}{% endif %}
+  {% endif %}
+
+  {% if health.exercise_routine %}
+- **Exercise Routine**:
+  {% for exercise in health.exercise_routine %}
+  - {{ exercise.activity }}
+    {% if exercise.schedule %}- Schedule: {{ exercise.schedule }}{% endif %}
+    {% if exercise.duration %}- Duration: {{ exercise.duration }}{% endif %}
+  {% endfor %}
+  {% endif %}
+{% endif %}

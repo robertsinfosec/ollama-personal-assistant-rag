@@ -1,0 +1,78 @@
+## Education
+{% if education.degrees %}
+### Degrees
+{% for degree in education.degrees %}
+- **{{ degree.type }}** from {{ degree.institution }} ({{ degree.years }})
+{% endfor %}
+{% endif %}
+
+{% if education.certifications %}
+### Certifications
+{% for certification in education.certifications %}
+- **{{ certification.name }}** (Expires: {{ certification.expiration }})
+{% endfor %}
+{% endif %}
+
+{% if education.continuing_education %}
+### Continuing Education
+{% for course in education.continuing_education %}
+- **{{ course.course }}** ({{ course.format }}) - Completed: {{ course.completion_date }}
+{% endfor %}
+{% endif %}
+
+{% if education.schools %}
+### Schools Attended
+{% for school in education.schools %}
+- **{{ school.name }}** ({{ school.years }})
+{% endfor %}
+{% endif %}
+
+{% if education.scholarships %}
+### Scholarships
+{% for scholarship in education.scholarships %} 
+- **{{ scholarship.name }}** ({{ scholarship.years }})
+{% endfor %}
+{% endif %}
+
+{% if education.extracurriculars %}
+### Extracurricular Activities
+{% for activity in education.extracurriculars %}
+- **{{ activity.name }}** ({{ activity.years }})
+{% endfor %}
+{% endif %}
+
+{% if education.honors %}
+### Honors and Awards
+{% for honor in education.honors %}
+- **{{ honor.name }}** ({{ honor.years }})
+{% endfor %}
+{% endif %}
+
+{% if education.publications %}
+### Publications
+{% for publication in education.publications %}
+- **{{ publication.title }}** ({{ publication.date }}) - {{ publication.journal }}
+{% endfor %}
+{% endif %}
+
+{% if education.research_projects %}
+### Research Projects
+{% for project in education.research_projects %}
+- **{{ project.title }}** ({{ project.date }}) - {{ project.description }}
+{% endfor %}
+{% endif %}
+
+{% if education.conferences %}
+### Conferences Attended
+{% for conference in education.conferences %}
+- **{{ conference.name }}** ({{ conference.date }}) - {{ conference.location }}
+{% endfor %}
+{% endif %}
+
+{% if education.workshops %}
+### Workshops Attended
+{% for workshop in education.workshops %}
+- **{{ workshop.name }}** ({{ workshop.date }}) - {{ workshop.location }}
+{% endfor %}
+{% endif %}
+

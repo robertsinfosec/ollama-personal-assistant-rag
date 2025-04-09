@@ -1,0 +1,12 @@
+# Communication style
+communication_style:
+  patterns: "Short sentences, often starts emails with 'Hey there!'"
+  humor: "Dry, sarcastic humor with frequent pop culture references"
+  common_phrases:
+    - phrase: "That's what I'm talking about!"
+      context: "excited or celebrating a win"
+    - phrase: "Let's circle back on that"
+      context: "wanting to postpone a discussion"
+  quirks:
+    - "Tends to use 'literally' for emphasis, even when speaking figuratively"
+    - "Often trails off mid-sentence when distracted"

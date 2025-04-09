@@ -1,0 +1,9 @@
+messages:
+  unread_count: 3
+  recent:
+    - from: "Susan"
+      time: "2025-04-08T10:23:00"
+      content: "Can you pick up milk on your way home?"
+    - from: "Dr. Chen's Office"
+      time: "2025-04-08T09:15:00"
+      content: "Reminder: Your appointment is today at 2:30 PM."

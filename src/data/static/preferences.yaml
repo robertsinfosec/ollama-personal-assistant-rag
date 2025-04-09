@@ -1,0 +1,62 @@
+# Personal preferences
+preferences:
+  food:
+    favorite_cuisines:
+      - "Italian"
+      - "Thai"
+      - "Mexican"
+    dietary:
+      restrictions: "None"
+      preferences: "Trying to reduce red meat"
+    favorite_restaurants:
+      - name: "Bella Italia"
+        location: 
+          street: "252 Main St"
+          city: "Allentown"
+        occasion: "special occasions"
+      - name: "Thai Spice"
+        location:
+          street: "45 Market St"
+          city: "Allentown"
+        occasion: "takeout"
+    coffee: "Medium Americano with a splash of oat milk"
+  
+  entertainment:
+    music:
+      genres:
+        - "Classic rock"
+        - "Alternative"
+        - "Jazz"
+      favorite_artists:
+        - "Foo Fighters"
+        - "The National"
+        - "Miles Davis"
+    tv_shows:
+      - "Breaking Bad"
+      - "The Office"
+      - "Succession"
+    movies:
+      - "The Shawshank Redemption"
+      - "The Dark Knight"
+      - "Inception"
+    books:
+      - title: "East of Eden"
+        author: "John Steinbeck"
+      - title: "The Hitchhiker's Guide to the Galaxy"
+        author: "Douglas Adams"
+  
+  clothing:
+    style: "Business casual at work, comfortable casual at home"
+    sizes:
+      shirts: "M"
+      pants: "32x32"
+    favorite_brands:
+      - "Patagonia"
+      - "Levi's"
+      - "Nike"
+  
+  colors:
+    favorites:
+      - "Navy blue"
+      - "Forest green"
+    home_decor: "Neutral tones with blue accents"

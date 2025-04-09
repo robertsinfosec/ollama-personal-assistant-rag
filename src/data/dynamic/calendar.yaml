@@ -1,0 +1,19 @@
+calendar:
+  today:
+    - time: "10:00"
+      event: "Team standup"
+      location: "Zoom call"
+    - time: "14:30"
+      event: "Doctor's appointment"
+      location: "Dr. Chen's office"
+  upcoming:
+    - date: "2025-04-09"  # Tomorrow
+      events:
+        - time: "12:00"
+          event: "Lunch with David"
+          location: "The Bistro"
+    - date: "2025-04-15"  # Next Tuesday
+      events:
+        - time: "09:00"
+          event: "Quarterly planning meeting"
+          location: "Conference room B"

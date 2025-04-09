@@ -1,0 +1,10 @@
+tasks:
+  urgent:
+    - "Finalize Q4 budget proposal"
+    - "Call plumber about leak in guest bathroom"
+  today:
+    - "Prepare for tomorrow's presentation"
+    - "Pick up dry cleaning"
+  upcoming:
+    - "Schedule car maintenance"
+    - "Research vacation options for anniversary trip"

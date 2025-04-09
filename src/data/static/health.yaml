@@ -1,0 +1,38 @@
+# Health information
+health:
+  blood_type: "O+"
+  allergies:
+    - name: "Penicillin"
+      severity: "severe"
+    - name: "Peanuts"
+      severity: "mild"
+  medical_conditions:
+    - name: "Mild asthma"
+      diagnosed: "1997-05-20"
+      treatments: ["Albuterol inhaler as needed"]
+    - name: "Occasional migraine headaches"
+      diagnosed: null
+      treatments: ["Sumatriptan 50mg as needed"]
+  healthcare_providers:
+    primary_doctor:
+      name: "Dr. Michael Chen"
+      facility: "Lehigh Valley Health Network"
+      phone: "(555) 111-2222"
+      last_visit: "2024-09-10"
+    specialists:
+      - specialty: "Allergist"
+        name: "Dr. Amelia Washington"
+        phone: "(555) 222-3333"
+        last_visit: "2024-07-15"
+  insurance:
+    provider: "BlueCross BlueShield"
+    policy_number: "JD78901234"
+    group_number: "LVT5678"
+    expiration: "2025-12-31"
+  exercise_routine:
+    - activity: "Morning runs"
+      schedule: "Tuesday, Thursday, Saturday"
+      duration: "30 minutes"
+    - activity: "Weight training"
+      schedule: "Monday, Wednesday, Friday"
+      duration: "45 minutes"

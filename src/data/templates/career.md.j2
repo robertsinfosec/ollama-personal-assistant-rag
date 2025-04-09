@@ -1,0 +1,63 @@
+## Career
+{% if career %}
+  {% if career.current %}
+- **Current Position**:
+  {% if career.current.position and career.current.company %}- Position: {{ career.current.position }} at {{ career.current.company }}{% endif %}
+  {% if career.current.location %}- Location: {{ career.current.location }}{% endif %}
+  {% if career.current.start_date %}- Started: {{ career.current.start_date }}{% endif %}
+  {% if career.current.responsibilities %}
+- **Responsibilities**:
+  {% for resp in career.current.responsibilities %}
+  - {{ resp }}
+  {% endfor %}
+  {% endif %}
+  {% if career.current.schedule %}- **Work Schedule**: {{ career.current.schedule }}{% endif %}
+
+  {% if career.current.contact %}
+- **Work Contact**:
+    {% if career.current.contact.address %}
+  - Address: {{ career.current.contact.address.street }}, {{ career.current.contact.address.city }}, {{ career.current.contact.address.state }} {{ career.current.contact.address.zip }}
+    {% endif %}
+    {% if career.current.contact.phone %}- Phone: {{ career.current.contact.phone }}{% endif %}
+    {% if career.current.contact.website %}- Website: {{ career.current.contact.website }}{% endif %}
+  {% endif %}
+
+  {% if career.current.supervisor %}
+- **Supervisor**:
+    {% if career.current.supervisor.name %}- Name: {{ career.current.supervisor.name }}{% endif %}
+    {% if career.current.supervisor.title %}- Title: {{ career.current.supervisor.title }}{% endif %}
+    {% if career.current.supervisor.email %}- Email: {{ career.current.supervisor.email }}{% endif %}
+  {% endif %}
+
+  {% if career.current.direct_reports %}
+- **Direct Reports**:
+  {% for report in career.current.direct_reports %}
+  - {{ report.name }}{% if report.title %} ({{ report.title }}){% endif %}
+    {% if report.email %}- Email: {{ report.email }}{% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endif %}
+
+  {% if career.previous %}
+- **Previous Employment**:
+  {% for job in career.previous %}
+  - Position: {{ job.position }}{% if job.company %} at {{ job.company }}{% endif %}
+    {% if job.location %}- Location: {{ job.location }}{% endif %}
+    {% if job.start_date and job.end_date %}- Duration: {{ job.start_date }} to {{ job.end_date }}{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if career.skills %}
+- **Skills**:
+  {% for skill in career.skills %}
+  - {{ skill }}
+  {% endfor %}
+  {% endif %}
+
+  {% if career.goals %}
+- **Professional Goals**:
+  {% if career.goals.short_term %}- Short-term: {{ career.goals.short_term }}{% endif %}
+  {% if career.goals.mid_term %}- Mid-term: {{ career.goals.mid_term }}{% endif %}
+  {% if career.goals.long_term %}- Long-term: {{ career.goals.long_term }}{% endif %}
+  {% endif %}
+{% endif %}
