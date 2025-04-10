@@ -1,63 +1,116 @@
 ## Career
-{% if career %}
-  {% if career.current %}
-- **Current Position**:
-  {% if career.current.position and career.current.company %}- Position: {{ career.current.position }} at {{ career.current.company }}{% endif %}
-  {% if career.current.location %}- Location: {{ career.current.location }}{% endif %}
-  {% if career.current.start_date %}- Started: {{ career.current.start_date }}{% endif %}
-  {% if career.current.responsibilities %}
-- **Responsibilities**:
-  {% for resp in career.current.responsibilities %}
-  - {{ resp }}
-  {% endfor %}
-  {% endif %}
-  {% if career.current.schedule %}- **Work Schedule**: {{ career.current.schedule }}{% endif %}
 
-  {% if career.current.contact %}
-- **Work Contact**:
-    {% if career.current.contact.address %}
-  - Address: {{ career.current.contact.address.street }}, {{ career.current.contact.address.city }}, {{ career.current.contact.address.state }} {{ career.current.contact.address.zip }}
-    {% endif %}
-    {% if career.current.contact.phone %}- Phone: {{ career.current.contact.phone }}{% endif %}
-    {% if career.current.contact.website %}- Website: {{ career.current.contact.website }}{% endif %}
-  {% endif %}
+Information about professional history, skills, and career goals.
 
-  {% if career.current.supervisor %}
-- **Supervisor**:
-    {% if career.current.supervisor.name %}- Name: {{ career.current.supervisor.name }}{% endif %}
-    {% if career.current.supervisor.title %}- Title: {{ career.current.supervisor.title }}{% endif %}
-    {% if career.current.supervisor.email %}- Email: {{ career.current.supervisor.email }}{% endif %}
-  {% endif %}
+{% if career is defined and career.current is defined -%}
+### Current Position
 
-  {% if career.current.direct_reports %}
-- **Direct Reports**:
-  {% for report in career.current.direct_reports %}
-  - {{ report.name }}{% if report.title %} ({{ report.title }}){% endif %}
-    {% if report.email %}- Email: {{ report.email }}{% endif %}
-  {% endfor %}
-  {% endif %}
-  {% endif %}
+Information about the individual's current employment.
 
-  {% if career.previous %}
-- **Previous Employment**:
-  {% for job in career.previous %}
-  - Position: {{ job.position }}{% if job.company %} at {{ job.company }}{% endif %}
-    {% if job.location %}- Location: {{ job.location }}{% endif %}
-    {% if job.start_date and job.end_date %}- Duration: {{ job.start_date }} to {{ job.end_date }}{% endif %}
-  {% endfor %}
-  {% endif %}
+| Position | Company | Location | Start Date |
+|----------|---------|----------|------------|
+| {{ career.current.position or 'N/A' }} | {{ career.current.company or 'N/A' }} | {{ career.current.location or 'N/A' }} | `{{ career.current.start_date or 'N/A' }}` |
 
-  {% if career.skills %}
-- **Skills**:
-  {% for skill in career.skills %}
-  - {{ skill }}
-  {% endfor %}
-  {% endif %}
+{% if career.current.responsibilities is defined and career.current.responsibilities -%}
+#### Responsibilities
 
-  {% if career.goals %}
-- **Professional Goals**:
-  {% if career.goals.short_term %}- Short-term: {{ career.goals.short_term }}{% endif %}
-  {% if career.goals.mid_term %}- Mid-term: {{ career.goals.mid_term }}{% endif %}
-  {% if career.goals.long_term %}- Long-term: {{ career.goals.long_term }}{% endif %}
-  {% endif %}
+| Responsibilities |
+|------------------|
+{% for resp in career.current.responsibilities -%}
+| {{ resp }} |
+{% endfor %}
+{% endif %}
+
+{% if career.current.schedule is defined -%}
+**Work Schedule:** {{ career.current.schedule }}
+{% endif %}
+
+{% if career.current.contact is defined -%}
+#### Work Contact Information
+
+{% if career.current.contact.address is defined -%}
+| Street | City | State | ZIP |
+|--------|------|-------|-----|
+| {{ career.current.contact.address.street or 'N/A' }} | {{ career.current.contact.address.city or 'N/A' }} | {{ career.current.contact.address.state or 'N/A' }} | {{ career.current.contact.address.zip or 'N/A' }} |
+{% endif %}
+
+{% if career.current.contact.phone is defined or career.current.contact.website is defined -%}
+| Contact Method | Value |
+|---------------|-------|
+{% if career.current.contact.phone is defined -%}
+| Phone | {{ career.current.contact.phone }} |
+{% endif -%}
+{% if career.current.contact.website is defined -%}
+| Website | {{ career.current.contact.website }} |
+{% endif %}
+{% endif %}
+{% endif %}
+
+{% if career.current.supervisor is defined -%}
+#### Supervisor
+
+| Name | Title | Email |
+|------|-------|-------|
+| {{ career.current.supervisor.name or 'N/A' }} | {{ career.current.supervisor.title or 'N/A' }} | {{ career.current.supervisor.email or 'N/A' }} |
+{% endif %}
+
+{% if career.current.direct_reports is defined and career.current.direct_reports -%}
+#### Direct Reports
+
+| Name | Title | Email |
+|------|-------|-------|
+{% for report in career.current.direct_reports -%}
+| {{ report.name or 'N/A' }} | {{ report.title or 'N/A' }} | {{ report.email or 'N/A' }} |
+{% endfor %}
+{% endif %}
+{% else %}
+- No current position information available.
+{% endif %}
+
+{% if career is defined and career.previous is defined and career.previous -%}
+### Previous Employment
+
+Information about the individual's prior work experience.
+
+| Position | Company | Location | Start Date | End Date |
+|----------|---------|----------|------------|----------|
+{% for job in career.previous -%}
+| {{ job.position or 'N/A' }} | {{ job.company or 'N/A' }} | {{ job.location or 'N/A' }} | `{{ job.start_date or 'N/A' }}` | `{{ job.end_date or 'N/A' }}` |
+{% endfor %}
+{% else %}
+- No previous employment information available.
+{% endif %}
+
+{% if career is defined and career.skills is defined and career.skills -%}
+### Skills
+
+Professional capabilities and technical competencies.
+
+| Professional Skills |
+|--------------------|
+{% for skill in career.skills -%}
+| {{ skill }} |
+{% endfor %}
+{% else %}
+- No skills information available.
+{% endif %}
+
+{% if career is defined and career.goals is defined -%}
+### Professional Goals
+
+Career objectives for different time horizons.
+
+| Time Frame | Goal |
+|------------|------|
+{% if career.goals.short_term is defined -%}
+| Short-term | {{ career.goals.short_term }} |
+{% endif -%}
+{% if career.goals.mid_term is defined -%}
+| Mid-term | {{ career.goals.mid_term }} |
+{% endif -%}
+{% if career.goals.long_term is defined -%}
+| Long-term | {{ career.goals.long_term }} |
+{% endif %}
+{% else %}
+- No professional goals information available.
 {% endif %}

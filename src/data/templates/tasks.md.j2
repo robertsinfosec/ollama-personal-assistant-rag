@@ -1,2 +1,137 @@
-## Task List
-{{ task_list }}
+## Task Management
+
+{%- if tasks is defined %}
+
+This section outlines your current tasks and to-dos across various categories and priority levels. Last updated: {{ tasks.last_updated }}.
+
+### Task Summary
+
+Overview of your current task status and distribution.
+
+{%- if tasks.summary is defined %}
+
+| Metric | Count |
+|--------|-------|
+| Total Active Tasks | {{ tasks.summary.total_active }} |
+| Urgent Tasks | {{ tasks.summary.urgent }} |
+| Due Today | {{ tasks.summary.due_today }} |
+| Overdue | {{ tasks.summary.overdue }} |
+| Completed Today | {{ tasks.summary.completed_today }} |
+
+{%- endif %}
+
+### Urgent Tasks
+
+High-priority tasks requiring immediate attention.
+
+{%- if tasks.urgent is defined and tasks.urgent|length > 0 %}
+
+| Title | Due Date | Category | Priority | Status | Progress |
+|-------|----------|----------|----------|--------|----------|
+{%- for task in tasks.urgent %}
+| **{{ task.title }}** | {{ task.due_date }} | {{ task.category }} | {{ task.priority }} | {{ task.status }} | {{ task.percent_complete }}% |
+{%- endfor %}
+
+{%- for task in tasks.urgent %}
+{%- if task.description is defined %}
+
+#### {{ task.title }} Details
+
+{{ task.description }}
+
+{%- endif %}
+{%- endfor %}
+
+{%- else %}
+
+- No urgent tasks at this time.
+
+{%- endif %}
+
+### Today's Tasks
+
+Tasks scheduled or due for completion today.
+
+{%- if tasks.today is defined and tasks.today|length > 0 %}
+
+| Title | Due Date | Category | Priority | Status | Progress |
+|-------|----------|----------|----------|--------|----------|
+{%- for task in tasks.today %}
+| **{{ task.title }}** | {{ task.due_date }} | {{ task.category }} | {{ task.priority }} | {{ task.status }} | {{ task.percent_complete }}% |
+{%- endfor %}
+
+{%- for task in tasks.today %}
+{%- if task.description is defined %}
+
+#### {{ task.title }} Details
+
+{{ task.description }}
+
+{%- endif %}
+{%- endfor %}
+
+{%- else %}
+
+- No tasks scheduled for today.
+
+{%- endif %}
+
+### Upcoming Tasks
+
+Tasks scheduled for future dates.
+
+{%- if tasks.upcoming is defined and tasks.upcoming|length > 0 %}
+
+| Title | Due Date | Category | Priority | Status | Progress |
+|-------|----------|----------|----------|--------|----------|
+{%- for task in tasks.upcoming %}
+| **{{ task.title }}** | {{ task.due_date }} | {{ task.category }} | {{ task.priority }} | {{ task.status }} | {{ task.percent_complete }}% |
+{%- endfor %}
+
+{%- else %}
+
+- No upcoming tasks scheduled.
+
+{%- endif %}
+
+### Recently Completed Tasks
+
+Tasks that have been completed recently.
+
+{%- if tasks.completed is defined and tasks.completed|length > 0 %}
+
+| Title | Completion Date | Category | Priority |
+|-------|----------------|----------|----------|
+{%- for task in tasks.completed %}
+| **{{ task.title }}** | {{ task.completed_date }} | {{ task.category }} | {{ task.priority }} |
+{%- endfor %}
+
+{%- else %}
+
+- No recently completed tasks.
+
+{%- endif %}
+
+### Recurring Tasks
+
+Regularly scheduled tasks and events.
+
+{%- if tasks.recurring is defined and tasks.recurring|length > 0 %}
+
+| Title | Schedule | Category | Priority |
+|-------|----------|----------|----------|
+{%- for task in tasks.recurring %}
+| **{{ task.title }}** | {{ task.schedule }} | {{ task.category }} | {{ task.priority }} |
+{%- endfor %}
+
+{%- else %}
+
+- No recurring tasks defined.
+
+{%- endif %}
+
+{%- else %}
+
+No task information available at this time.
+
+{%- endif %}

@@ -4,35 +4,234 @@ health:
   allergies:
     - name: "Penicillin"
       severity: "severe"
+      reactions: ["Hives", "Difficulty breathing"]
+      diagnosed: "1992-03-15"
+      notes: "Avoid all penicillin-derived antibiotics"
     - name: "Peanuts"
       severity: "mild"
+      reactions: ["Skin rash"]
+      diagnosed: "2005-11-08"
+      notes: "Can be in the same room but avoid consumption"
+  
   medical_conditions:
     - name: "Mild asthma"
       diagnosed: "1997-05-20"
       treatments: ["Albuterol inhaler as needed"]
+      specialist: "Dr. Amelia Washington"
+      status: "Controlled"
+      notes: "Triggered by vigorous exercise and pollen"
     - name: "Occasional migraine headaches"
-      diagnosed: null
+      diagnosed: "2010-04-12"
       treatments: ["Sumatriptan 50mg as needed"]
+      specialist: "Dr. Robert Jenkins (Neurologist)"
+      status: "Managed"
+      notes: "Usually triggered by stress and lack of sleep"
+  
   healthcare_providers:
     primary_doctor:
       name: "Dr. Michael Chen"
       facility: "Lehigh Valley Health Network"
       phone: "(555) 111-2222"
+      address: "123 Health Avenue, Allentown, PA 18101"
+      email: "m.chen@lvhn.org"
       last_visit: "2024-09-10"
+      next_scheduled: "2025-03-15"
+      portal: "https://mychart.lvhn.org"
+    
     specialists:
       - specialty: "Allergist"
         name: "Dr. Amelia Washington"
+        facility: "Allergy & Asthma Associates"
         phone: "(555) 222-3333"
+        address: "456 Medical Drive, Allentown, PA 18103"
+        email: "a.washington@allergyassoc.com"
         last_visit: "2024-07-15"
+        next_scheduled: "2025-01-20"
+      
+      - specialty: "Neurologist"
+        name: "Dr. Robert Jenkins"
+        facility: "Lehigh Neurology Center" 
+        phone: "(555) 333-4444"
+        address: "789 Brain Way, Allentown, PA 18104"
+        email: "r.jenkins@lehighneurology.com"
+        last_visit: "2024-05-22"
+        next_scheduled: "2025-05-22"
+      
+      - specialty: "Dentist"
+        name: "Dr. Sarah Miller"
+        facility: "Bright Smile Dental"
+        phone: "(555) 444-5555"
+        address: "101 Tooth Lane, Allentown, PA 18102"
+        email: "s.miller@brightsmile.com"
+        last_visit: "2024-10-05"
+        next_scheduled: "2025-04-05"
+  
   insurance:
-    provider: "BlueCross BlueShield"
-    policy_number: "JD78901234"
-    group_number: "LVT5678"
-    expiration: "2025-12-31"
+    primary:
+      provider: "BlueCross BlueShield"
+      plan_name: "PPO Family Plan"
+      policy_number: "JD78901234"
+      group_number: "LVT5678"
+      expiration: "2025-12-31"
+      member_services: "(800) 555-1234"
+      website: "https://www.bcbs.com"
+      coverage_details: "80% coverage after $1,500 deductible"
+    
+    dental:
+      provider: "Delta Dental"
+      plan_name: "Premium Plan"
+      policy_number: "DD45678901"
+      expiration: "2025-12-31"
+      member_services: "(800) 555-2345"
+      website: "https://www.deltadental.com"
+      coverage_details: "100% preventative, 80% basic, 50% major"
+    
+    vision:
+      provider: "VSP Vision"
+      plan_name: "Choice Plan"
+      policy_number: "VS23456789"
+      expiration: "2025-12-31"
+      member_services: "(800) 555-3456"
+      website: "https://www.vsp.com"
+      coverage_details: "Eye exam every 12 months, frames every 24 months"
+  
+  medications:
+    current:
+      - name: "Albuterol Inhaler"
+        dosage: "90mcg, 2 puffs"
+        frequency: "As needed for asthma"
+        prescriber: "Dr. Amelia Washington"
+        pharmacy: "CVS Pharmacy"
+        pharmacy_phone: "(555) 666-7777"
+        refills_remaining: 2
+        next_refill: "2024-12-15"
+      
+      - name: "Sumatriptan"
+        dosage: "50mg"
+        frequency: "As needed for migraines, max 9 tablets/month"
+        prescriber: "Dr. Robert Jenkins"
+        pharmacy: "CVS Pharmacy"
+        pharmacy_phone: "(555) 666-7777"
+        refills_remaining: 3
+        next_refill: "2025-01-10"
+      
+      - name: "Daily Multivitamin"
+        dosage: "1 tablet"
+        frequency: "Once daily"
+        medication_type: "Over-the-counter"
+    
+    past:
+      - name: "Amoxicillin"
+        dosage: "500mg"
+        frequency: "3 times daily"
+        reason: "Sinus infection"
+        date_range: "2023-02-10 to 2023-02-24"
+        prescriber: "Dr. Michael Chen"
+      
+      - name: "Prednisone"
+        dosage: "20mg tapering dose"
+        frequency: "Once daily"
+        reason: "Severe allergic reaction"
+        date_range: "2022-06-05 to 2022-06-15"
+        prescriber: "Dr. Amelia Washington"
+  
+  immunizations:
+    - name: "Influenza (Flu)"
+      date: "2024-10-01"
+      facility: "Lehigh Valley Health Network"
+      next_due: "2025-10-01"
+    
+    - name: "COVID-19"
+      date: "2024-09-15"
+      vaccine_type: "Moderna Booster"
+      facility: "CVS Pharmacy"
+      next_due: "2025-09-15"
+    
+    - name: "Tetanus/Diphtheria/Pertussis (Tdap)"
+      date: "2021-04-12"
+      facility: "Lehigh Valley Health Network"
+      next_due: "2031-04-12"
+    
+    - name: "Pneumococcal"
+      date: "2023-11-02"
+      facility: "Lehigh Valley Health Network"
+      next_due: null
+  
   exercise_routine:
     - activity: "Morning runs"
       schedule: "Tuesday, Thursday, Saturday"
       duration: "30 minutes"
+      intensity: "Moderate to high"
+      location: "Neighborhood and local park"
+      goals: "Cardiovascular health and endurance"
+    
     - activity: "Weight training"
       schedule: "Monday, Wednesday, Friday"
       duration: "45 minutes"
+      intensity: "Moderate"
+      location: "Home gym and LA Fitness"
+      equipment: ["Dumbbells", "Kettlebells", "Resistance bands"]
+      goals: "Strength and muscle tone"
+    
+    - activity: "Yoga"
+      schedule: "Sunday"
+      duration: "60 minutes"
+      intensity: "Low to moderate"
+      location: "Mindful Yoga Studio"
+      instructor: "Lisa Johnson"
+      goals: "Flexibility and stress reduction"
+  
+  vital_stats:
+    height: "5'11\" (180 cm)"
+    weight: "175 lbs (79.4 kg)"
+    bmi: 24.4
+    blood_pressure: "118/78 (measured 2024-09-10)"
+    resting_heart_rate: "68 bpm (measured 2024-09-10)"
+    cholesterol:
+      total: 185
+      hdl: 55
+      ldl: 110
+      triglycerides: 100
+      date_measured: "2024-09-10"
+  
+  family_history:
+    - relation: "Father"
+      conditions: ["Heart disease", "Type 2 diabetes"]
+      notes: "Heart attack at age 62, managing diabetes since age 55"
+    
+    - relation: "Mother"
+      conditions: ["Hypertension", "Osteoporosis"]
+      notes: "Well-controlled with medication"
+    
+    - relation: "Paternal Grandfather"
+      conditions: ["Heart disease"]
+      notes: "Died of heart attack at age 68"
+    
+    - relation: "Maternal Grandmother" 
+      conditions: ["Breast cancer"]
+      notes: "Diagnosed at age 70, survived after treatment"
+  
+  dietary_preferences:
+    diet_type: "Mostly Mediterranean"
+    restrictions: []
+    allergies: ["Peanuts (mild)"]
+    preferences: ["Fish over red meat", "Enjoys vegetable-based meals"]
+    dislikes: ["Cilantro", "Excessive spice"]
+    typical_meals:
+      breakfast: "Greek yogurt with berries and granola"
+      lunch: "Salad with grilled chicken or salmon"
+      dinner: "Grilled fish or chicken with roasted vegetables"
+      snacks: "Almonds, fruit, or cheese"
+  
+  vision:
+    prescription:
+      right: "-2.00"
+      left: "-1.75"
+      astigmatism: true
+    last_exam: "2024-05-15"
+    next_exam: "2025-05-15"
+    optometrist:
+      name: "Dr. Patricia Yang"
+      facility: "Clear Vision Optometry"
+      phone: "(555) 888-9999"
+    corrective_measures: ["Contact lenses (daily)", "Glasses for evening"]

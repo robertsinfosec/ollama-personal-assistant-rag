@@ -1,19 +1,232 @@
 calendar:
+  # Today's calendar events (today is 2025-04-09)
   today:
-    - time: "10:00"
-      event: "Team standup"
-      location: "Zoom call"
-    - time: "14:30"
-      event: "Doctor's appointment"
-      location: "Dr. Chen's office"
-  upcoming:
-    - date: "2025-04-09"  # Tomorrow
+    date: "2025-04-09"
+    day_of_week: "Wednesday"
+    events:
+      - time: "08:30"
+        end_time: "09:00"
+        event: "Morning review"
+        description: "Review daily goals and priorities"
+        location: "Home office"
+        attendees: []
+        type: "personal"
+        priority: "medium"
+        status: "confirmed"
+        
+      - time: "10:00"
+        end_time: "10:30"
+        event: "Team standup"
+        description: "Daily team check-in and status updates"
+        location: "Zoom call"
+        meeting_link: "https://company.zoom.us/j/123456789"
+        meeting_id: "123 456 789"
+        attendees: 
+          - "Sarah Johnson"
+          - "Michael Chen"
+          - "Diego Martinez"
+        type: "work"
+        priority: "high"
+        status: "confirmed"
+        
+      - time: "12:00"
+        end_time: "13:00"
+        event: "Lunch break"
+        location: "Home"
+        type: "personal"
+        status: "flexible"
+        
+      - time: "14:30"
+        end_time: "15:30"
+        event: "Doctor's appointment"
+        description: "Annual physical checkup"
+        location: "Dr. Chen's office"
+        address: "123 Health Avenue, Allentown, PA 18101"
+        contact: "(555) 123-4567"
+        type: "health"
+        priority: "high"
+        status: "confirmed"
+        reminder_set: true
+        reminder_time: "13:30"
+        
+      - time: "16:30"
+        end_time: "17:30"
+        event: "Project review"
+        description: "Review Q2 project milestones"
+        location: "Microsoft Teams"
+        meeting_link: "https://teams.microsoft.com/l/meetup-join/..."
+        attendees:
+          - "Emma Roberts (Manager)"
+          - "Daniel Wong"
+        type: "work"
+        priority: "medium"
+        status: "confirmed"
+  
+  # Past calendar events (historically significant or recent)
+  past:
+    - date: "2025-04-08"
+      day_of_week: "Tuesday"
       events:
-        - time: "12:00"
-          event: "Lunch with David"
-          location: "The Bistro"
-    - date: "2025-04-15"  # Next Tuesday
+        - time: "09:30"
+          end_time: "11:00"
+          event: "Client presentation"
+          location: "Conference room A"
+          attendees:
+            - "XYZ Corporation team"
+            - "Marketing department"
+          type: "work"
+          outcome: "Successful, follow-up scheduled for next week"
+          
+        - time: "15:00"
+          end_time: "16:00"
+          event: "Dentist appointment"
+          location: "Bright Smile Dental"
+          type: "health"
+          outcome: "Cleaning completed, next appointment in 6 months"
+    
+    - date: "2025-04-07"
+      day_of_week: "Monday"
+      events:
+        - time: "13:00"
+          end_time: "14:00"
+          event: "Budget planning"
+          location: "Office"
+          type: "work"
+          outcome: "Budget approved for Q3"
+
+    - date: "2025-04-02"
+      day_of_week: "Wednesday"
+      events:
+        - time: "10:00"
+          end_time: "11:30"
+          event: "Annual performance review"
+          location: "Manager's office"
+          type: "work"
+          outcome: "Positive review, discussion about promotion in Q4"
+          
+  # Upcoming scheduled events
+  upcoming:
+    - date: "2025-04-10"  # Tomorrow
+      day_of_week: "Thursday"
       events:
         - time: "09:00"
-          event: "Quarterly planning meeting"
+          end_time: "09:30"
+          event: "Morning workout"
+          location: "Home gym"
+          type: "personal"
+          priority: "medium"
+          status: "tentative"
+          
+        - time: "12:00"
+          end_time: "13:30"
+          event: "Lunch with David"
+          description: "Catching up with old college friend"
+          location: "The Bistro"
+          address: "456 Gourmet Street, Allentown, PA 18101"
+          contact: "(555) 987-6543"
+          reservation: "Confirmed #R12345"
+          type: "social"
+          priority: "high"
+          status: "confirmed"
+          reminder_set: true
+          
+    - date: "2025-04-11"
+      day_of_week: "Friday"
+      events:
+        - time: "14:00"
+          end_time: "15:00"
+          event: "Weekly team review"
           location: "Conference room B"
+          type: "work"
+          priority: "high"
+          status: "confirmed"
+        
+        - time: "17:30"
+          end_time: "19:00"
+          event: "Happy hour"
+          location: "Downtown Brewery"
+          type: "social"
+          priority: "low"
+          status: "tentative"
+          
+    - date: "2025-04-15"  # Next Tuesday
+      day_of_week: "Tuesday"
+      events:
+        - time: "09:00"
+          end_time: "12:00"
+          event: "Quarterly planning meeting"
+          description: "Strategic planning for Q3, include financial forecasts"
+          location: "Conference room B"
+          attendees:
+            - "Executive team"
+            - "Department heads"
+          materials_required: "Q2 reports, budget proposals"
+          type: "work"
+          priority: "critical"
+          status: "confirmed"
+          reminder_set: true
+          
+    - date: "2025-04-20"
+      day_of_week: "Sunday"
+      events:
+        - time: "All day"
+          event: "Mom's birthday"
+          type: "family"
+          priority: "high"
+          reminder_set: true
+          
+    - date: "2025-05-15"
+      day_of_week: "Thursday" 
+      events:
+        - time: "09:00"
+          end_time: "17:00"
+          event: "Annual industry conference"
+          location: "Convention Center"
+          type: "work"
+          priority: "medium"
+          status: "registered"
+          registration_number: "CONF-2025-1234"
+          
+  # Recurring events (templates for events that repeat)
+  recurring:
+    - event: "Team standup"
+      frequency: "daily"
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+      time: "10:00"
+      end_time: "10:30"
+      location: "Zoom call"
+      meeting_link: "https://company.zoom.us/j/123456789"
+      type: "work"
+      
+    - event: "Weekly review"
+      frequency: "weekly"
+      days: ["Friday"]
+      time: "14:00"
+      end_time: "15:00"
+      location: "Conference room B"
+      type: "work"
+      
+    - event: "Family dinner"
+      frequency: "weekly"
+      days: ["Sunday"]
+      time: "18:00"
+      end_time: "20:00"
+      location: "Parents' house"
+      address: "789 Family Lane, Allentown, PA 18102"
+      type: "family"
+      
+    - event: "Gym workout"
+      frequency: "weekly"
+      days: ["Monday", "Wednesday", "Friday"]
+      time: "06:30"
+      end_time: "07:30"
+      location: "Fitness Center"
+      type: "personal"
+      
+    - event: "Monthly report due"
+      frequency: "monthly"
+      day_of_month: "Last Friday"
+      time: "17:00"
+      description: "Submit monthly activity report to manager"
+      type: "work"
+      priority: "high"

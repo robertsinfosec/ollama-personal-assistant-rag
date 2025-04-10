@@ -1,9 +1,157 @@
+# Email and message related information - Updated regularly by IMAP client
 messages:
-  unread_count: 3
-  recent:
-    - from: "Susan"
-      time: "2025-04-08T10:23:00"
-      content: "Can you pick up milk on your way home?"
-    - from: "Dr. Chen's Office"
-      time: "2025-04-08T09:15:00"
-      content: "Reminder: Your appointment is today at 2:30 PM."
+  last_updated: "2025-04-09T08:30:00-04:00"  # When this data was last fetched
+  
+  summary:
+    unread_count: 5
+    important_unread: 2
+    total_inbox: 145
+    
+  # Recent incoming emails/messages (newest first)
+  inbox:
+    - id: "msg123456"
+      from:
+        name: "Susan Doe"
+        email: "susan.doe@email.com"
+        relation: "spouse"  # Optional contextual info
+      to:
+        - name: "John Doe"
+          email: "john.doe@email.com"
+      cc:
+        - name: "Emily Doe"
+          email: "emily.doe@email.com"
+      subject: "Grocery reminder"
+      date: "2025-04-08T21:23:00-04:00"
+      content_preview: "Can you pick up milk on your way home? Also we need more..."
+      has_attachments: false
+      is_read: false
+      labels: ["Family", "Important"]
+      thread_id: "thread789012"  # For grouping related messages
+      
+    - id: "msg123455"
+      from:
+        name: "Dr. Chen's Office"
+        email: "appointments@lehighhealth.com"
+      to:
+        - name: "John Doe"
+          email: "john.doe@email.com"
+      subject: "Your appointment tomorrow"
+      date: "2025-04-08T15:15:00-04:00"
+      content_preview: "Reminder: Your appointment is tomorrow at 2:30 PM. Please arrive 15 minutes early to complete..."
+      has_attachments: true
+      attachment_types: ["PDF"]
+      is_read: true
+      labels: ["Health"]
+      
+    - id: "msg123453"
+      from:
+        name: "Victoria Martinez"
+        email: "v.martinez@innovatech.com"
+        relation: "manager"
+      to: 
+        - name: "Product Team"
+          email: "product-team@innovatech.com"
+      cc:
+        - name: "John Doe"
+          email: "j.doe@company.com"
+        - name: "Executive Team"
+          email: "exec@innovatech.com"
+      subject: "Q2 Project Planning Review"
+      date: "2025-04-08T10:45:00-04:00"
+      content_preview: "Team, I've reviewed the Q2 planning documents and have some feedback before our meeting tomorrow..."
+      has_attachments: true
+      attachment_types: ["DOCX", "XLSX"] 
+      is_read: false
+      labels: ["Work", "Urgent"]
+      thread_id: "thread789013"
+      
+    - id: "msg123450"
+      from:
+        name: "Amazon.com"
+        email: "shipment-tracking@amazon.com"
+      to:
+        - name: "John Doe"
+          email: "john.doe@email.com"
+      subject: "Your Amazon package has shipped"
+      date: "2025-04-08T08:30:00-04:00"
+      content_preview: "Your package with order #A12345678 has shipped and is expected to arrive on Friday, April 11..."
+      has_attachments: false
+      is_read: true
+      labels: ["Shopping"]
+      
+    - id: "msg123445"
+      from:
+        name: "Michael Thompson"
+        email: "mike.t@email.com"
+        relation: "friend"
+      to:
+        - name: "John Doe"
+          email: "john.doe@email.com"
+      subject: "Golf this weekend?"
+      date: "2025-04-07T19:20:00-04:00"
+      content_preview: "Hey Johnny, are you free for a round of golf this Saturday morning? The weather is supposed to be..."
+      has_attachments: false
+      is_read: true
+      labels: ["Friends", "Recreation"]
+      thread_id: "thread789010"
+  
+  # Recent sent messages (newest first)
+  sent:
+    - id: "sent-987654"
+      to:
+        - name: "Michael Thompson"
+          email: "mike.t@email.com"
+          relation: "friend"
+      subject: "Re: Golf this weekend?"
+      date: "2025-04-08T20:15:00-04:00"
+      content_preview: "That sounds great! I'm free Saturday morning. Let's aim for 8am tee time?"
+      has_attachments: false
+      labels: ["Friends", "Recreation"]
+      thread_id: "thread789010"
+      
+    - id: "sent-987650"
+      to: 
+        - name: "Emily Chen"
+          email: "e.chen@innovatech.com"
+          relation: "direct report"
+      cc:
+        - name: "Marcus Johnson" 
+          email: "m.johnson@innovatech.com"
+      subject: "Updated design requirements"
+      date: "2025-04-08T16:45:00-04:00"
+      content_preview: "Emily, I've reviewed the latest mockups and have some feedback. Could you please update the..."
+      has_attachments: true
+      attachment_types: ["PDF"]
+      labels: ["Work"]
+      
+    - id: "sent-987640"
+      to:
+        - name: "Susan Doe"
+          email: "susan.doe@email.com"
+          relation: "spouse"
+      subject: "Re: Dinner plans"
+      date: "2025-04-08T12:30:00-04:00"
+      content_preview: "I should be home by 6pm. Let's do Italian tonight. I can pick up some wine on the way home."
+      has_attachments: false
+      labels: ["Family"]
+      thread_id: "thread789009"
+      
+  # Important message threads that need follow-up
+  needs_response:
+    - thread_id: "thread789013"
+      subject: "Q2 Project Planning Review"
+      from:
+        name: "Victoria Martinez" 
+        email: "v.martinez@innovatech.com"
+      last_message_date: "2025-04-08T10:45:00-04:00"
+      deadline: "2025-04-10T17:00:00-04:00"  # When a response is needed by
+      priority: "high"
+      
+    - thread_id: "thread789008"
+      subject: "Mom's birthday planning"
+      from: 
+        name: "Elias Doe"
+        email: "elias.doe@email.com"
+      last_message_date: "2025-04-06T14:20:00-04:00"
+      deadline: "2025-04-15T00:00:00-04:00"
+      priority: "medium"

@@ -1,78 +1,156 @@
 ## Education
-{% if education.degrees %}
+
+{% if education is defined and education.degrees is defined and education.degrees -%}
 ### Degrees
-{% for degree in education.degrees %}
-- **{{ degree.type }}** from {{ degree.institution }} ({{ degree.years }})
+
+Information about formal academic degrees obtained.
+
+| Degree Type | Institution | Years |
+|-------------|------------|-------|
+{% for degree in education.degrees -%}
+| **{{ degree.type }}** | {{ degree.institution }} | {{ degree.years }} |
 {% endfor %}
+{% else %}
+- No degree information available.
 {% endif %}
 
-{% if education.certifications %}
+{% if education is defined and education.certifications is defined and education.certifications -%}
 ### Certifications
-{% for certification in education.certifications %}
-- **{{ certification.name }}** (Expires: {{ certification.expiration }})
+
+Information about professional certifications and their validity periods.
+
+| Certification | Expiration Date |
+|---------------|----------------|
+{% for certification in education.certifications -%}
+| **{{ certification.name }}** | {{ certification.expiration }} |
 {% endfor %}
+{% else %}
+- No certification information available.
 {% endif %}
 
-{% if education.continuing_education %}
+{% if education is defined and education.continuing_education is defined and education.continuing_education -%}
 ### Continuing Education
-{% for course in education.continuing_education %}
-- **{{ course.course }}** ({{ course.format }}) - Completed: {{ course.completion_date }}
+
+Information about ongoing educational courses and professional development.
+
+| Course | Format | Completion Date |
+|--------|--------|----------------|
+{% for course in education.continuing_education -%}
+| **{{ course.course }}** | {{ course.format }} | {{ course.completion_date }} |
 {% endfor %}
+{% else %}
+- No continuing education information available.
 {% endif %}
 
-{% if education.schools %}
+{% if education is defined and education.schools is defined and education.schools -%}
 ### Schools Attended
-{% for school in education.schools %}
-- **{{ school.name }}** ({{ school.years }})
+
+Information about primary and secondary educational institutions attended.
+
+| School Name | Years | Location | GPA |
+|-------------|-------|----------|-----|
+{% for school in education.schools -%}
+| **{{ school.name }}** | {{ school.years }} | {{ school.location if school.location is defined else 'N/A' }} | {{ school.gpa if school.gpa is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No school information available.
 {% endif %}
 
-{% if education.scholarships %}
+{% if education is defined and education.scholarships is defined and education.scholarships -%}
 ### Scholarships
-{% for scholarship in education.scholarships %} 
-- **{{ scholarship.name }}** ({{ scholarship.years }})
+
+Information about academic and merit-based scholarships received.
+
+| Scholarship Name | Years | Amount | Provider |
+|------------------|-------|--------|----------|
+{% for scholarship in education.scholarships -%}
+| **{{ scholarship.name }}** | {{ scholarship.years }} | {{ scholarship.amount if scholarship.amount is defined else 'N/A' }} | {{ scholarship.provider if scholarship.provider is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No scholarship information available.
 {% endif %}
 
-{% if education.extracurriculars %}
+{% if education is defined and education.extracurriculars is defined and education.extracurriculars -%}
 ### Extracurricular Activities
-{% for activity in education.extracurriculars %}
-- **{{ activity.name }}** ({{ activity.years }})
+
+Information about activities pursued outside of formal academic studies.
+
+| Activity | Years | Role | Institution |
+|----------|-------|------|------------|
+{% for activity in education.extracurriculars -%}
+| **{{ activity.name }}** | {{ activity.years }} | {{ activity.role if activity.role is defined else 'N/A' }} | {{ activity.institution if activity.institution is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No extracurricular activity information available.
 {% endif %}
 
-{% if education.honors %}
+{% if education is defined and education.honors is defined and education.honors -%}
 ### Honors and Awards
-{% for honor in education.honors %}
-- **{{ honor.name }}** ({{ honor.years }})
+
+Information about academic and professional honors received.
+
+| Honor/Award | Year | Institution |
+|-------------|------|------------|
+{% for honor in education.honors -%}
+| **{{ honor.name }}** | {{ honor.years }} | {{ honor.institution if honor.institution is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No honors or awards information available.
 {% endif %}
 
-{% if education.publications %}
+{% if education is defined and education.publications is defined and education.publications -%}
 ### Publications
-{% for publication in education.publications %}
-- **{{ publication.title }}** ({{ publication.date }}) - {{ publication.journal }}
+
+Information about academic and professional publications authored or co-authored.
+
+| Title | Year | Journal | Authors | DOI |
+|-------|------|---------|---------|-----|
+{% for publication in education.publications -%}
+| **{{ publication.title }}** | {{ publication.date }} | {{ publication.journal }} | {{ publication.authors if publication.authors is defined else 'N/A' }} | {{ publication.doi if publication.doi is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No publication information available.
 {% endif %}
 
-{% if education.research_projects %}
+{% if education is defined and education.research_projects is defined and education.research_projects -%}
 ### Research Projects
-{% for project in education.research_projects %}
-- **{{ project.title }}** ({{ project.date }}) - {{ project.description }}
+
+Information about significant research undertakings and investigations.
+
+| Project Title | Period | Description | Supervisor | Institution |
+|---------------|--------|-------------|------------|------------|
+{% for project in education.research_projects -%}
+| **{{ project.title }}** | {{ project.date }} | {{ project.description }} | {{ project.supervisor if project.supervisor is defined else 'N/A' }} | {{ project.institution if project.institution is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No research project information available.
 {% endif %}
 
-{% if education.conferences %}
+{% if education is defined and education.conferences is defined and education.conferences -%}
 ### Conferences Attended
-{% for conference in education.conferences %}
-- **{{ conference.name }}** ({{ conference.date }}) - {{ conference.location }}
+
+Information about professional conferences and academic symposiums attended.
+
+| Conference Name | Date | Location | Role | Presentation |
+|----------------|------|----------|------|-------------|
+{% for conference in education.conferences -%}
+| **{{ conference.name }}** | {{ conference.date }} | {{ conference.location }} | {{ conference.role if conference.role is defined else 'Attendee' }} | {{ conference.presentation_title if conference.presentation_title is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No conference information available.
 {% endif %}
 
-{% if education.workshops %}
+{% if education is defined and education.workshops is defined and education.workshops -%}
 ### Workshops Attended
-{% for workshop in education.workshops %}
-- **{{ workshop.name }}** ({{ workshop.date }}) - {{ workshop.location }}
+
+Information about professional development workshops and training sessions.
+
+| Workshop Name | Date | Location | Provider | Duration |
+|--------------|------|----------|----------|----------|
+{% for workshop in education.workshops -%}
+| **{{ workshop.name }}** | {{ workshop.date }} | {{ workshop.location }} | {{ workshop.provider if workshop.provider is defined else 'N/A' }} | {{ workshop.duration if workshop.duration is defined else 'N/A' }} |
 {% endfor %}
+{% else %}
+- No workshop information available.
 {% endif %}
 

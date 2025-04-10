@@ -1,2 +1,87 @@
-### Recent Messages
-{{ recent_messages }}
+## Recent Messages
+
+{%- if messages is defined %}
+
+{% if messages.last_updated is defined -%}
+Last updated: {{ messages.last_updated }}
+{%- endif %}
+
+### Inbox Summary
+
+This section provides an overview of your current email inbox status including unread message counts and total messages.
+
+{%- if messages.summary is defined %}
+
+| Metric | Value |
+|--------|-------|
+{%- if messages.summary.unread_count is defined %}
+| Unread Messages | {{ messages.summary.unread_count }} |
+{%- endif %}
+{%- if messages.summary.important_unread is defined and messages.summary.important_unread > 0 %}
+| Important Unread | {{ messages.summary.important_unread }} |
+{%- endif %}
+{%- if messages.summary.total_inbox is defined %}
+| Total in Inbox | {{ messages.summary.total_inbox }} |
+{%- endif %}
+
+{%- else %}
+
+- No inbox summary available.
+
+{%- endif %}
+
+{%- if messages.needs_response is defined and messages.needs_response|length > 0 %}
+
+### Messages Needing Response
+
+These messages require your attention and response, ordered by priority and deadline.
+
+| Subject | From | Last Activity | Deadline | Priority |
+|---------|------|---------------|----------|----------|
+{%- for thread in messages.needs_response %}
+| **{{ thread.subject }}** | {{ thread.from.name if thread.from is defined and thread.from.name is defined else "Unknown" }} | {{ thread.last_message_date }} | {{ thread.deadline if thread.deadline is defined else "None" }} | {{ thread.priority if thread.priority is defined else "Normal" }} |
+{%- endfor %}
+
+{%- endif %}
+
+### Recent Incoming Messages
+
+This section shows your most recent received emails with their status and metadata.
+
+{%- if messages.inbox is defined and messages.inbox|length > 0 %}
+
+| Status | Subject | From | Date | To | CC | Labels | Attachments | Preview |
+|--------|---------|------|------|----|----|--------|------------|---------|
+{%- for email in messages.inbox %}
+| {{ "Unread" if email.is_read is defined and not email.is_read else "Read" }} | {{ email.subject|default("(No subject)") }} | {{ email.from.name|default("Unknown") }}{% if email.from.relation is defined %} ({{ email.from.relation }}){% endif %}{% if email.from.email is defined %} <{{ email.from.email }}>{% endif %} | {{ email.date }} | {% if email.to is defined and email.to|length > 0 %}{% for recipient in email.to %}{{ recipient.name|default(recipient.email) }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}Unknown{% endif %} | {% if email.cc is defined and email.cc|length > 0 %}{% for cc_recipient in email.cc %}{{ cc_recipient.name|default(cc_recipient.email) }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}None{% endif %} | {% if email.labels is defined and email.labels|length > 0 %}{{ email.labels|join(", ") }}{% else %}None{% endif %} | {% if email.has_attachments is defined and email.has_attachments %}Yes{% if email.attachment_types is defined %} ({{ email.attachment_types|join(", ") }}){% endif %}{% else %}No{% endif %} | {{ email.content_preview|default("(No preview available)") }} |
+{%- endfor %}
+
+{%- else %}
+
+- No recent incoming messages available.
+
+{%- endif %}
+
+### Recently Sent Messages
+
+This section displays messages you have sent recently with their recipients and content previews.
+
+{%- if messages.sent is defined and messages.sent|length > 0 %}
+
+| Subject | To | Date | CC | Labels | Attachments | Preview |
+|---------|----|----|----|----|------------|---------|
+{%- for email in messages.sent %}
+| {{ email.subject|default("(No subject)") }} | {% if email.to is defined and email.to|length > 0 %}{% for recipient in email.to %}{{ recipient.name|default(recipient.email) }}{% if recipient.relation is defined %} ({{ recipient.relation }}){% endif %}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}Unknown{% endif %} | {{ email.date }} | {% if email.cc is defined and email.cc|length > 0 %}{% for cc_recipient in email.cc %}{{ cc_recipient.name|default(cc_recipient.email) }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}None{% endif %} | {% if email.labels is defined and email.labels|length > 0 %}{{ email.labels|join(", ") }}{% else %}None{% endif %} | {% if email.has_attachments is defined and email.has_attachments %}Yes{% if email.attachment_types is defined %} ({{ email.attachment_types|join(", ") }}){% endif %}{% else %}No{% endif %} | {{ email.content_preview|default("(No preview available)") }} |
+{%- endfor %}
+
+{%- else %}
+
+- No recently sent messages available.
+
+{%- endif %}
+
+{%- else %}
+
+No message data available.
+
+{%- endif %}

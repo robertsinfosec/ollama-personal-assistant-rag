@@ -1,0 +1,286 @@
+## Residence
+
+{% if residence is defined and residence.current_residence is defined %}
+### Residence Information
+
+{% set residence = residence.current_residence %}
+| Property Type | Occupancy | Address | Since |
+|--------------|-----------|---------|-------|
+| {{ residence.type|replace('_', ' ')|title }} | {{ residence.occupancy_type|title }} | {{ residence.address.street }}{% if residence.address.unit %}, {{ residence.address.unit }}{% endif %}, {{ residence.address.city }}, {{ residence.address.state }} {{ residence.address.zip }} | `{{ residence.address.move_in_date }}` |
+
+{% if residence.property is defined and residence.property -%}
+#### Property Details
+
+| Lot Size | Living Area | Year Built | Bedrooms | Bathrooms | Stories |
+|----------|------------|------------|----------|-----------|---------|
+| {{ residence.property.lot_size }} | {{ residence.property.living_area }} | {{ residence.property.year_built }} | {{ residence.property.bedrooms }} | {{ residence.property.bathrooms }} | {{ residence.property.stories }} |
+
+{% if residence.property.features -%}
+**Special Features:**
+{% for feature in residence.property.features -%}
+- {{ feature }}
+{% endfor -%}
+{% endif -%}
+{% endif %}
+
+{% if residence.occupancy_type == "owned" and residence.ownership is defined -%}
+#### Ownership Details
+
+| Purchase Date | Purchase Price | Current Value | Last Appraised |
+|--------------|----------------|--------------|----------------|
+| `{{ residence.ownership.purchase_date }}` | ${{ "{:,}".format(residence.ownership.purchase_price|float|round|int) }} | ${{ "{:,}".format(residence.ownership.current_value|float|round|int) }} | `{{ residence.ownership.last_appraisal_date }}` |
+
+{% if residence.ownership.mortgage is defined -%}
+##### Mortgage Information
+
+| Lender | Account | Original Amount | Current Balance | Interest Rate | Type |
+|--------|---------|----------------|----------------|--------------|------|
+| {{ residence.ownership.mortgage.lender }} | {{ residence.ownership.mortgage.account_number }} | ${{ "{:,}".format(residence.ownership.mortgage.original_amount|float|round|int) }} | ${{ "{:,}".format(residence.ownership.mortgage.current_balance|float|round|int) }} | {{ residence.ownership.mortgage.interest_rate }}% | {{ residence.ownership.mortgage.type }} |
+
+**Payment Details:** ${{ residence.ownership.mortgage.payment_amount }} due on {{ residence.ownership.mortgage.payment_due_date }}
+{% if residence.ownership.mortgage.escrow_included -%}**Includes escrow for taxes**{% endif %}
+{% if residence.ownership.mortgage.insurance_included -%}**Includes insurance**{% endif %}
+{% endif %}
+
+{% if residence.ownership.property_tax is defined -%}
+##### Property Tax Information
+
+| Annual Amount | Payment Schedule | Last Assessment | Assessed Value |
+|--------------|------------------|----------------|----------------|
+| ${{ "{:,}".format(residence.ownership.property_tax.annual_amount|float|round|int) }} | {{ residence.ownership.property_tax.payment_schedule }} | `{{ residence.ownership.property_tax.last_assessment_date }}` | ${{ "{:,}".format(residence.ownership.property_tax.last_assessment_value|float|round|int) }} |
+{% endif -%}
+{% endif %}
+
+{% if residence.occupancy_type == "rented" and residence.rental is defined -%}
+#### Rental Details
+
+{% if residence.rental.landlord -%}
+##### Landlord Information
+| Name | Company | Phone | Email |
+|------|---------|-------|-------|
+| {{ residence.rental.landlord.name }} | {{ residence.rental.landlord.company }} | {{ residence.rental.landlord.phone }} | {{ residence.rental.landlord.email }} |
+{% endif %}
+
+{% if residence.rental.lease -%}
+##### Lease Information
+| Start Date | End Date | Monthly Rent | Security Deposit | Due Date |
+|------------|----------|--------------|-----------------|----------|
+| `{{ residence.rental.lease.start_date }}` | `{{ residence.rental.lease.end_date }}` | ${{ residence.rental.lease.monthly_rent }} | ${{ residence.rental.lease.security_deposit }} | {{ residence.rental.lease.payment_due_date }} |
+
+{% if residence.rental.lease.utilities_included -%}
+**Utilities Included:** {% for utility in residence.rental.lease.utilities_included %}{{ utility }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif -%}
+{% if residence.rental.lease.notice_period -%}
+**Notice Period:** {{ residence.rental.lease.notice_period }}
+{% endif -%}
+{% endif -%}
+{% endif %}
+
+{% if residence.systems is defined and residence.systems -%}
+### Home Systems
+
+{% if residence.systems.hvac -%}
+#### HVAC Systems
+
+{% if residence.systems.hvac.heating -%}
+##### Heating
+| Type | Brand | Model | Installed | Last Serviced | Next Service Due |
+|------|-------|-------|----------|--------------|-----------------|
+| {{ residence.systems.hvac.heating.type }} | {{ residence.systems.hvac.heating.brand }} | {{ residence.systems.hvac.heating.model }} | `{{ residence.systems.hvac.heating.install_date }}` | `{{ residence.systems.hvac.heating.last_service }}` | `{{ residence.systems.hvac.heating.next_service_due }}` |
+{% endif %}
+
+{% if residence.systems.hvac.cooling -%}
+##### Cooling
+| Type | Brand | Model | Installed | Last Serviced | Next Service Due |
+|------|-------|-------|----------|--------------|-----------------|
+| {{ residence.systems.hvac.cooling.type }} | {{ residence.systems.hvac.cooling.brand }} | {{ residence.systems.hvac.cooling.model }} | `{{ residence.systems.hvac.cooling.install_date }}` | `{{ residence.systems.hvac.cooling.last_service }}` | `{{ residence.systems.hvac.cooling.next_service_due }}` |
+{% endif %}
+
+{% if residence.systems.hvac.thermostat -%}
+**Thermostat:** {{ residence.systems.hvac.thermostat.brand }} {{ residence.systems.hvac.thermostat.model }} (Installed: `{{ residence.systems.hvac.thermostat.install_date }}`)
+{% endif -%}
+{% endif %}
+
+{% if residence.systems.water -%}
+#### Water Systems
+
+{% if residence.systems.water.heater -%}
+##### Water Heater
+| Type | Brand | Model | Installed | Last Serviced | Next Service Due |
+|------|-------|-------|----------|--------------|-----------------|
+| {{ residence.systems.water.heater.type }} | {{ residence.systems.water.heater.brand }} | {{ residence.systems.water.heater.model }} | `{{ residence.systems.water.heater.install_date }}` | `{{ residence.systems.water.heater.last_service }}` | `{{ residence.systems.water.heater.next_service_due }}` |
+{% endif %}
+
+{% if residence.systems.water.softener -%}
+##### Water Softener
+| Brand | Model | Installed | Last Serviced | Next Service Due |
+|-------|-------|----------|--------------|-----------------|
+| {{ residence.systems.water.softener.brand }} | {{ residence.systems.water.softener.model }} | `{{ residence.systems.water.softener.install_date }}` | `{{ residence.systems.water.softener.last_service }}` | `{{ residence.systems.water.softener.next_service_due }}` |
+{% endif %}
+
+{% if residence.systems.water.filtration -%}
+##### Water Filtration
+| Type | Brand | Model | Installed | Last Change | Next Change Due |
+|------|-------|-------|----------|------------|----------------|
+| {{ residence.systems.water.filtration.type }} | {{ residence.systems.water.filtration.brand }} | {{ residence.systems.water.filtration.model }} | `{{ residence.systems.water.filtration.install_date }}` | `{{ residence.systems.water.filtration.last_filter_change }}` | `{{ residence.systems.water.filtration.next_change_due }}` |
+{% endif -%}
+{% endif %}
+
+{% if residence.systems.electrical -%}
+#### Electrical
+| Service Size | Panel Brand | Panel Age | 
+|-------------|------------|-----------|
+| {{ residence.systems.electrical.service_size }} | {{ residence.systems.electrical.panel_brand }} | {{ residence.systems.electrical.panel_age }} |
+
+{% if residence.systems.electrical.generator -%}
+##### Generator
+| Brand | Model | Installed | Last Serviced | Next Service Due |
+|-------|-------|----------|--------------|-----------------|
+| {{ residence.systems.electrical.generator.brand }} | {{ residence.systems.electrical.generator.model }} | `{{ residence.systems.electrical.generator.install_date }}` | `{{ residence.systems.electrical.generator.last_service }}` | `{{ residence.systems.electrical.generator.next_service_due }}` |
+{% endif -%}
+{% endif %}
+
+{% if residence.systems.security -%}
+#### Security System
+| Provider | Installed | Monthly Cost |
+|----------|----------|--------------|
+| {{ residence.systems.security.system.provider }} | `{{ residence.systems.security.system.install_date }}` | ${{ residence.systems.security.system.monthly_cost }} |
+
+{% if residence.systems.security.system.features -%}
+**Features:**
+{% for feature in residence.systems.security.system.features -%}
+- {{ feature }}
+{% endfor -%}
+{% endif -%}
+{% endif %}
+
+{% if residence.systems.smart_home -%}
+#### Smart Home
+**Hub:** {{ residence.systems.smart_home.hub }}
+
+{% if residence.systems.smart_home.devices -%}
+**Devices:**
+{% for device in residence.systems.smart_home.devices -%}
+- {{ device.type }}: {{ device.brand }} {{ device.model }}
+{% endfor -%}
+{% endif -%}
+{% endif -%}
+{% endif %}
+
+{% if residence.service_providers is defined and residence.service_providers -%}
+### Service Providers
+
+| Service | Company | Contact | Phone | Email |
+|---------|---------|---------|-------|-------|
+{%- if residence.service_providers.hvac %}
+| HVAC | {{ residence.service_providers.hvac.company }} | {{ residence.service_providers.hvac.contact }} | {{ residence.service_providers.hvac.phone }} | {{ residence.service_providers.hvac.email }} |
+{%- endif %}
+{%- if residence.service_providers.plumbing %}
+| Plumbing | {{ residence.service_providers.plumbing.company }} | {{ residence.service_providers.plumbing.contact }} | {{ residence.service_providers.plumbing.phone }} | {{ residence.service_providers.plumbing.email }} |
+{%- endif %}
+{%- if residence.service_providers.electrical %}
+| Electrical | {{ residence.service_providers.electrical.company }} | {{ residence.service_providers.electrical.contact }} | {{ residence.service_providers.electrical.phone }} | {{ residence.service_providers.electrical.email }} |
+{%- endif %}
+{%- if residence.service_providers.lawn %}
+| Landscaping | {{ residence.service_providers.lawn.company }} | {{ residence.service_providers.lawn.contact }} | {{ residence.service_providers.lawn.phone }} | {{ residence.service_providers.lawn.email }} |
+{%- endif %}
+{%- if residence.service_providers.pest_control %}
+| Pest Control | {{ residence.service_providers.pest_control.company }} | {{ residence.service_providers.pest_control.contact }} | {{ residence.service_providers.pest_control.phone }} | {{ residence.service_providers.pest_control.email }} |
+{%- endif %}
+{%- if residence.service_providers.housekeeping %}
+| Housekeeping | {{ residence.service_providers.housekeeping.company }} | {{ residence.service_providers.housekeeping.contact }} | {{ residence.service_providers.housekeeping.phone }} | {{ residence.service_providers.housekeeping.email }} |
+{%- endif %}
+{%- if residence.service_providers.snow_removal %}
+| Snow Removal | {{ residence.service_providers.snow_removal.company }} | {{ residence.service_providers.snow_removal.contact }} | {{ residence.service_providers.snow_removal.phone }} | {{ residence.service_providers.snow_removal.email }} |
+{%- endif %}
+{% endif %}
+
+{% if residence.maintenance_schedule is defined and residence.maintenance_schedule -%}
+### Maintenance Schedule
+
+{% if residence.maintenance_schedule.annual -%}
+#### Annual Maintenance
+{% for task in residence.maintenance_schedule.annual -%}
+- **{{ task.task }}**: Due {{ task.due }}{% if task.provider %} - Provider: {{ task.provider }}{% if task.phone %} ({{ task.phone }}){% endif %}{% endif %}
+{% endfor -%}
+{% endif %}
+
+{% if residence.maintenance_schedule.seasonal -%}
+#### Seasonal Maintenance
+
+{% if residence.maintenance_schedule.seasonal.spring -%}
+##### Spring
+{% for task in residence.maintenance_schedule.seasonal.spring -%}
+- **{{ task.task }}**: Due {{ task.due }}{% if task.provider %} - Provider: {{ task.provider }}{% endif %}
+{% endfor -%}
+{% endif %}
+
+{% if residence.maintenance_schedule.seasonal.fall -%}
+##### Fall
+{% for task in residence.maintenance_schedule.seasonal.fall -%}
+- **{{ task.task }}**: Due {{ task.due }}{% if task.provider %} - Provider: {{ task.provider }}{% endif %}
+{% endfor -%}
+{% endif -%}
+{% endif %}
+
+{% if residence.maintenance_schedule.monthly -%}
+#### Monthly Maintenance
+{% for task in residence.maintenance_schedule.monthly -%}
+- **{{ task.task }}**: Due {{ task.due }}{% if task.diy %} (DIY){% endif %}
+{% endfor -%}
+{% endif -%}
+{% endif %}
+
+{% if residence.emergency_contacts is defined and residence.emergency_contacts -%}
+### Emergency Contacts
+
+{% if residence.emergency_contacts.utility_emergency -%}
+#### Utility Emergency Numbers
+| Service | Phone Number |
+|---------|-------------|
+{%- if residence.emergency_contacts.utility_emergency.electric %}
+| Electric | {{ residence.emergency_contacts.utility_emergency.electric }} |
+{%- endif %}
+{%- if residence.emergency_contacts.utility_emergency.gas %}
+| Gas | {{ residence.emergency_contacts.utility_emergency.gas }} |
+{%- endif %}
+{%- if residence.emergency_contacts.utility_emergency.water %}
+| Water | {{ residence.emergency_contacts.utility_emergency.water }} |
+{%- endif %}
+{% endif %}
+
+| Service | Phone Number |
+|---------|-------------|
+{%- if residence.emergency_contacts.police_non_emergency %}
+| Police (non-emergency) | {{ residence.emergency_contacts.police_non_emergency }} |
+{%- endif %}
+{%- if residence.emergency_contacts.fire_non_emergency %}
+| Fire (non-emergency) | {{ residence.emergency_contacts.fire_non_emergency }} |
+{%- endif %}
+{%- if residence.emergency_contacts.neighborhood_watch %}
+| Neighborhood Watch | {{ residence.emergency_contacts.neighborhood_watch }} |
+{%- endif %}
+{% endif %}
+
+{% if residence.insurance is defined and residence.insurance -%}
+### Home Insurance
+
+| Provider | Policy Number | Coverage | Premium |
+|----------|--------------|---------|---------|
+| {{ residence.insurance.provider }} | {{ residence.insurance.policy_number }} | Dwelling: ${{ "{:,}".format(residence.insurance.coverage.dwelling|float|round|int) }}<br>Personal Property: ${{ "{:,}".format(residence.insurance.coverage.personal_property|float|round|int) }}<br>Liability: ${{ "{:,}".format(residence.insurance.coverage.liability|float|round|int) }} | ${{ "{:,}".format(residence.insurance.premium.amount|float|round|int) }} {{ residence.insurance.premium.frequency }} |
+
+**Deductible:** ${{ "{:,}".format(residence.insurance.coverage.deductible|float|round|int) }}  
+**Due Date:** {{ residence.insurance.premium.due_date }}  
+**Last Review:** `{{ residence.insurance.last_review }}`  
+**Next Review:** `{{ residence.insurance.next_review }}`
+
+{% if residence.insurance.agent -%}
+#### Insurance Agent
+| Name | Phone | Email |
+|------|-------|-------|
+| {{ residence.insurance.agent.name }} | {{ residence.insurance.agent.phone }} | {{ residence.insurance.agent.email }} |
+{% endif -%}
+{% endif -%}
+{% else %}
+No home information available.
+{% endif %}

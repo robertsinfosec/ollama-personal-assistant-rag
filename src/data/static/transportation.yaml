@@ -31,11 +31,123 @@ transportation:
         last_service_date: "2024-07-20"
         next_service_date: "2024-12-20"
         next_service_miles: 65000
+    
+    - type: "Bicycle"
+      make: "Trek"
+      model: "FX 3 Disc"
+      year: 2022
+      purchase_date: "2022-04-15"
+      primary_user: "John Edwards Doe"
+      serial_number: "TK78901234"
+      maintenance:
+        last_service_date: "2024-03-10"
+        next_service_date: "2024-09-10"
+      accessories:
+        - "Rear rack"
+        - "Front and rear lights"
+        - "Helmet"
+        - "U-lock"
+  
+  public_transport:
+    primary_city: "Allentown"
+    preferred_options:
+      - type: "Bus"
+        provider: "LANTA"
+        pass_type: "Monthly"
+        pass_cost: 60
+        frequent_routes:
+          - route: "101"
+            from: "Downtown"
+            to: "Mall"
+          - route: "220"
+            from: "Home"
+            to: "Office"
+      
+      - type: "Train"
+        provider: "Amtrak"
+        frequent_routes:
+          - route: "Keystone Service"
+            from: "Allentown"
+            to: "Philadelphia"
+            typical_cost: 28
+  
+  commute:
+    work:
+      primary_method: "Car"
+      distance_miles: 12.5
+      typical_time_minutes: 25
+      alternate_method: "Bus"
+      alternate_time_minutes: 45
+    
+    shopping:
+      primary_method: "Car"
+      distance_miles: 3.2
+      typical_time_minutes: 10
+      alternate_method: "Bicycle"
+      alternate_time_minutes: 20
+    
+  rideshare:
+    preferred_services:
+      - name: "Uber"
+        account: "john.doe@email.com"
+        payment_method: "Amex Gold Card"
+      - name: "Lyft"
+        account: "john.doe@email.com"
+        payment_method: "Visa Card"
   
   travel_preferences:
     preferred_airline: "United"
     airline_status: "Gold"
     membership_number: "UA1234567"
+    frequent_flyer_programs:
+      - airline: "United"
+        number: "UA1234567"
+        status: "Gold"
+        miles: 78500
+      - airline: "American Airlines"
+        number: "AA7654321"
+        status: "None"
+        miles: 25000
+    
     preferred_hotel_chain: "Marriott"
     hotel_status: "Silver"
     hotel_membership: "MR7654321"
+    hotel_programs:
+      - chain: "Marriott"
+        number: "MR7654321"
+        status: "Silver"
+        points: 45000
+      - chain: "Hilton"
+        number: "HH9876543"
+        status: "None"
+        points: 20000
+    
+    car_rental:
+      preferred_company: "Hertz"
+      membership_number: "HZ123456"
+      status: "Five Star"
+      insurance_preference: "Decline (covered by credit card)"
+    
+    travel_insurance:
+      provider: "Allianz"
+      policy: "Annual Multi-Trip"
+      policy_number: "TI987654321"
+      renewal_date: "2025-01-15"
+      coverage:
+        medical: 100000
+        evacuation: 500000
+        trip_cancellation: true
+        baggage: true
+    
+    tsa_precheck: true
+    tsa_precheck_number: "TPN123456"
+    tsa_precheck_expiration: "2027-03-15"
+    global_entry: true
+    global_entry_number: "GE98765432"
+    global_entry_expiration: "2027-03-15"
+    
+    passport:
+      country: "United States"
+      number: "123456789"
+      issue_date: "2019-05-10"
+      expiration_date: "2029-05-09"

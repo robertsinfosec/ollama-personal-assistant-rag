@@ -48,3 +48,118 @@ finance:
       autopay: true
       start_date: "2023-02-15"
       end_date: "2028-02-15"
+  
+  # New sections to enhance financial information
+  
+  investments:
+    - type: "Individual Brokerage"
+      institution: "Charles Schwab"
+      account_number: "xxxx3456"
+      opened_date: "2017-03-05"
+      balance_range: "$50,000-$100,000"
+      primary_holdings:
+        - "Index funds"
+        - "Tech sector ETFs"
+        - "Dividend stocks"
+      advisor:
+        name: "Michael Roberts"
+        phone: "(555) 888-9999"
+        email: "m.roberts@schwab.com"
+    - type: "Robo-Advisor"
+      institution: "Betterment"
+      account_number: "xxxx7890"
+      opened_date: "2020-06-15"
+      balance_range: "$10,000-$25,000"
+      allocation:
+        stocks: "80%"
+        bonds: "20%"
+  
+  insurance:
+    health:
+      provider: "Blue Cross Blue Shield"
+      policy_number: "BCBS-12345678"
+      type: "PPO"
+      expiration: "2025-12-31"
+      premium: "$350/month"
+      deductible: "$1,500/year"
+      contact: "(888) 123-4567"
+    auto:
+      provider: "Progressive"
+      policy_number: "AUTO-98765432"
+      coverage: "Full Coverage"
+      premium: "$125/month"
+      expiration: "2025-09-30"
+      vehicles:
+        - "2019 Honda Accord"
+    home:
+      provider: "State Farm"
+      policy_number: "HOME-45678901"
+      coverage: "$450,000 dwelling, $225,000 personal property"
+      premium: "$175/month"
+      expiration: "2025-07-31"
+      deductible: "$2,000"
+    life:
+      provider: "Northwestern Mutual"
+      policy_number: "LIFE-23456789"
+      type: "Term Life"
+      coverage: "$1,000,000"
+      premium: "$65/month"
+      beneficiaries:
+        - "Susan Marie Doe (spouse, primary)"
+        - "Emily Rose Doe (daughter, contingent)"
+        - "Michael James Doe (son, contingent)"
+  
+  taxes:
+    filing_status: "Married Filing Jointly"
+    accountant:
+      name: "Jennifer Williams, CPA"
+      firm: "Williams Tax Services"
+      phone: "(555) 234-5678"
+      email: "j.williams@williamstax.com"
+    important_dates:
+      federal_deadline: "April 15"
+      state_deadline: "April 15"
+      property_tax_due: "January 31, July 31"
+    previous_filings:
+      - year: "2024"
+        federal_refund: "$1,250"
+        state_refund: "$375"
+      - year: "2023"
+        federal_refund: "$950"
+        state_refund: "$210"
+  
+  estate_planning:
+    will:
+      created_date: "2020-11-15"
+      last_updated: "2023-04-28"
+      location: "Home safe and with attorney"
+    power_of_attorney:
+      financial: "Susan Marie Doe (spouse)"
+      medical: "Susan Marie Doe (spouse)"
+      alternate: "Elias Michael Doe (brother)"
+    attorney:
+      name: "Robert Thompson"
+      firm: "Thompson & Associates"
+      phone: "(555) 765-4321"
+      email: "r.thompson@thompsonlaw.com"
+  
+  financial_goals:
+    emergency_fund:
+      target: "$30,000"
+      current: "$25,000"
+      monthly_contribution: "$500"
+    college_funds:
+      - child: "Emily Rose Doe"
+        account_type: "529 Plan"
+        institution: "Pennsylvania 529"
+        current_balance: "$35,000"
+        monthly_contribution: "$300"
+      - child: "Michael James Doe"
+        account_type: "529 Plan"
+        institution: "Pennsylvania 529"
+        current_balance: "$12,000"
+        monthly_contribution: "$300"
+    retirement_goal:
+      target_age: "62"
+      target_amount: "$2,500,000"
+      current_progress: "32%"

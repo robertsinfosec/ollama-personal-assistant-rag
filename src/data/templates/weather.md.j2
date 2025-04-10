@@ -1,2 +1,77 @@
-## Weather
-{{ weather_forecast }}
+## Weather Information
+
+{%- if weather is defined %}
+
+Weather information for {{ weather.location.city }}, {{ weather.location.state }} as of {{ weather.last_updated }}. This data provides current conditions and forecasts to help plan your activities.
+
+### Current Weather Conditions
+
+This section shows the current weather conditions and key meteorological metrics.
+
+| Condition | Temperature | Feels Like | Humidity | Wind | Pressure | UV Index | Visibility | Precipitation Chance |
+|-----------|-------------|------------|----------|------|----------|----------|------------|--------------------|
+| {{ weather.current.condition }} | {{ weather.current.temperature }}°F | {{ weather.current.feels_like }}°F | {{ weather.current.humidity }}% | {{ weather.current.wind_speed }} mph {{ weather.current.wind_direction }} | {{ weather.current.pressure }} hPa | {{ weather.current.uv_index }} | {{ weather.current.visibility }} miles | {{ weather.current.precipitation }} |
+
+### Today's Forecast ({{ weather.today.date }})
+
+Overview of today's weather with high and low temperatures, sun times, and general conditions.
+
+| Summary | High | Low | Sunrise | Sunset | Precipitation Chance | Humidity |
+|---------|------|-----|---------|--------|---------------------|----------|
+| {{ weather.today.summary }} | {{ weather.today.high_temp }}°F | {{ weather.today.low_temp }}°F | {{ weather.today.sunrise }} | {{ weather.today.sunset }} | {{ weather.today.precipitation_chance }} | {{ weather.today.humidity }}% |
+
+### Today's Hourly Forecast
+
+Hour by hour forecast showing temperature changes and weather conditions throughout the day.
+
+{%- if weather.hourly is defined and weather.hourly|length > 0 %}
+
+| Time | Temperature | Condition | Precipitation Chance | Wind |
+|------|------------|-----------|----------------------|------|
+{%- for hour in weather.hourly %}
+| {{ hour.time }} | {{ hour.temperature }}°F | {{ hour.condition }} | {{ hour.precipitation_chance }} | {{ hour.wind_speed }} mph {{ hour.wind_direction }} |
+{%- endfor %}
+
+{%- else %}
+
+- No hourly forecast data available.
+
+{%- endif %}
+
+### 5-Day Forecast
+
+Extended forecast for upcoming days to help with longer-term planning.
+
+{%- if weather.forecast is defined and weather.forecast|length > 0 %}
+
+| Date | Day | Condition | High | Low | Precipitation Chance | Humidity | Wind |
+|------|-----|-----------|------|-----|---------------------|----------|------|
+{%- for day in weather.forecast %}
+| {{ day.date }} | {{ day.day_of_week }} | {{ day.condition }} | {{ day.high_temp }}°F | {{ day.low_temp }}°F | {{ day.precipitation_chance }} | {{ day.humidity }}% | {{ day.wind_speed }} mph {{ day.wind_direction }} |
+{%- endfor %}
+
+{%- else %}
+
+- No extended forecast data available.
+
+{%- endif %}
+
+{%- if weather.alerts is defined and weather.alerts|length > 0 %}
+
+### Weather Alerts
+
+Important weather warnings and advisories that may affect your area.
+
+| Type | Severity | Description | Period |
+|------|----------|-------------|--------|
+{%- for alert in weather.alerts %}
+| {{ alert.type }} | {{ alert.severity }} | {{ alert.description }} | {{ alert.start_time }} to {{ alert.end_time }} |
+{%- endfor %}
+
+{%- endif %}
+
+{%- else %}
+
+No weather information available at this time.
+
+{%- endif %}

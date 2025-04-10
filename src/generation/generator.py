@@ -11,7 +11,7 @@ import sys
 import os
 import pytz
 
-from config.template_config import SECTION_MAPPINGS, HEADER_TEMPLATE
+from config.template_config import SECTION_MAPPINGS, HEADER_TEMPLATE, FOOTER_TEMPLATE, OUTPUT_DOCUMENT
 
 
 def load_personal_data(data_file: str) -> Dict[str, Any]:
@@ -118,15 +118,17 @@ def render_section(yaml_path: str, template_path: str) -> str:
 
 def generate_markdown(
     section_mappings: List[Tuple[str, str]],
-    output_path: str = "data/personal_info.md",
-    header_template: str = None) -> None:
+    output_path: str = OUTPUT_DOCUMENT,
+    header_template: str = None,
+    footer_template: str = None) -> None:
     """
     Generate a markdown file from multiple YAML-template pairs.
     
     Args:
         section_mappings: List of (yaml_path, template_path) tuples
-        output_path: Path to the output markdown file
+        output_path: Path to the output markdown file (defaults to OUTPUT_DOCUMENT from config)
         header_template: Optional template for the document header
+        footer_template: Optional template for the document footer
     """
     # Start with empty or header content
     if header_template:
@@ -141,6 +143,11 @@ def generate_markdown(
         if section_content:
             content += section_content + "\n\n"
     
+    # Add footer if specified
+    if footer_template:
+        footer_content = render_section(None, footer_template)
+        content += footer_content
+    
     # Write to output file
     with open(output_path, 'w') as f:
         f.write(content.strip())
@@ -148,6 +155,27 @@ def generate_markdown(
     print(f"Successfully generated {output_path}")
 
 
+def generate_personal_info(output_path: str = OUTPUT_DOCUMENT) -> None:
+    """
+    Generate the personal_info.md file using the configuration from template_config.py.
+    
+    This is the main function that should be called from the CLI interface.
+    
+    Args:
+        output_path: Path to the output markdown file (defaults to OUTPUT_DOCUMENT from config)
+    """
+    # Ensure the output directory exists
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    # Generate the markdown using the configuration from template_config.py
+    generate_markdown(
+        section_mappings=SECTION_MAPPINGS,
+        output_path=output_path,
+        header_template=HEADER_TEMPLATE,
+        footer_template=FOOTER_TEMPLATE
+    )
+
+
 if __name__ == "__main__":
     # Use SECTION_MAPPINGS and HEADER_TEMPLATE from the config
-    generate_markdown(SECTION_MAPPINGS, header_template=HEADER_TEMPLATE)
+    generate_personal_info()

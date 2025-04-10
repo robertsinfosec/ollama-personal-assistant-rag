@@ -1,2 +1,161 @@
 ## Calendar
-{{ calendar_events }}
+
+Information about scheduled events, meetings and appointments for past, present and future dates.
+
+{% if calendar is defined and calendar.today is defined %}
+### Today's Schedule (`{{ calendar.today.date }}`, {{ calendar.today.day_of_week }})
+
+A list of today's scheduled activities, appointments, and meetings.
+
+{% if calendar.today.events -%}
+| Time | Event | Location | Type | Status |
+|------|-------|----------|------|--------|
+{% for event in calendar.today.events -%}
+| {{ event.time }}{% if event.end_time is defined %} - {{ event.end_time }}{% endif %} | {{ event.event }} | {{ event.location }} | {{ event.type|title }} | {{ event.status|title }} |
+{% endfor %}
+
+{% for event in calendar.today.events -%}
+{% if event.description is defined or event.attendees is defined or event.meeting_link is defined -%}
+#### {{ event.event }} ({{ event.time }})
+
+{% if event.description is defined -%}
+**Description:** {{ event.description }}
+{% endif -%}
+{% if event.attendees is defined and event.attendees -%}
+**Attendees:** {% for attendee in event.attendees %}{{ attendee }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif -%}
+{% if event.meeting_link is defined -%}
+**Meeting Link:** {{ event.meeting_link }}{% if event.meeting_id is defined %} (ID: {{ event.meeting_id }}){% endif %}
+{% endif -%}
+{% if event.address is defined -%}
+**Address:** {{ event.address }}
+{% endif -%}
+{% if event.contact is defined -%}
+**Contact:** {{ event.contact }}
+{% endif -%}
+{% if event.reminder_set is defined and event.reminder_set -%}
+**Reminder:** {% if event.reminder_time is defined %}{{ event.reminder_time }}{% else %}Set{% endif %}
+{% endif -%}
+{% if event.materials_required is defined -%}
+**Materials Required:** {{ event.materials_required }}
+{% endif -%}
+{% endif %}
+{% endfor -%}
+{% else %}
+No events scheduled for today.
+{% endif -%}
+{% endif -%}
+
+{% if calendar is defined and calendar.upcoming is defined and calendar.upcoming %}
+### Upcoming Schedule
+
+Events and appointments scheduled in the near future.
+
+{% for day in calendar.upcoming -%}
+#### {{ day.date }} ({{ day.day_of_week }})
+
+{% if day.events -%}
+| Time | Event | Location | Type | Status |
+|------|-------|----------|------|--------|
+{% for event in day.events -%}
+| {% if event.time == "All day" %}All day{% else %}{{ event.time }}{% if event.end_time is defined %} - {{ event.end_time }}{% endif %}{% endif %} | {{ event.event }} | {{ event.location|default('') }} | {{ event.type|title }} | {{ event.status|default('Scheduled')|title }} |
+{% endfor %}
+
+{% for event in day.events -%}
+{% if event.description is defined or event.attendees is defined or event.meeting_link is defined or event.address is defined -%}
+##### {{ event.event }} Details
+
+{% if event.description is defined -%}
+**Description:** {{ event.description }}
+{% endif -%}
+{% if event.attendees is defined and event.attendees -%}
+**Attendees:** {% for attendee in event.attendees %}{{ attendee }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif -%}
+{% if event.meeting_link is defined -%}
+**Meeting Link:** {{ event.meeting_link }}
+{% endif -%}
+{% if event.address is defined -%}
+**Address:** {{ event.address }}
+{% endif -%}
+{% if event.contact is defined -%}
+**Contact:** {{ event.contact }}
+{% endif -%}
+{% if event.reservation is defined -%}
+**Reservation:** {{ event.reservation }}
+{% endif -%}
+{% if event.materials_required is defined -%}
+**Materials Required:** {{ event.materials_required }}
+{% endif -%}
+{% if event.registration_number is defined -%}
+**Registration:** {{ event.registration_number }}
+{% endif -%}
+{% endif %}
+{% endfor -%}
+{% else %}
+No events scheduled.
+{% endif -%}
+{% if not loop.last %}
+
+{% endif -%}
+{% endfor -%}
+{% else %}
+No upcoming events scheduled.
+{% endif -%}
+
+{% if calendar is defined and calendar.past is defined and calendar.past %}
+### Recent Events
+
+Recent meetings and appointments from the past few days.
+
+{% for day in calendar.past -%}
+#### {{ day.date }} ({{ day.day_of_week }})
+
+{% if day.events -%}
+| Time | Event | Location | Type | Outcome |
+|------|-------|----------|------|---------|
+{% for event in day.events -%}
+| {{ event.time }}{% if event.end_time is defined %} - {{ event.end_time }}{% endif %} | {{ event.event }} | {{ event.location }} | {{ event.type|title }} | {{ event.outcome|default('Completed') }} |
+{% endfor %}
+{% else %}
+No recorded events.
+{% endif -%}
+{% if not loop.last %}
+
+{% endif -%}
+{% endfor -%}
+{% else %}
+No past events recorded.
+{% endif -%}
+
+{% if calendar is defined and calendar.recurring is defined and calendar.recurring %}
+### Recurring Events
+
+Regular events that occur on a repeating schedule.
+
+| Event | Frequency | Time | Location | Type |
+|-------|-----------|------|----------|------|
+{% for event in calendar.recurring -%}
+| {{ event.event }} | {{ event.frequency|title }}{% if event.days is defined %} ({% for day in event.days %}{{ day }}{% if not loop.last %}, {% endif %}{% endfor %}){% elif event.day_of_month is defined %} ({{ event.day_of_month }}){% endif %} | {{ event.time }}{% if event.end_time is defined %} - {{ event.end_time }}{% endif %} | {{ event.location|default('') }} | {{ event.type|title }} |
+{% endfor %}
+
+{% for event in calendar.recurring -%}
+{% if event.description is defined or event.meeting_link is defined or event.address is defined -%}
+#### {{ event.event }} Details
+
+{% if event.description is defined -%}
+**Description:** {{ event.description }}
+{% endif -%}
+{% if event.meeting_link is defined -%}
+**Meeting Link:** {{ event.meeting_link }}
+{% endif -%}
+{% if event.address is defined -%}
+**Address:** {{ event.address }}
+{% endif -%}
+{% endif -%}
+{% if not loop.last %}
+
+{% endif -%}
+{% endfor -%}
+{% else %}
+No recurring events configured.
+{% endif %}

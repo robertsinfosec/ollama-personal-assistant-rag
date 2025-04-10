@@ -1,47 +1,275 @@
 ## Finance
-{% if finance %}
-  {% if finance.accounts %}
-- **Bank Accounts**:
-  {% for account in finance.accounts %}
-  - {{ account.type }}{% if account.primary %} (Primary){% endif %}
-    {% if account.institution %}- Institution: {{ account.institution }}{% endif %}
-    {% if account.account_number %}- Account: {{ account.account_number }}{% endif %}
-    {% if account.opened_date %}- Opened: {{ account.opened_date }}{% endif %}
-  {% endfor %}
-  {% endif %}
 
-  {% if finance.credit_cards %}
-- **Credit Cards**:
-  {% for card in finance.credit_cards %}
-  - {{ card.issuer }}{% if card.type %} {{ card.type }}{% endif %}
-    {% if card.last_four %}- Last Four: {{ card.last_four }}{% endif %}
-    {% if card.expiration %}- Expires: {{ card.expiration }}{% endif %}
-    {% if card.opened_date %}- Opened: {{ card.opened_date }}{% endif %}
-    {% if card.primary %}- Primary Card{% endif %}
-    {% if card.payment_due %}- Payment Due: {{ card.payment_due }}{% endif %}
-  {% endfor %}
-  {% endif %}
+Information about financial accounts, credit cards, retirement plans, and recurring bills.
 
-  {% if finance.retirement %}
-- **Retirement Accounts**:
-  {% for account in finance.retirement %}
-  - {{ account.type }}
-    {% if account.provider %}- Provider: {{ account.provider }}{% endif %}
-    {% if account.contributions %}- Contributions: {{ account.contributions }}{% endif %}
-    {% if account.opened_date %}- Opened: {{ account.opened_date }}{% endif %}
-  {% endfor %}
-  {% endif %}
+{% if finance is defined and finance.accounts is defined and finance.accounts -%}
+### Bank Accounts
 
-  {% if finance.bills %}
-- **Bills & Recurring Payments**:
-  {% for bill in finance.bills %}
-  - {{ bill.name }}
-    {% if bill.amount %}- Amount: ${{ bill.amount }}{% endif %}
-    {% if bill.frequency %}- Frequency: {{ bill.frequency }}{% endif %}
-    {% if bill.due_date %}- Due: {{ bill.due_date }}{% endif %}
-    {% if bill.autopay is defined %}- Autopay: {% if bill.autopay %}Enabled{% else %}Disabled{% endif %}{% endif %}
-    {% if bill.start_date %}- Started: {{ bill.start_date }}{% endif %}
-    {% if bill.end_date %}- Ends: {{ bill.end_date }}{% endif %}
-  {% endfor %}
-  {% endif %}
+Information about checking, savings, and investment accounts.
+
+| Type | Institution | Account Number | Status | Opened Date |
+|------|------------|---------------|--------|------------|
+{% for account in finance.accounts -%}
+| {{ account.type }} | {{ account.institution or 'N/A' }} | {{ account.account_number or 'N/A' }} | {% if account.primary is defined and account.primary %}Primary{% else %}Secondary{% endif %} | `{{ account.opened_date or 'N/A' }}` |
+{% endfor %}
+{% else %}
+- No bank account information available.
+{% endif %}
+
+{% if finance is defined and finance.credit_cards is defined and finance.credit_cards -%}
+### Credit Cards
+
+Information about credit cards and their payment details.
+
+| Issuer | Type | Last Four | Expiration | Opened Date | Status | Payment Due |
+|--------|------|-----------|------------|------------|--------|-------------|
+{% for card in finance.credit_cards -%}
+| {{ card.issuer or 'N/A' }} | {{ card.type or 'N/A' }} | {{ card.last_four or 'N/A' }} | `{{ card.expiration or 'N/A' }}` | `{{ card.opened_date or 'N/A' }}` | {% if card.primary is defined and card.primary %}Primary{% else %}Secondary{% endif %} | {{ card.payment_due or 'N/A' }} |
+{% endfor %}
+{% else %}
+- No credit card information available.
+{% endif %}
+
+{% if finance is defined and finance.retirement is defined and finance.retirement -%}
+### Retirement Accounts
+
+Information about retirement savings and investment accounts.
+
+| Type | Provider | Contributions | Opened Date |
+|------|----------|--------------|------------|
+{% for account in finance.retirement -%}
+| {{ account.type or 'N/A' }} | {{ account.provider or 'N/A' }} | {{ account.contributions or 'N/A' }} | `{{ account.opened_date or 'N/A' }}` |
+{% endfor %}
+{% else %}
+- No retirement account information available.
+{% endif %}
+
+{% if finance is defined and finance.bills is defined and finance.bills -%}
+### Bills & Recurring Payments
+
+Information about regular financial obligations and scheduled payments.
+
+| Name | Amount | Frequency | Due Date | Autopay | Start Date | End Date |
+|------|--------|-----------|----------|---------|------------|----------|
+{% for bill in finance.bills -%}
+| {{ bill.name or 'N/A' }} | ${{ bill.amount or 'N/A' }} | {{ bill.frequency or 'N/A' }} | {{ bill.due_date or 'N/A' }} | {% if bill.autopay is defined %}{% if bill.autopay %}Enabled{% else %}Disabled{% endif %}{% else %}N/A{% endif %} | `{{ bill.start_date or 'N/A' }}` | {% if bill.end_date is defined %}`{{ bill.end_date }}`{% else %}N/A{% endif %} |
+{% endfor %}
+{% else %}
+- No billing information available.
+{% endif %}
+
+{% if finance is defined and finance.investments is defined and finance.investments -%}
+### Investment Accounts
+
+Information about non-retirement investment accounts and holdings.
+
+| Type | Institution | Account Number | Opened Date | Balance Range |
+|------|------------|---------------|------------|---------------|
+{% for investment in finance.investments -%}
+| {{ investment.type or 'N/A' }} | {{ investment.institution or 'N/A' }} | {{ investment.account_number or 'N/A' }} | `{{ investment.opened_date or 'N/A' }}` | {{ investment.balance_range or 'N/A' }} |
+{% endfor %}
+
+{% for investment in finance.investments -%}
+#### {{ investment.institution }} {{ investment.type }} Details
+
+{% if investment.primary_holdings is defined and investment.primary_holdings -%}
+**Primary Holdings:**
+
+| Holdings |
+|----------|
+{% for holding in investment.primary_holdings -%}
+| {{ holding }} |
+{% endfor %}
+{% endif %}
+
+{% if investment.allocation is defined -%}
+**Asset Allocation:**
+
+| Asset Class | Percentage |
+|-------------|------------|
+{% if investment.allocation.stocks is defined -%}
+| Stocks | {{ investment.allocation.stocks }} |
+{% endif -%}
+{% if investment.allocation.bonds is defined -%}
+| Bonds | {{ investment.allocation.bonds }} |
+{% endif %}
+{% endif %}
+
+{% if investment.advisor is defined -%}
+**Financial Advisor:**
+
+| Name | Phone | Email |
+|------|-------|-------|
+| {{ investment.advisor.name or 'N/A' }} | {{ investment.advisor.phone or 'N/A' }} | {{ investment.advisor.email or 'N/A' }} |
+{% endif %}
+
+{% endfor %}
+{% else %}
+- No investment information available.
+{% endif %}
+
+{% if finance is defined and finance.insurance is defined -%}
+### Insurance Policies
+
+Information about various insurance coverages and policies.
+
+{% if finance.insurance.health is defined -%}
+#### Health Insurance
+
+| Provider | Policy Number | Type | Expiration | Premium | Deductible |
+|----------|--------------|------|------------|---------|------------|
+| {{ finance.insurance.health.provider or 'N/A' }} | {{ finance.insurance.health.policy_number or 'N/A' }} | {{ finance.insurance.health.type or 'N/A' }} | `{{ finance.insurance.health.expiration or 'N/A' }}` | {{ finance.insurance.health.premium or 'N/A' }} | {{ finance.insurance.health.deductible or 'N/A' }} |
+
+**Contact:** {{ finance.insurance.health.contact or 'N/A' }}
+{% endif %}
+
+{% if finance.insurance.auto is defined -%}
+#### Auto Insurance
+
+| Provider | Policy Number | Coverage | Premium | Expiration |
+|----------|--------------|---------|---------|------------|
+| {{ finance.insurance.auto.provider or 'N/A' }} | {{ finance.insurance.auto.policy_number or 'N/A' }} | {{ finance.insurance.auto.coverage or 'N/A' }} | {{ finance.insurance.auto.premium or 'N/A' }} | `{{ finance.insurance.auto.expiration or 'N/A' }}` |
+
+{% if finance.insurance.auto.vehicles is defined and finance.insurance.auto.vehicles -%}
+**Insured Vehicles:**
+
+| Vehicles |
+|----------|
+{% for vehicle in finance.insurance.auto.vehicles -%}
+| {{ vehicle }} |
+{% endfor %}
+{% endif %}
+{% endif %}
+
+{% if finance.insurance.home is defined -%}
+#### Home Insurance
+
+| Provider | Policy Number | Coverage | Premium | Expiration | Deductible |
+|----------|--------------|---------|---------|------------|------------|
+| {{ finance.insurance.home.provider or 'N/A' }} | {{ finance.insurance.home.policy_number or 'N/A' }} | {{ finance.insurance.home.coverage or 'N/A' }} | {{ finance.insurance.home.premium or 'N/A' }} | `{{ finance.insurance.home.expiration or 'N/A' }}` | {{ finance.insurance.home.deductible or 'N/A' }} |
+{% endif %}
+
+{% if finance.insurance.life is defined -%}
+#### Life Insurance
+
+| Provider | Policy Number | Type | Coverage | Premium |
+|----------|--------------|------|---------|---------|
+| {{ finance.insurance.life.provider or 'N/A' }} | {{ finance.insurance.life.policy_number or 'N/A' }} | {{ finance.insurance.life.type or 'N/A' }} | {{ finance.insurance.life.coverage or 'N/A' }} | {{ finance.insurance.life.premium or 'N/A' }} |
+
+{% if finance.insurance.life.beneficiaries is defined and finance.insurance.life.beneficiaries -%}
+**Beneficiaries:**
+
+| Beneficiaries |
+|---------------|
+{% for beneficiary in finance.insurance.life.beneficiaries -%}
+| {{ beneficiary }} |
+{% endfor %}
+{% endif %}
+{% endif %}
+{% else %}
+- No insurance information available.
+{% endif %}
+
+{% if finance is defined and finance.taxes is defined -%}
+### Tax Information
+
+Information about tax filing status, important dates, and past returns.
+
+| Filing Status | Federal Deadline | State Deadline | Property Tax Due |
+|---------------|-----------------|----------------|------------------|
+| {{ finance.taxes.filing_status or 'N/A' }} | {{ finance.taxes.important_dates.federal_deadline or 'N/A' if finance.taxes.important_dates is defined else 'N/A' }} | {{ finance.taxes.important_dates.state_deadline or 'N/A' if finance.taxes.important_dates is defined else 'N/A' }} | {{ finance.taxes.important_dates.property_tax_due or 'N/A' if finance.taxes.important_dates is defined else 'N/A' }} |
+
+{% if finance.taxes.accountant is defined -%}
+#### Tax Accountant
+
+| Name | Firm | Phone | Email |
+|------|------|-------|-------|
+| {{ finance.taxes.accountant.name or 'N/A' }} | {{ finance.taxes.accountant.firm or 'N/A' }} | {{ finance.taxes.accountant.phone or 'N/A' }} | {{ finance.taxes.accountant.email or 'N/A' }} |
+{% endif %}
+
+{% if finance.taxes.previous_filings is defined and finance.taxes.previous_filings -%}
+#### Previous Tax Returns
+
+| Year | Federal Refund | State Refund |
+|------|---------------|--------------|
+{% for filing in finance.taxes.previous_filings -%}
+| {{ filing.year }} | {{ filing.federal_refund or 'N/A' }} | {{ filing.state_refund or 'N/A' }} |
+{% endfor %}
+{% endif %}
+{% else %}
+- No tax information available.
+{% endif %}
+
+{% if finance is defined and finance.estate_planning is defined -%}
+### Estate Planning
+
+Information about wills, powers of attorney, and estate planning contacts.
+
+{% if finance.estate_planning.will is defined -%}
+#### Will
+
+| Created | Last Updated | Location |
+|---------|-------------|----------|
+| `{{ finance.estate_planning.will.created_date or 'N/A' }}` | `{{ finance.estate_planning.will.last_updated or 'N/A' }}` | {{ finance.estate_planning.will.location or 'N/A' }} |
+{% endif %}
+
+{% if finance.estate_planning.power_of_attorney is defined -%}
+#### Power of Attorney
+
+| Type | Designated Person |
+|------|------------------|
+{% if finance.estate_planning.power_of_attorney.financial is defined -%}
+| Financial | {{ finance.estate_planning.power_of_attorney.financial }} |
+{% endif -%}
+{% if finance.estate_planning.power_of_attorney.medical is defined -%}
+| Medical | {{ finance.estate_planning.power_of_attorney.medical }} |
+{% endif -%}
+{% if finance.estate_planning.power_of_attorney.alternate is defined -%}
+| Alternate | {{ finance.estate_planning.power_of_attorney.alternate }} |
+{% endif %}
+{% endif %}
+
+{% if finance.estate_planning.attorney is defined -%}
+#### Estate Attorney
+
+| Name | Firm | Phone | Email |
+|------|------|-------|-------|
+| {{ finance.estate_planning.attorney.name or 'N/A' }} | {{ finance.estate_planning.attorney.firm or 'N/A' }} | {{ finance.estate_planning.attorney.phone or 'N/A' }} | {{ finance.estate_planning.attorney.email or 'N/A' }} |
+{% endif %}
+{% else %}
+- No estate planning information available.
+{% endif %}
+
+{% if finance is defined and finance.financial_goals is defined -%}
+### Financial Goals
+
+Information about savings targets and progress toward financial objectives.
+
+{% if finance.financial_goals.emergency_fund is defined -%}
+#### Emergency Fund
+
+| Target Amount | Current Amount | Monthly Contribution |
+|--------------|---------------|----------------------|
+| {{ finance.financial_goals.emergency_fund.target or 'N/A' }} | {{ finance.financial_goals.emergency_fund.current or 'N/A' }} | {{ finance.financial_goals.emergency_fund.monthly_contribution or 'N/A' }} |
+{% endif %}
+
+{% if finance.financial_goals.college_funds is defined and finance.financial_goals.college_funds -%}
+#### College Funds
+
+| Child | Account Type | Institution | Current Balance | Monthly Contribution |
+|-------|-------------|------------|----------------|----------------------|
+{% for fund in finance.financial_goals.college_funds -%}
+| {{ fund.child or 'N/A' }} | {{ fund.account_type or 'N/A' }} | {{ fund.institution or 'N/A' }} | {{ fund.current_balance or 'N/A' }} | {{ fund.monthly_contribution or 'N/A' }} |
+{% endfor %}
+{% endif %}
+
+{% if finance.financial_goals.retirement_goal is defined -%}
+#### Retirement Goal
+
+| Target Age | Target Amount | Current Progress |
+|------------|--------------|-----------------|
+| {{ finance.financial_goals.retirement_goal.target_age or 'N/A' }} | {{ finance.financial_goals.retirement_goal.target_amount or 'N/A' }} | {{ finance.financial_goals.retirement_goal.current_progress or 'N/A' }} |
+{% endif %}
+{% else %}
+- No financial goals information available.
 {% endif %}

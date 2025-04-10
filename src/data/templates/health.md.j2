@@ -1,56 +1,274 @@
 ## Health
-{% if health %}
-  {% if health.blood_type %}- **Blood Type**: {{ health.blood_type }}{% endif %}
 
-  {% if health.allergies %}
-- **Allergies**:
-  {% for allergy in health.allergies %}
-  - {{ allergy.name }}{% if allergy.severity %} ({{ allergy.severity }}){% endif %}
-  {% endfor %}
-  {% endif %}
+Information about medical history, conditions, healthcare providers, and wellness practices.
 
-  {% if health.medical_conditions %}
-- **Medical Conditions**:
-  {% for condition in health.medical_conditions %}
-  - {{ condition.name }}
-    {% if condition.diagnosed %}- Diagnosed: {{ condition.diagnosed }}{% endif %}
-    {% if condition.treatments %}- Treatments: {{ condition.treatments | join(", ") }}{% endif %}
-  {% endfor %}
-  {% endif %}
+{% if health is defined and health.blood_type is defined -%}
+**Blood Type:** {{ health.blood_type }}
+{% endif %}
 
-  {% if health.healthcare_providers %}
-- **Healthcare Providers**:
-    {% if health.healthcare_providers.primary_doctor %}
-  - Primary Doctor: {{ health.healthcare_providers.primary_doctor.name }}
-    {% if health.healthcare_providers.primary_doctor.facility %}- Facility: {{ health.healthcare_providers.primary_doctor.facility }}{% endif %}
-    {% if health.healthcare_providers.primary_doctor.phone %}- Phone: {{ health.healthcare_providers.primary_doctor.phone }}{% endif %}
-    {% if health.healthcare_providers.primary_doctor.last_visit %}- Last Visit: {{ health.healthcare_providers.primary_doctor.last_visit }}{% endif %}
-    {% endif %}
+{% if health is defined and health.allergies is defined and health.allergies -%}
+### Allergies
 
-    {% if health.healthcare_providers.specialists %}
-  - Specialists:
-    {% for specialist in health.healthcare_providers.specialists %}
-    - {{ specialist.specialty }}: {{ specialist.name }}
-      {% if specialist.phone %}- Phone: {{ specialist.phone }}{% endif %}
-      {% if specialist.last_visit %}- Last Visit: {{ specialist.last_visit }}{% endif %}
-    {% endfor %}
-    {% endif %}
-  {% endif %}
+Information about known allergic reactions and sensitivities.
 
-  {% if health.insurance %}
-- **Insurance**:
-  {% if health.insurance.provider %}- Provider: {{ health.insurance.provider }}{% endif %}
-  {% if health.insurance.policy_number %}- Policy Number: {{ health.insurance.policy_number }}{% endif %}
-  {% if health.insurance.group_number %}- Group Number: {{ health.insurance.group_number }}{% endif %}
-  {% if health.insurance.expiration %}- Expiration: {{ health.insurance.expiration }}{% endif %}
-  {% endif %}
+| Allergen | Severity | Diagnosed | Reactions | Notes |
+|----------|----------|-----------|----------|-------|
+{% for allergy in health.allergies -%}
+| {{ allergy.name or 'N/A' }} | {{ allergy.severity or 'N/A' }} | `{{ allergy.diagnosed or 'N/A' }}` | {{ allergy.reactions | join(", ") if allergy.reactions is defined and allergy.reactions else 'N/A' }} | {{ allergy.notes or 'N/A' }} |
+{% endfor -%}
+{% else %}
+- No known allergies.
+{% endif %}
 
-  {% if health.exercise_routine %}
-- **Exercise Routine**:
-  {% for exercise in health.exercise_routine %}
-  - {{ exercise.activity }}
-    {% if exercise.schedule %}- Schedule: {{ exercise.schedule }}{% endif %}
-    {% if exercise.duration %}- Duration: {{ exercise.duration }}{% endif %}
-  {% endfor %}
-  {% endif %}
+{% if health is defined and health.medical_conditions is defined and health.medical_conditions -%}
+### Medical Conditions
+
+Information about diagnosed health conditions and their management.
+
+| Condition | Diagnosed | Status | Treatments | Specialist | Notes |
+|-----------|-----------|--------|------------|------------|-------|
+{% for condition in health.medical_conditions -%}
+| {{ condition.name or 'N/A' }} | `{{ condition.diagnosed or 'N/A' }}` | {{ condition.status or 'N/A' }} | {{ condition.treatments | join(", ") if condition.treatments is defined and condition.treatments else 'N/A' }} | {{ condition.specialist or 'N/A' }} | {{ condition.notes or 'N/A' }} |
+{% endfor -%}
+{% else %}
+- No medical conditions recorded.
+{% endif %}
+
+{% if health is defined and health.healthcare_providers is defined -%}
+### Healthcare Providers
+
+{% if health.healthcare_providers.primary_doctor is defined -%}
+#### Primary Care Physician
+
+| Doctor Name | Facility | Phone | Address | Email | Last Visit | Next Scheduled | Portal |
+|-------------|----------|-------|---------|-------|------------|----------------|--------|
+| {{ health.healthcare_providers.primary_doctor.name or 'N/A' }} | {{ health.healthcare_providers.primary_doctor.facility or 'N/A' }} | {{ health.healthcare_providers.primary_doctor.phone or 'N/A' }} | {{ health.healthcare_providers.primary_doctor.address or 'N/A' }} | {{ health.healthcare_providers.primary_doctor.email or 'N/A' }} | `{{ health.healthcare_providers.primary_doctor.last_visit or 'N/A' }}` | `{{ health.healthcare_providers.primary_doctor.next_scheduled or 'N/A' }}` | {{ health.healthcare_providers.primary_doctor.portal or 'N/A' }} |
+{% endif -%}
+
+{% if health.healthcare_providers.specialists is defined and health.healthcare_providers.specialists -%}
+#### Medical Specialists
+
+| Specialty | Doctor Name | Facility | Phone | Address | Email | Last Visit | Next Scheduled |
+|-----------|-------------|----------|-------|---------|-------|------------|----------------|
+{% for specialist in health.healthcare_providers.specialists -%}
+| {{ specialist.specialty or 'N/A' }} | {{ specialist.name or 'N/A' }} | {{ specialist.facility or 'N/A' }} | {{ specialist.phone or 'N/A' }} | {{ specialist.address or 'N/A' }} | {{ specialist.email or 'N/A' }} | `{{ specialist.last_visit or 'N/A' }}` | `{{ specialist.next_scheduled or 'N/A' }}` |
+{% endfor -%}
+{% endif -%}
+{% else %}
+- No healthcare provider information available.
+{% endif %}
+
+{% if health is defined and health.insurance is defined -%}
+### Health Insurance
+
+{% if health.insurance.primary is defined -%}
+#### Primary Insurance
+
+| Provider | Plan Name | Policy Number | Group Number | Expiration | Coverage Details |
+|----------|-----------|---------------|--------------|------------|------------------|
+| {{ health.insurance.primary.provider or 'N/A' }} | {{ health.insurance.primary.plan_name or 'N/A' }} | {{ health.insurance.primary.policy_number or 'N/A' }} | {{ health.insurance.primary.group_number or 'N/A' }} | `{{ health.insurance.primary.expiration or 'N/A' }}` | {{ health.insurance.primary.coverage_details or 'N/A' }} |
+
+**Member Services:** {{ health.insurance.primary.member_services or 'N/A' }}  
+**Website:** {{ health.insurance.primary.website or 'N/A' }}
+{% endif -%}
+
+{% if health.insurance.dental is defined -%}
+#### Dental Insurance
+
+| Provider | Plan Name | Policy Number | Expiration | Coverage Details |
+|----------|-----------|---------------|------------|------------------|
+| {{ health.insurance.dental.provider or 'N/A' }} | {{ health.insurance.dental.plan_name or 'N/A' }} | {{ health.insurance.dental.policy_number or 'N/A' }} | `{{ health.insurance.dental.expiration or 'N/A' }}` | {{ health.insurance.dental.coverage_details or 'N/A' }} |
+
+**Member Services:** {{ health.insurance.dental.member_services or 'N/A' }}  
+**Website:** {{ health.insurance.dental.website or 'N/A' }}
+{% endif -%}
+
+{% if health.insurance.vision is defined -%}
+#### Vision Insurance
+
+| Provider | Plan Name | Policy Number | Expiration | Coverage Details |
+|----------|-----------|---------------|------------|------------------|
+| {{ health.insurance.vision.provider or 'N/A' }} | {{ health.insurance.vision.plan_name or 'N/A' }} | {{ health.insurance.vision.policy_number or 'N/A' }} | `{{ health.insurance.vision.expiration or 'N/A' }}` | {{ health.insurance.vision.coverage_details or 'N/A' }} |
+
+**Member Services:** {{ health.insurance.vision.member_services or 'N/A' }}  
+**Website:** {{ health.insurance.vision.website or 'N/A' }}
+{% endif -%}
+{% else %}
+- No health insurance information available.
+{% endif %}
+
+{% if health is defined and health.medications is defined -%}
+### Medications
+
+{% if health.medications.current is defined and health.medications.current -%}
+#### Current Medications
+
+| Medication | Dosage | Frequency | Prescriber | Pharmacy | Refills Remaining | Next Refill |
+|------------|--------|-----------|------------|----------|-------------------|-------------|
+{% for med in health.medications.current -%}
+{% if med.medication_type is defined and med.medication_type == 'Over-the-counter' -%}
+| {{ med.name or 'N/A' }} | {{ med.dosage or 'N/A' }} | {{ med.frequency or 'N/A' }} | OTC | OTC | N/A | N/A |
+{% else -%}
+| {{ med.name or 'N/A' }} | {{ med.dosage or 'N/A' }} | {{ med.frequency or 'N/A' }} | {{ med.prescriber or 'N/A' }} | {{ med.pharmacy or 'N/A' }} | {{ med.refills_remaining or 'N/A' }} | `{{ med.next_refill or 'N/A' }}` |
+{% endif -%}
+{% endfor -%}
+{% else %}
+- No current medications.
+{% endif %}
+
+{% if health.medications.past is defined and health.medications.past -%}
+#### Past Medications
+
+| Medication | Dosage | Frequency | Reason | Date Range | Prescriber |
+|------------|--------|-----------|--------|------------|------------|
+{% for med in health.medications.past -%}
+| {{ med.name or 'N/A' }} | {{ med.dosage or 'N/A' }} | {{ med.frequency or 'N/A' }} | {{ med.reason or 'N/A' }} | {{ med.date_range or 'N/A' }} | {{ med.prescriber or 'N/A' }} |
+{% endfor -%}
+{% else %}
+- No past medication history recorded.
+{% endif -%}
+{% else %}
+- No medication information available.
+{% endif %}
+
+{% if health is defined and health.immunizations is defined and health.immunizations -%}
+### Immunizations
+
+Information about vaccines and immunization history.
+
+| Immunization | Date | Type | Facility | Next Due |
+|--------------|------|------|----------|----------|
+{% for vaccine in health.immunizations if vaccine is defined -%}
+{% if vaccine.name is defined or vaccine.date is defined or vaccine.vaccine_type is defined or vaccine.facility is defined or vaccine.next_due is defined -%}
+| {{ vaccine.name if vaccine.name is defined else 'N/A' }} | `{{ vaccine.date if vaccine.date is defined else 'N/A' }}` | {{ vaccine.vaccine_type if vaccine.vaccine_type is defined else 'N/A' }} | {{ vaccine.facility if vaccine.facility is defined else 'N/A' }} | `{{ vaccine.next_due if vaccine.next_due is defined and vaccine.next_due != none else 'N/A' }}` |
+{% endif -%}
+{% endfor -%}
+{% else %}
+- No immunization records available.
+{% endif %}
+
+{% if health is defined and health.vital_stats is defined -%}
+### Vital Statistics
+
+Information about key health metrics and measurements.
+
+| Height | Weight | BMI | Blood Pressure | Resting Heart Rate |
+|--------|--------|-----|----------------|-------------------|
+| {{ health.vital_stats.height or 'N/A' }} | {{ health.vital_stats.weight or 'N/A' }} | {{ health.vital_stats.bmi or 'N/A' }} | {{ health.vital_stats.blood_pressure or 'N/A' }} | {{ health.vital_stats.resting_heart_rate or 'N/A' }} |
+
+{% if health.vital_stats.cholesterol is defined -%}
+#### Cholesterol Profile
+
+| Total | HDL | LDL | Triglycerides | Measured Date |
+|-------|-----|-----|---------------|--------------|
+| {{ health.vital_stats.cholesterol.total or 'N/A' }} | {{ health.vital_stats.cholesterol.hdl or 'N/A' }} | {{ health.vital_stats.cholesterol.ldl or 'N/A' }} | {{ health.vital_stats.cholesterol.triglycerides or 'N/A' }} | `{{ health.vital_stats.cholesterol.date_measured or 'N/A' }}` |
+{% endif -%}
+{% else %}
+- No vital statistics available.
+{% endif %}
+
+{% if health is defined and health.family_history is defined and health.family_history -%}
+### Family Medical History
+
+Information about health conditions with genetic or familial patterns.
+
+| Relation | Medical Conditions | Notes |
+|----------|-------------------|-------|
+{% for family in health.family_history -%}
+| {{ family.relation or 'N/A' }} | {{ family.conditions | join(", ") if family.conditions is defined and family.conditions else 'N/A' }} | {{ family.notes or 'N/A' }} |
+{% endfor -%}
+{% else %}
+- No family medical history available.
+{% endif %}
+
+{% if health is defined and health.exercise_routine is defined and health.exercise_routine -%}
+### Exercise Routine
+
+Information about physical activity and fitness regimen.
+
+| Activity | Schedule | Duration | Intensity | Location | Goals |
+|----------|----------|----------|----------|----------|-------|
+{% for exercise in health.exercise_routine -%}
+| {{ exercise.activity or 'N/A' }} | {{ exercise.schedule or 'N/A' }} | {{ exercise.duration or 'N/A' }} | {{ exercise.intensity or 'N/A' }} | {{ exercise.location or 'N/A' }} | {{ exercise.goals or 'N/A' }} |
+{% endfor -%}
+
+{% for exercise in health.exercise_routine -%}
+{% if exercise.equipment is defined and exercise.equipment or exercise.instructor is defined -%}
+#### {{ exercise.activity }} Details
+
+{% if exercise.equipment is defined and exercise.equipment -%}
+**Equipment:** {{ exercise.equipment | join(", ") }}
+{% endif -%}
+{% if exercise.instructor is defined -%}
+**Instructor:** {{ exercise.instructor }}
+{% endif -%}
+{% endif -%}
+{% endfor -%}
+{% else %}
+- No exercise routine information available.
+{% endif %}
+
+{% if health is defined and health.dietary_preferences is defined -%}
+### Dietary Preferences
+
+Information about food choices, restrictions, and eating patterns.
+
+| Diet Type | Allergies | Restrictions |
+|-----------|-----------|-------------|
+| {{ health.dietary_preferences.diet_type or 'N/A' }} | {{ health.dietary_preferences.allergies | join(", ") if health.dietary_preferences.allergies is defined and health.dietary_preferences.allergies else 'None' }} | {{ health.dietary_preferences.restrictions | join(", ") if health.dietary_preferences.restrictions is defined and health.dietary_preferences.restrictions else 'None' }} |
+
+{% if health.dietary_preferences.preferences is defined or health.dietary_preferences.dislikes is defined -%}
+| Preferences | Dislikes |
+|-------------|----------|
+| {{ health.dietary_preferences.preferences | join(", ") if health.dietary_preferences.preferences is defined and health.dietary_preferences.preferences else 'N/A' }} | {{ health.dietary_preferences.dislikes | join(", ") if health.dietary_preferences.dislikes is defined and health.dietary_preferences.dislikes else 'N/A' }} |
+{% endif %}
+
+{% if health.dietary_preferences.typical_meals is defined -%}
+#### Typical Meals
+
+| Meal | Description |
+|------|------------|
+{%- if health.dietary_preferences.typical_meals.breakfast is defined %}
+| Breakfast | {{ health.dietary_preferences.typical_meals.breakfast }} |
+{%- endif %}
+{%- if health.dietary_preferences.typical_meals.lunch is defined %}
+| Lunch | {{ health.dietary_preferences.typical_meals.lunch }} |
+{%- endif %}
+{%- if health.dietary_preferences.typical_meals.dinner is defined %}
+| Dinner | {{ health.dietary_preferences.typical_meals.dinner }} |
+{%- endif %}
+{%- if health.dietary_preferences.typical_meals.snacks is defined %}
+| Snacks | {{ health.dietary_preferences.typical_meals.snacks }} |
+{%- endif %}
+{% endif -%}
+{% else %}
+- No dietary preference information available.
+{% endif %}
+
+{% if health is defined and health.vision is defined -%}
+### Vision Information
+
+Information about eye health and corrective measures.
+
+{% if health.vision.prescription is defined -%}
+#### Vision Prescription
+
+| Right Eye | Left Eye | Astigmatism | Last Exam | Next Exam |
+|-----------|----------|-------------|-----------|-----------|
+| {{ health.vision.prescription.right or 'N/A' }} | {{ health.vision.prescription.left or 'N/A' }} | {% if health.vision.prescription.astigmatism %}Yes{% else %}No{% endif %} | `{{ health.vision.last_exam or 'N/A' }}` | `{{ health.vision.next_exam or 'N/A' }}` |
+{% endif %}
+
+{% if health.vision.corrective_measures is defined and health.vision.corrective_measures -%}
+**Corrective Measures:** {{ health.vision.corrective_measures | join(", ") }}
+{% endif %}
+
+{% if health.vision.optometrist is defined -%}
+#### Optometrist
+
+| Name | Facility | Phone |
+|------|----------|-------|
+| {{ health.vision.optometrist.name or 'N/A' }} | {{ health.vision.optometrist.facility or 'N/A' }} | {{ health.vision.optometrist.phone or 'N/A' }} |
+{% endif -%}
+{% else %}
+- No vision information available.
 {% endif %}

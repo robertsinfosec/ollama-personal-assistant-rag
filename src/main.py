@@ -12,8 +12,9 @@ import sys
 from typing import Optional
 
 from api.endpoints import start_api_server
-from src.generation.generator import generate_markdown
+from generation.generator import generate_personal_info
 from rag.interactive import start_interactive_session
+from config.template_config import OUTPUT_DOCUMENT
 
 
 def parse_args() -> argparse.Namespace:
@@ -37,14 +38,12 @@ def parse_args() -> argparse.Namespace:
     
     # Generate personal info command
     gen_parser = subparsers.add_parser("generate", help="Generate personal information markdown")
-    gen_parser.add_argument("--template", help="Path to the template file", default="data/templates/personal_info_template.md.j2")
-    gen_parser.add_argument("--output", help="Path to the output markdown file", default="data/personal_info.md")
-    gen_parser.add_argument("--data", help="Path to the data file", default="data/static/personal_info_static.yaml")
+    gen_parser.add_argument("--output", help="Path to the output markdown file", default=OUTPUT_DOCUMENT)
     
     # Interactive RAG session command
     interactive_parser = subparsers.add_parser("interactive", help="Start an interactive RAG session")
     interactive_parser.add_argument("--model", default="mistral", help="Ollama model to use")
-    interactive_parser.add_argument("--markdown-file", default="data/personal_info.md", 
+    interactive_parser.add_argument("--markdown-file", default=OUTPUT_DOCUMENT, 
                                    help="Markdown file with personal information")
     
     # Ollama model creation command
@@ -67,8 +66,8 @@ def main() -> None:
         # Start API server using uvicorn programmatically
         start_api_server(host=args.host, port=args.port)
     elif args.command == "generate":
-        # Generate personal information markdown
-        generate_markdown(args.template, args.output, args.data)
+        # Generate personal information markdown using the template_config approach
+        generate_personal_info(output_path=args.output)
     elif args.command == "interactive":
         # Start interactive RAG session
         start_interactive_session(args.model, args.markdown_file)

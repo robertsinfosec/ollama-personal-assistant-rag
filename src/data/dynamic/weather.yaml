@@ -1,15 +1,157 @@
 weather:
-  today:
+  last_updated: "2025-04-09T08:30:00-04:00"
+  location:
+    city: "Boston"
+    state: "Massachusetts"
+    country: "US"
+    latitude: 42.3601
+    longitude: -71.0589
+    timezone: "America/New_York"
+    
+  current:
+    timestamp: "2025-04-09T08:30:00-04:00"
     condition: "Partly cloudy"
+    temperature: 68
+    feels_like: 70
+    humidity: 65
+    wind_speed: 8
+    wind_direction: "NE"
+    wind_gust: 12
+    pressure: 1015
+    uv_index: 4
+    visibility: 10
+    precipitation: "20%"
+    
+  today:
+    date: "2025-04-09"
+    summary: "Partly cloudy becoming mostly sunny"
     high_temp: 75
     low_temp: 62
-    precipitation: "20%"
+    sunrise: "06:15:00"
+    sunset: "19:32:00"
+    precipitation_chance: "20%"
+    humidity: 65
+    
+  hourly:
+    - time: "09:00:00"
+      temperature: 70
+      condition: "Partly cloudy"
+      precipitation_chance: "15%"
+      wind_speed: 7
+      wind_direction: "NE"
+    - time: "10:00:00"
+      temperature: 72
+      condition: "Partly cloudy"
+      precipitation_chance: "10%"
+      wind_speed: 8
+      wind_direction: "NE"
+    - time: "11:00:00" 
+      temperature: 73
+      condition: "Mostly sunny"
+      precipitation_chance: "5%"
+      wind_speed: 8
+      wind_direction: "E"
+    - time: "12:00:00"
+      temperature: 74
+      condition: "Mostly sunny"
+      precipitation_chance: "5%"
+      wind_speed: 9
+      wind_direction: "E"
+    - time: "13:00:00"
+      temperature: 75
+      condition: "Sunny"
+      precipitation_chance: "0%"
+      wind_speed: 9
+      wind_direction: "E"
+    - time: "14:00:00"
+      temperature: 75
+      condition: "Sunny"
+      precipitation_chance: "0%"
+      wind_speed: 8
+      wind_direction: "E"
+    - time: "15:00:00"
+      temperature: 74
+      condition: "Sunny"
+      precipitation_chance: "0%"
+      wind_speed: 7
+      wind_direction: "SE"
+    - time: "16:00:00"
+      temperature: 73
+      condition: "Sunny"
+      precipitation_chance: "0%"
+      wind_speed: 6
+      wind_direction: "SE"
+    - time: "17:00:00"
+      temperature: 71
+      condition: "Clear"
+      precipitation_chance: "0%"
+      wind_speed: 5
+      wind_direction: "SE"
+      
   forecast:
-    - date: "2025-04-09"
+    - date: "2025-04-10"
+      day_of_week: "Thursday"
       condition: "Sunny"
       high_temp: 78
       low_temp: 60
+      precipitation_chance: "5%"
+      humidity: 55
+      wind_speed: 10
+      wind_direction: "E"
+      sunrise: "06:14:00"
+      sunset: "19:33:00"
+      
+    - date: "2025-04-11"
+      day_of_week: "Friday"
+      condition: "Mostly sunny"
+      high_temp: 76
+      low_temp: 59
+      precipitation_chance: "10%"
+      humidity: 60
+      wind_speed: 12
+      wind_direction: "SE"
+      sunrise: "06:12:00"
+      sunset: "19:34:00"
+      
     - date: "2025-04-12"
+      day_of_week: "Saturday"
       condition: "Rain showers"
       high_temp: 70
       low_temp: 58
+      precipitation_chance: "70%"
+      humidity: 75
+      wind_speed: 15
+      wind_direction: "S"
+      sunrise: "06:11:00"
+      sunset: "19:35:00"
+      
+    - date: "2025-04-13"
+      day_of_week: "Sunday"
+      condition: "Scattered thunderstorms"
+      high_temp: 68
+      low_temp: 55
+      precipitation_chance: "80%"
+      humidity: 80
+      wind_speed: 18
+      wind_direction: "SW"
+      sunrise: "06:10:00"
+      sunset: "19:36:00"
+      
+    - date: "2025-04-14"
+      day_of_week: "Monday"
+      condition: "Partly cloudy"
+      high_temp: 72
+      low_temp: 57
+      precipitation_chance: "30%"
+      humidity: 65
+      wind_speed: 10
+      wind_direction: "W"
+      sunrise: "06:09:00"
+      sunset: "19:37:00"
+  
+  alerts:
+    - type: "Weather Advisory"
+      description: "Potential for heavy rain on Saturday afternoon"
+      severity: "Moderate"
+      start_time: "2025-04-12T13:00:00-04:00"
+      end_time: "2025-04-12T22:00:00-04:00"

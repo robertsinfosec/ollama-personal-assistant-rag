@@ -1,40 +1,182 @@
 ## Transportation
-{% if transportation %}
-  {% if transportation.vehicles %}
-- **Vehicles**:
-  {% for vehicle in transportation.vehicles %}
-  - {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.year }}{% if vehicle.primary %} (Primary){% endif %}
-    {% if vehicle.purchase_date %}- Purchased: {{ vehicle.purchase_date }}{% endif %}
-    {% if vehicle.license_plate %}- License Plate: {{ vehicle.license_plate }}{% endif %}
-    {% if vehicle.primary_driver %}- Primary Driver: {{ vehicle.primary_driver }}{% endif %}
-    {% if vehicle.insurance %}
-    - Insurance:
-      {% if vehicle.insurance.company %}- Company: {{ vehicle.insurance.company }}{% endif %}
-      {% if vehicle.insurance.policy %}- Policy: {{ vehicle.insurance.policy }}{% endif %}
-      {% if vehicle.insurance.renewal_date %}- Renewal: {{ vehicle.insurance.renewal_date }}{% endif %}
-    {% endif %}
-    {% if vehicle.maintenance %}
-    - Maintenance:
-      {% if vehicle.maintenance.last_service_date %}- Last Service: {{ vehicle.maintenance.last_service_date }}{% endif %}
-      {% if vehicle.maintenance.next_service_date %}- Next Service: {{ vehicle.maintenance.next_service_date }}{% endif %}
-      {% if vehicle.maintenance.next_service_miles %}- Next Service Due at: {{ vehicle.maintenance.next_service_miles }} miles{% endif %}
-    {% endif %}
-  {% endfor %}
-  {% endif %}
 
-  {% if transportation.public_transit %}- **Public Transit**: {{ transportation.public_transit }}{% endif %}
+{% if transportation is defined %}
+### Vehicles
 
-  {% if transportation.travel_preferences %}
-- **Travel Preferences**:
-  {% if transportation.travel_preferences.preferred_airline %}
-  - Airline: {{ transportation.travel_preferences.preferred_airline }}
-    {% if transportation.travel_preferences.airline_status %}- Status: {{ transportation.travel_preferences.airline_status }}{% endif %}
-    {% if transportation.travel_preferences.membership_number %}- Member #: {{ transportation.travel_preferences.membership_number }}{% endif %}
-  {% endif %}
-  {% if transportation.travel_preferences.preferred_hotel_chain %}
-  - Hotel: {{ transportation.travel_preferences.preferred_hotel_chain }}
-    {% if transportation.travel_preferences.hotel_status %}- Status: {{ transportation.travel_preferences.hotel_status }}{% endif %}
-    {% if transportation.travel_preferences.hotel_membership %}- Member #: {{ transportation.travel_preferences.hotel_membership }}{% endif %}
-  {% endif %}
-  {% endif %}
+{% if transportation.vehicles %}
+#### Personal Vehicles
+
+{% if transportation.vehicles | selectattr("type", "equalto", "Car") | list | length > 0 -%}
+| Type | Make & Model | Year | License Plate | Primary Driver |
+|------|-------------|------|--------------|---------------|
+{% for vehicle in transportation.vehicles if vehicle.type == "Car" -%}
+| {{ vehicle.type }} | {{ vehicle.make }} {{ vehicle.model }} | {{ vehicle.year }} | {{ vehicle.license_plate }} | {{ vehicle.primary_driver }} |
+{% endfor -%}
+
+##### Vehicle Details
+
+{% for vehicle in transportation.vehicles if vehicle.type == "Car" -%}
+**{{ vehicle.make }} {{ vehicle.model }} ({{ vehicle.year }})**
+- **Purchase Date:** `{{ vehicle.purchase_date }}`
+- **Insurance:** {{ vehicle.insurance.company }} (Policy: {{ vehicle.insurance.policy }})
+{%- if vehicle.insurance.renewal_date is defined %}
+- **Renewal Date:** `{{ vehicle.insurance.renewal_date }}`
+{%- endif %}
+- **Maintenance:**
+  - Last Service: `{{ vehicle.maintenance.last_service_date }}`
+  - Next Service: `{{ vehicle.maintenance.next_service_date }}` or {{ vehicle.maintenance.next_service_miles }} miles
+{% if not loop.last %}
+
+{% endif -%}
+{% endfor -%}
+{% endif %}
+
+{% if transportation.vehicles | selectattr("type", "equalto", "Bicycle") | list | length > 0 -%}
+#### Bicycles
+
+| Make & Model | Year | Primary User | Serial Number |
+|-------------|------|-------------|---------------|
+{% for bike in transportation.vehicles if bike.type == "Bicycle" -%}
+| {{ bike.make }} {{ bike.model }} | {{ bike.year }} | {{ bike.primary_user }} | {{ bike.serial_number }} |
+{% endfor -%}
+
+##### Bicycle Details
+{% for bike in transportation.vehicles if bike.type == "Bicycle" -%}
+**{{ bike.make }} {{ bike.model }}**
+- **Purchase Date:** `{{ bike.purchase_date }}`
+- **Maintenance:**
+  - Last Service: `{{ bike.maintenance.last_service_date }}`
+  - Next Service: `{{ bike.maintenance.next_service_date }}`
+{%- if bike.accessories is defined and bike.accessories %}
+- **Accessories:**
+{% for accessory in bike.accessories -%}
+  - {{ accessory }}
+{% endfor -%}
+{%- endif %}
+{% if not loop.last %}
+
+{% endif -%}
+{% endfor -%}
+{% endif -%}
+{% else %}
+No vehicle information available.
+{% endif %}
+
+{% if transportation.public_transport is defined and transportation.public_transport %}
+### Public Transportation
+
+**Primary City:** {{ transportation.public_transport.primary_city }}
+
+{% if transportation.public_transport.preferred_options is defined and transportation.public_transport.preferred_options -%}
+#### Preferred Options
+{% for option in transportation.public_transport.preferred_options -%}
+**{{ option.type }} - {{ option.provider }}**
+{% if option.pass_type is defined -%}
+- Pass Type: {{ option.pass_type }} (${{ option.pass_cost }})
+{% endif -%}
+{% if option.frequent_routes is defined and option.frequent_routes -%}
+- Frequent Routes:
+{% for route in option.frequent_routes -%}
+  - {{ route.route }}: {{ route.from }} → {{ route.to }}{% if route.typical_cost is defined %} (${{ route.typical_cost }}){% endif %}
+{% endfor -%}
+{% endif -%}
+{% if not loop.last %}
+
+{% endif -%}
+{% endfor -%}
+{% endif -%}
+{% endif %}
+
+{% if transportation.commute is defined and transportation.commute %}
+### Commute Information
+
+| Destination | Primary Method | Distance | Time | Alternative Method | Alt. Time |
+|-------------|---------------|----------|------|-------------------|----------|
+{%- if transportation.commute.work is defined %}
+| Work | {{ transportation.commute.work.primary_method }} | {{ transportation.commute.work.distance_miles }} miles | {{ transportation.commute.work.typical_time_minutes }} min | {{ transportation.commute.work.alternate_method }} | {{ transportation.commute.work.alternate_time_minutes }} min |
+{%- endif %}
+{%- if transportation.commute.shopping is defined %}
+| Shopping | {{ transportation.commute.shopping.primary_method }} | {{ transportation.commute.shopping.distance_miles }} miles | {{ transportation.commute.shopping.typical_time_minutes }} min | {{ transportation.commute.shopping.alternate_method }} | {{ transportation.commute.shopping.alternate_time_minutes }} min |
+{%- endif %}
+{%- if transportation.commute.school is defined %}
+| School | {{ transportation.commute.school.primary_method }} | {{ transportation.commute.school.distance_miles }} miles | {{ transportation.commute.school.typical_time_minutes }} min | {{ transportation.commute.school.alternate_method }} | {{ transportation.commute.school.alternate_time_minutes }} min |
+{%- endif %}
+{% endif %}
+
+{% if transportation.rideshare is defined and transportation.rideshare.preferred_services %}
+### Rideshare Services
+
+| Service | Account | Payment Method |
+|---------|---------|---------------|
+{%- for service in transportation.rideshare.preferred_services %}
+| {{ service.name }} | {{ service.account }} | {{ service.payment_method }} |
+{%- endfor %}
+{% endif %}
+
+{% if transportation.travel_preferences is defined %}
+### Travel Preferences
+
+{% if transportation.travel_preferences.frequent_flyer_programs is defined and transportation.travel_preferences.frequent_flyer_programs -%}
+#### Airline Programs
+
+| Airline | Status | Membership # | Miles |
+|---------|--------|-------------|-------|
+{% for program in transportation.travel_preferences.frequent_flyer_programs -%}
+| {{ program.airline }} | {{ program.status }} | {{ program.number }} | {{ "{:,}".format(program.miles) }} |
+{% endfor -%}
+{% endif %}
+
+{% if transportation.travel_preferences.hotel_programs is defined and transportation.travel_preferences.hotel_programs -%}
+#### Hotel Programs
+
+| Hotel Chain | Status | Membership # | Points |
+|------------|--------|-------------|--------|
+{% for program in transportation.travel_preferences.hotel_programs -%}
+| {{ program.chain }} | {{ program.status }} | {{ program.number }} | {{ "{:,}".format(program.points) }} |
+{% endfor -%}
+{% endif %}
+
+{% if transportation.travel_preferences.car_rental is defined -%}
+#### Car Rental
+
+**Preferred Company:** {{ transportation.travel_preferences.car_rental.preferred_company }}
+- Membership #: {{ transportation.travel_preferences.car_rental.membership_number }}
+- Status: {{ transportation.travel_preferences.car_rental.status }}
+- Insurance Preference: {{ transportation.travel_preferences.car_rental.insurance_preference }}
+{% endif %}
+
+{% if transportation.travel_preferences.travel_insurance is defined -%}
+#### Travel Insurance
+
+**Provider:** {{ transportation.travel_preferences.travel_insurance.provider }}
+- Policy Type: {{ transportation.travel_preferences.travel_insurance.policy }}
+- Policy #: {{ transportation.travel_preferences.travel_insurance.policy_number }}
+- Renewal Date: `{{ transportation.travel_preferences.travel_insurance.renewal_date }}`
+- Coverage:
+  - Medical: ${{ "{:,}".format(transportation.travel_preferences.travel_insurance.coverage.medical) }}
+  - Evacuation: ${{ "{:,}".format(transportation.travel_preferences.travel_insurance.coverage.evacuation) }}
+  - Trip Cancellation: {% if transportation.travel_preferences.travel_insurance.coverage.trip_cancellation %}Yes{% else %}No{% endif %}
+  - Baggage: {% if transportation.travel_preferences.travel_insurance.coverage.baggage %}Yes{% else %}No{% endif %}
+{% endif %}
+
+{% if transportation.travel_preferences.passport is defined or 
+      transportation.travel_preferences.tsa_precheck is defined or 
+      transportation.travel_preferences.global_entry is defined -%}
+#### Travel Documents & Trusted Traveler Programs
+
+| Document Type | Number | Expiration Date |
+|--------------|--------|----------------|
+{%- if transportation.travel_preferences.passport is defined %}
+| Passport ({{ transportation.travel_preferences.passport.country }}) | {{ transportation.travel_preferences.passport.number }} | `{{ transportation.travel_preferences.passport.expiration_date }}` |
+{%- endif %}
+{%- if transportation.travel_preferences.tsa_precheck is defined and transportation.travel_preferences.tsa_precheck %}
+| TSA PreCheck | {{ transportation.travel_preferences.tsa_precheck_number }} | `{{ transportation.travel_preferences.tsa_precheck_expiration }}` |
+{%- endif %}
+{%- if transportation.travel_preferences.global_entry is defined and transportation.travel_preferences.global_entry %}
+| Global Entry | {{ transportation.travel_preferences.global_entry_number }} | `{{ transportation.travel_preferences.global_entry_expiration }}` |
+{%- endif %}
+{% endif -%}
+{% endif %}
+{% else %}
+No transportation information available.
 {% endif %}

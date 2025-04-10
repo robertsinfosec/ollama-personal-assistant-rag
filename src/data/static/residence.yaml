@@ -1,0 +1,285 @@
+# Home information
+residence:
+  current_residence:
+    type: "single_family_house"  # single_family_house, apartment, condo, townhouse, farm, etc.
+    occupancy_type: "owned"  # owned, rented, leased
+    address:
+      street: "123 Maple Street"
+      unit: ""
+      city: "Allentown"
+      state: "PA"
+      zip: "18101"
+      country: "USA"
+      parcel_id: "AB-123456"  # County/city property ID
+      move_in_date: "2018-07-15"
+    
+    # Ownership details (if owned)
+    ownership:
+      purchase_date: "2018-07-15"
+      purchase_price: 450000
+      current_value: 525000
+      last_appraisal_date: "2023-09-15"
+      mortgage:
+        lender: "First National Bank"
+        account_number: "MORT-123456789"
+        original_amount: 360000
+        current_balance: 315000
+        interest_rate: 3.25
+        type: "30-year fixed"
+        payment_amount: 2100
+        payment_due_date: "1st of month"
+        escrow_included: true
+        insurance_included: true
+      property_tax:
+        annual_amount: 8500
+        payment_schedule: "January 31, July 31"
+        last_assessment_date: "2023-01-15"
+        last_assessment_value: 475000
+    
+    # Rental details (if rented)
+    rental:
+      landlord:
+        name: ""
+        company: ""
+        phone: ""
+        email: ""
+        address: ""
+      lease:
+        start_date: ""
+        end_date: ""
+        monthly_rent: null
+        security_deposit: null
+        pet_deposit: null
+        utilities_included: []
+        payment_method: ""
+        payment_due_date: ""
+        notice_period: ""
+    
+    # Property details
+    property:
+      lot_size: "0.35 acres"
+      living_area: "2,800 sq ft"
+      year_built: 1995
+      bedrooms: 4
+      bathrooms: 2.5
+      garage_capacity: 2
+      basement: "finished walkout"
+      stories: 2
+      features:
+        - "Central air conditioning"
+        - "Gas heating"
+        - "Hardwood floors"
+        - "Granite countertops"
+        - "Smart thermostat"
+        - "Security system"
+    
+    # Systems and mechanicals
+    systems:
+      hvac:
+        heating:
+          type: "Gas forced air"
+          brand: "Carrier"
+          model: "58TN-060"
+          install_date: "2020-03-15"
+          last_service: "2024-02-10"
+          service_interval: "annual"
+          next_service_due: "2025-02-10"
+        cooling:
+          type: "Central air"
+          brand: "Carrier"
+          model: "24ANA736"
+          install_date: "2020-03-15"
+          last_service: "2024-02-10"
+          service_interval: "annual"
+          next_service_due: "2025-02-10"
+        thermostat:
+          brand: "Nest"
+          model: "Learning Thermostat 3rd Gen"
+          install_date: "2020-03-15"
+          
+      water:
+        heater:
+          type: "Gas tankless"
+          brand: "Rinnai"
+          model: "RU199iN"
+          install_date: "2019-08-20"
+          last_service: "2023-08-20"
+          service_interval: "annual"
+          next_service_due: "2024-08-20"
+        softener:
+          brand: "Culligan"
+          model: "HE-1.25"
+          install_date: "2019-09-01"
+          last_service: "2024-01-15"
+          service_interval: "6 months"
+          next_service_due: "2024-07-15"
+        filtration:
+          type: "Reverse osmosis"
+          brand: "Culligan"
+          model: "Aqua-Cleer"
+          install_date: "2019-09-01"
+          last_filter_change: "2024-01-15"
+          change_interval: "6 months"
+          next_change_due: "2024-07-15"
+          
+      electrical:
+        service_size: "200 amp"
+        panel_brand: "Square D"
+        panel_age: "2018"
+        generator:
+          brand: "Generac"
+          model: "Guardian 24kW"
+          install_date: "2020-06-15"
+          last_service: "2024-03-01"
+          service_interval: "annual"
+          next_service_due: "2025-03-01"
+          
+      security:
+        system:
+          provider: "ADT"
+          install_date: "2018-08-01"
+          features:
+            - "Door sensors"
+            - "Window sensors"
+            - "Motion detectors"
+            - "Cameras"
+            - "Smoke/CO detectors"
+          monthly_cost: 45
+        
+      smart_home:
+        hub: "Samsung SmartThings"
+        devices:
+          - type: "Doorbell"
+            brand: "Ring"
+            model: "Pro 2"
+          - type: "Door locks"
+            brand: "Yale"
+            model: "Assure Lock 2"
+          - type: "Garage door"
+            brand: "Chamberlain"
+            model: "MyQ"
+    
+    # Service providers
+    service_providers:
+      hvac:
+        company: "Comfort Heating & Cooling"
+        contact: "Bob Wilson"
+        phone: "(555) 234-5678"
+        email: "service@comforthvac.com"
+        service_plan: "Annual maintenance contract"
+        emergency_service: true
+        
+      plumbing:
+        company: "Quick Plumbing Solutions"
+        contact: "Mike Johnson"
+        phone: "(555) 345-6789"
+        email: "dispatch@quickplumbing.com"
+        emergency_service: true
+        
+      electrical:
+        company: "Power Electric Services"
+        contact: "Dave Smith"
+        phone: "(555) 456-7890"
+        email: "service@powerelectric.com"
+        emergency_service: true
+        
+      lawn:
+        company: "Green Thumb Landscaping"
+        contact: "Sarah Brown"
+        phone: "(555) 567-8901"
+        email: "schedule@greenthumb.com"
+        service_schedule: "Weekly mowing, Spring/Fall cleanup"
+        
+      pest_control:
+        company: "Bug Busters"
+        contact: "Tom Miller"
+        phone: "(555) 678-9012"
+        email: "service@bugbusters.com"
+        service_schedule: "Quarterly"
+        last_service: "2024-01-15"
+        next_service: "2024-04-15"
+        
+      housekeeping:
+        company: "Spotless Cleaning Services"
+        contact: "Maria Garcia"
+        phone: "(555) 789-0123"
+        email: "schedule@spotlesscleaning.com"
+        service_schedule: "Bi-weekly"
+        service_day: "Every other Thursday"
+        
+      snow_removal:
+        company: "Winter Warriors"
+        contact: "Pete Anderson"
+        phone: "(555) 890-1234"
+        email: "dispatch@winterwarriors.com"
+        service_trigger: "2 inches accumulation"
+        
+    # Maintenance schedule
+    maintenance_schedule:
+      annual:
+        - task: "Chimney inspection and cleaning"
+          due: "September 2024"
+          provider: "Clean Sweep Chimney Service"
+          phone: "(555) 901-2345"
+        - task: "Gutter cleaning"
+          due: "November 2024"
+          provider: "Green Thumb Landscaping"
+          phone: "(555) 567-8901"
+        - task: "Roof inspection"
+          due: "May 2024"
+          provider: "Top Notch Roofing"
+          phone: "(555) 012-3456"
+          
+      seasonal:
+        spring:
+          - task: "HVAC summer prep"
+            due: "March 2024"
+            provider: "Comfort Heating & Cooling"
+          - task: "Window washing"
+            due: "April 2024"
+            provider: "Crystal Clear Windows"
+        fall:
+          - task: "HVAC winter prep"
+            due: "September 2024"
+            provider: "Comfort Heating & Cooling"
+          - task: "Weatherization check"
+            due: "October 2024"
+            provider: "Handyman Services"
+            
+      monthly:
+        - task: "HVAC filter replacement"
+          due: "15th of each month"
+          diy: true
+        - task: "Water softener salt check"
+          due: "1st of each month"
+          diy: true
+          
+    # Emergency contacts
+    emergency_contacts:
+      utility_emergency:
+        electric: "(555) 123-4567"
+        gas: "(555) 234-5678"
+        water: "(555) 345-6789"
+      police_non_emergency: "(555) 456-7890"
+      fire_non_emergency: "(555) 567-8901"
+      neighborhood_watch: "(555) 678-9012"
+      
+    # Insurance
+    insurance:
+      provider: "State Farm"
+      policy_number: "HO-123456789"
+      agent:
+        name: "Jane Wilson"
+        phone: "(555) 789-0123"
+        email: "jane.wilson@statefarm.com"
+      coverage:
+        dwelling: 450000
+        personal_property: 225000
+        liability: 500000
+        deductible: 2000
+      premium:
+        amount: 2100
+        frequency: "annual"
+        due_date: "July 15"
+      last_review: "2023-07-15"
+      next_review: "2024-07-15"

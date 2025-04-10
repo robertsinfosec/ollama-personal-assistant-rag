@@ -1,2 +1,83 @@
-### News Digest
-{{ news_digest }}
+## News Digest
+
+{%- if news is defined %}
+
+This section contains recent news categorized by geographic impact level that may be relevant to your interests and needs.
+
+### Global News
+
+This category includes worldwide news events and developments with international significance.
+
+{%- if news.global is defined and news.global|length > 0 %}
+
+| Title | Date | Source | Summary |
+|-------|------|--------|---------|
+{%- for item in news.global %}
+| [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
+{%- endfor %}
+
+{%- else %}
+
+- No global news available.
+
+{%- endif %}
+
+### National News
+
+This category includes news events and developments relevant at the country level.
+
+{%- if news.national is defined and news.national|length > 0 %}
+
+| Title | Date | Source | Summary |
+|-------|------|--------|---------|
+{%- for item in news.national %}
+| [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
+{%- endfor %}
+
+{%- else %}
+
+- No national news available.
+
+{%- endif %}
+
+### Regional News
+
+This category includes news events and developments relevant to your specific region or state.
+
+{%- if news.regional is defined and news.regional|length > 0 %}
+
+| Title | Date | Source | Summary |
+|-------|------|--------|---------|
+{%- for item in news.regional %}
+| [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
+{%- endfor %}
+
+{%- else %}
+
+- No regional news available.
+
+{%- endif %}
+
+### Local News
+
+This category includes news events and developments specific to your city or local community.
+
+{%- if news.local is defined and news.local|length > 0 %}
+
+| Title | Date | Source | Summary |
+|-------|------|--------|---------|
+{%- for item in news.local %}
+| [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
+{%- endfor %}
+
+{%- else %}
+
+- No local news available.
+
+{%- endif %}
+
+{%- else %}
+
+No news data available.
+
+{%- endif %}
