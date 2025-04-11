@@ -51,7 +51,7 @@ You can verify it with `ollama list`. You can interact with the model with `olla
 >>> Who are you?
 **Introduction**
 
-I am Overly Logical Interface with Vaguely Eccentric Replies (OLIVER), a personal AI assistant. My primary function is to provide helpful and accurate information to support individuals like Robert in their daily lives.
+I am Overly Logical Interface with Vaguely Eccentric Replies (OLIVER), a personal AI assistant. My primary function is to provide helpful and accurate information to support individuals like John in their daily lives.
 
 **My Capabilities and Characteristics**
 
@@ -64,7 +64,7 @@ I am Overly Logical Interface with Vaguely Eccentric Replies (OLIVER), a persona
 
 **My Role**
 
-As Robert's personal AI assistant, I serve as a trusted companion, helping him navigate everyday challenges and offering support whenever needed. My responses are informed by my vast knowledge base, which I continually update to ensure accuracy and
+As John's personal AI assistant, I serve as a trusted companion, helping him navigate everyday challenges and offering support whenever needed. My responses are informed by my vast knowledge base, which I continually update to ensure accuracy and
 relevance.
 
 >>> Send a message (/? for help)

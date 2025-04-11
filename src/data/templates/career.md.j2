@@ -1,15 +1,19 @@
 ## Career
+<!-- METADATA: SECTION_TYPE=career SEARCH_KEYWORDS=career,job,employment,work,profession,occupation,position,company,workplace,professional -->
 
 Information about professional history, skills, and career goals.
 
 {% if career is defined and career.current is defined -%}
 ### Current Position
+<!-- SEMANTIC_SEARCH_KEYWORDS: current job, employment, workplace, company, position, role, job title, employer, where he works -->
 
 Information about the individual's current employment.
 
 | Position | Company | Location | Start Date |
 |----------|---------|----------|------------|
 | {{ career.current.position or 'N/A' }} | {{ career.current.company or 'N/A' }} | {{ career.current.location or 'N/A' }} | `{{ career.current.start_date or 'N/A' }}` |
+
+<!-- CAREER_SUMMARY John currently works as a {{ career.current.position }} at {{ career.current.company }} in {{ career.current.location }} since {{ career.current.start_date }}. -->
 
 {% if career.current.responsibilities is defined and career.current.responsibilities -%}
 #### Responsibilities
@@ -64,11 +68,13 @@ Information about the individual's current employment.
 {% endfor %}
 {% endif %}
 {% else %}
+<!-- CAREER_SUMMARY John is not currently employed. -->
 - No current position information available.
 {% endif %}
 
 {% if career is defined and career.previous is defined and career.previous -%}
 ### Previous Employment
+<!-- SEMANTIC_SEARCH_KEYWORDS: previous jobs, work history, employment history, past positions, former employers, career path -->
 
 Information about the individual's prior work experience.
 
@@ -77,12 +83,16 @@ Information about the individual's prior work experience.
 {% for job in career.previous -%}
 | {{ job.position or 'N/A' }} | {{ job.company or 'N/A' }} | {{ job.location or 'N/A' }} | `{{ job.start_date or 'N/A' }}` | `{{ job.end_date or 'N/A' }}` |
 {% endfor %}
+
+<!-- EMPLOYMENT_HISTORY John has previously worked at {{ career.previous|map(attribute='company')|join(', ') }}. -->
 {% else %}
+<!-- EMPLOYMENT_HISTORY John has no previous employment history on record. -->
 - No previous employment information available.
 {% endif %}
 
 {% if career is defined and career.skills is defined and career.skills -%}
 ### Skills
+<!-- SEMANTIC_SEARCH_KEYWORDS: professional skills, capabilities, competencies, expertise, technical skills, proficiencies -->
 
 Professional capabilities and technical competencies.
 
@@ -91,12 +101,16 @@ Professional capabilities and technical competencies.
 {% for skill in career.skills -%}
 | {{ skill }} |
 {% endfor %}
+
+<!-- SKILLS_SUMMARY John's professional skills include {{ career.skills|join(', ') }}. -->
 {% else %}
+<!-- SKILLS_SUMMARY No specific professional skills are recorded for John. -->
 - No skills information available.
 {% endif %}
 
 {% if career is defined and career.goals is defined -%}
 ### Professional Goals
+<!-- SEMANTIC_SEARCH_KEYWORDS: career goals, professional objectives, career aspirations, career plans, professional development -->
 
 Career objectives for different time horizons.
 

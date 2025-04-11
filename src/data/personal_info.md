@@ -2,14 +2,16 @@
 
 Below are the details about the person you are assisting.
 
-> - **Generated on:** `2025-04-10T07:03:44 EDT`
+> - **Generated on:** `2025-04-10T15:35:02 EDT`
 > - **Purpose:** Retrieval Augmented Generation (RAG) API Endpoint
 
 ## Personal Information
+<!-- METADATA: SECTION_TYPE=personal SEARCH_KEYWORDS=personal,profile,contact,details,identity,information,owner,about me,name,birthday,age -->
 
 Below is the personal dossier of the individual you are assisting.
 
 ### About Me
+<!-- SEMANTIC_SEARCH_KEYWORDS: personal details, personal information, identity, who I am, personal profile, basic information, biographical information -->
 
 - **Full Name:** John Edwards Doe
 - **Nickname:** Johnny
@@ -18,7 +20,10 @@ Below is the personal dossier of the individual you are assisting.
 - **Age:** `40`
 - **Citizenship:** United States
 
+<!-- IDENTITY_SUMMARY John Edwards Doe, also known as Johnny, is a 40-year-old United States citizen born in Allentown, Pennsylvania, USA on 1985-01-01. -->
+
 ### Languages
+<!-- SEMANTIC_SEARCH_KEYWORDS: languages spoken, language proficiency, multilingual, bilingual, foreign languages -->
 
 Information about spoken languages and proficiency levels.
 
@@ -28,7 +33,10 @@ Information about spoken languages and proficiency levels.
 | Spanish | conversational |
 | German | basic |
 
+
+<!-- LANGUAGE_SUMMARY John Edwards Doe speaks English (native), Spanish (conversational), German (basic). -->
 ### Contact Information
+<!-- SEMANTIC_SEARCH_KEYWORDS: contact details, email address, phone number, how to reach, contact methods, get in touch -->
 
 Below are the contact details for the individual.
 
@@ -41,6 +49,8 @@ Below are the email addresses associated with the individual.
 | Home | john.doe@email.com |
 | Work | j.doe@company.com |
 
+
+<!-- EMAIL_SUMMARY John Edwards Doe's primary email address is john.doe@email.com. -->
 #### Phone Numbers
 
 Below are the phone numbers associated with the individual.
@@ -79,12 +89,13 @@ Information about previous addresses of the individual.
 
 
 
-
 ## Family Information
+<!-- METADATA: SECTION_TYPE=family SEARCH_KEYWORDS=family,spouse,wife,husband,marriage,children,parents,father,mother,siblings,brothers,sisters,relatives -->
 
 Below is information about the individual's family members.
 
 ### Spouses
+<!-- SEMANTIC_SEARCH_KEYWORDS: spouse, wife, husband, married, marriage, wedding, marital status -->
 
 Information about the individual's current and past spouses.
 
@@ -93,6 +104,8 @@ Information about the individual's current and past spouses.
 | Current_spouse | Susan Marie Doe (née McCalister) | `1988-06-05` | Boston, Massachusetts | Current | `2014-06-15` | `None` |
 | Ex_spouse | Jane Elizabeth Smith | `1985-10-15` | Chicago, Illinois | Divorced | `2005-06-10` | `2012-03-15` |
 
+
+<!-- RELATIONSHIP_STATUS John is married to Susan Marie Doe (née McCalister). -->
 
 #### Susan Marie Doe (née McCalister) (Current_spouse)
 
@@ -128,6 +141,7 @@ Information about the individual's current and past spouses.
 
 
 ### Children
+<!-- SEMANTIC_SEARCH_KEYWORDS: children, kids, sons, daughters, offspring -->
 
 Information about the individual's children.
 
@@ -137,6 +151,8 @@ Information about the individual's children.
 | Son | Michael James Doe | `2016-09-12` | Allentown, PA | John Edwards Doe, Susan Marie Doe |
 
 
+<!-- CHILDREN_SUMMARY John has 2 children. Their names are Emily Rose Doe, Michael James Doe. -->
+
 #### Emily Rose Doe
 - **Notes:** Shared custody with Jane
 
@@ -145,6 +161,7 @@ Information about the individual's children.
 
 
 ### Parents
+<!-- SEMANTIC_SEARCH_KEYWORDS: parents, father, mother, dad, mom, biological parents, stepparents -->
 
 Information about the individual's parents.
 
@@ -153,6 +170,8 @@ Information about the individual's parents.
 | Father | David James Doe | `1951-08-30` | Pittsburgh, PA | Deceased | `2021-03-12` | Complications from heart disease |
 | Mother | Elizabeth Ann Doe (née Williams) | `1953-07-22` | Philadelphia, PA | Living | `N/A` | N/A |
 
+
+<!-- PARENTS_SUMMARY John's father is David James Doe and his mother is Elizabeth Ann Doe (née Williams). -->
 
 
 #### Elizabeth Ann Doe (née Williams) Contact Information
@@ -170,6 +189,7 @@ Information about the individual's parents.
 
 
 ### Siblings
+<!-- SEMANTIC_SEARCH_KEYWORDS: siblings, brothers, sisters, half-brothers, half-sisters, step-siblings -->
 
 Information about the individual's siblings.
 
@@ -178,6 +198,8 @@ Information about the individual's siblings.
 | Brother | Elias Michael Doe | `1991-04-17` | Allentown, PA | Living | Master Carpenter at Keystone Woodworking |
 | Sister | Miranda Elizabeth Davies (née Doe) | `1995-10-23` | Allentown, PA | Living | Marketing Manager at Digital Insights |
 
+
+<!-- SIBLINGS_SUMMARY John has 2 siblings. Their names are Elias Michael Doe, Miranda Elizabeth Davies (née Doe). -->
 
 #### Elias Michael Doe Details
 
@@ -229,6 +251,7 @@ Information about the individual's siblings.
 
 
 ### Pets
+<!-- SEMANTIC_SEARCH_KEYWORDS: pets, animals, dogs, cats, pet ownership -->
 
 #### Current Pets
 
@@ -276,8 +299,10 @@ Information about the individual's siblings.
 
 
 ## Education
+<!-- METADATA: SECTION_TYPE=education SEARCH_KEYWORDS=education,school,university,college,degree,graduation,academic,learning,major,studies,student,alma mater -->
 
 ### Degrees
+<!-- SEMANTIC_SEARCH_KEYWORDS: degrees, diplomas, college degrees, academic credentials, bachelor's, master's, PhD, graduation, major, university degrees -->
 
 Information about formal academic degrees obtained.
 
@@ -287,8 +312,11 @@ Information about formal academic degrees obtained.
 | **BS in Computer Science** | Penn State University | 2003-2007 |
 
 
+<!-- EDUCATION_SUMMARY John holds 2 degrees: MBA, BS in Computer Science from University of Pennsylvania, Penn State University. -->
+
 
 ### Certifications
+<!-- SEMANTIC_SEARCH_KEYWORDS: certifications, professional certifications, credentials, qualifications, certificates, professional development -->
 
 Information about professional certifications and their validity periods.
 
@@ -297,6 +325,8 @@ Information about professional certifications and their validity periods.
 | **Certified Scrum Product Owner** | November 2025 |
 | **Google Analytics Certification** | March 2026 |
 
+
+<!-- CERTIFICATIONS_SUMMARY John holds 2 professional certifications, including Certified Scrum Product Owner, Google Analytics Certification. -->
 
 
 ### Continuing Education
@@ -401,16 +431,20 @@ Information about professional development workshops and training sessions.
 
 
 ## Career
+<!-- METADATA: SECTION_TYPE=career SEARCH_KEYWORDS=career,job,employment,work,profession,occupation,position,company,workplace,professional -->
 
 Information about professional history, skills, and career goals.
 
 ### Current Position
+<!-- SEMANTIC_SEARCH_KEYWORDS: current job, employment, workplace, company, position, role, job title, employer, where he works -->
 
 Information about the individual's current employment.
 
 | Position | Company | Location | Start Date |
 |----------|---------|----------|------------|
 | Senior Product Manager | Innovatech Solutions | Allentown, PA | `2018-03-15` |
+
+<!-- CAREER_SUMMARY John currently works as a Senior Product Manager at Innovatech Solutions in Allentown, PA since 2018-03-15. -->
 
 #### Responsibilities
 
@@ -458,6 +492,7 @@ Information about the individual's current employment.
 
 
 ### Previous Employment
+<!-- SEMANTIC_SEARCH_KEYWORDS: previous jobs, work history, employment history, past positions, former employers, career path -->
 
 Information about the individual's prior work experience.
 
@@ -467,8 +502,11 @@ Information about the individual's prior work experience.
 | Associate Product Manager | Digital Innovations LLC | Pittsburgh, PA | `2012-07-15` | `2015-03-28` |
 
 
+<!-- EMPLOYMENT_HISTORY John has previously worked at TechForward Inc., Digital Innovations LLC. -->
+
 
 ### Skills
+<!-- SEMANTIC_SEARCH_KEYWORDS: professional skills, capabilities, competencies, expertise, technical skills, proficiencies -->
 
 Professional capabilities and technical competencies.
 
@@ -480,8 +518,11 @@ Professional capabilities and technical competencies.
 | SQL, basic Python |
 
 
+<!-- SKILLS_SUMMARY John's professional skills include Product roadmapping, Agile methodologies, Market analysis, SQL, basic Python. -->
+
 
 ### Professional Goals
+<!-- SEMANTIC_SEARCH_KEYWORDS: career goals, professional objectives, career aspirations, career plans, professional development -->
 
 Career objectives for different time horizons.
 
@@ -494,10 +535,12 @@ Career objectives for different time horizons.
 
 
 ## Finance
+<!-- METADATA: SECTION_TYPE=finance SEARCH_KEYWORDS=finance,money,banking,accounts,investments,retirement,bills,expenses,credit,financial,budget -->
 
 Information about financial accounts, credit cards, retirement plans, and recurring bills.
 
 ### Bank Accounts
+<!-- SEMANTIC_SEARCH_KEYWORDS: bank accounts, checking account, savings account, banking, account numbers, financial institutions -->
 
 Information about checking, savings, and investment accounts.
 
@@ -508,8 +551,11 @@ Information about checking, savings, and investment accounts.
 | Investment | Vanguard | xxxx9012 | Secondary | `2016-11-22` |
 
 
+<!-- BANK_ACCOUNTS_SUMMARY John maintains 3 bank accounts, including a Checking account at First National Bank, a Savings account at First National Bank, a Investment account at Vanguard. -->
+
 
 ### Credit Cards
+<!-- SEMANTIC_SEARCH_KEYWORDS: credit cards, debit cards, card payments, credit limit, card balances, payments due, due date -->
 
 Information about credit cards and their payment details.
 
@@ -518,8 +564,11 @@ Information about credit cards and their payment details.
 | Chase | Sapphire Preferred | 4321 | `2027-04-30` | `2019-04-15` | Primary | 15th of month |
 
 
+<!-- CREDIT_CARDS_SUMMARY John has 1 credit card from Chase. -->
+
 
 ### Retirement Accounts
+<!-- SEMANTIC_SEARCH_KEYWORDS: retirement accounts, 401k, IRA, pension, retirement savings, retirement planning, retirement funds -->
 
 Information about retirement savings and investment accounts.
 
@@ -531,6 +580,7 @@ Information about retirement savings and investment accounts.
 
 
 ### Bills & Recurring Payments
+<!-- SEMANTIC_SEARCH_KEYWORDS: bills, recurring payments, monthly expenses, utilities, subscriptions, payment due dates, autopay -->
 
 Information about regular financial obligations and scheduled payments.
 
@@ -726,13 +776,16 @@ Information about savings targets and progress toward financial objectives.
 
 
 ## Health
+<!-- METADATA: SECTION_TYPE=health SEARCH_KEYWORDS=health,medical,doctor,condition,medication,treatment,wellness,healthcare,illness,symptoms,diagnosis -->
 
 Information about medical history, conditions, healthcare providers, and wellness practices.
 
 **Blood Type:** O+
+<!-- BLOOD_TYPE_INFO John's blood type is O+. -->
 
 
 ### Allergies
+<!-- SEMANTIC_SEARCH_KEYWORDS: allergies, allergic reactions, sensitivities, allergens, medical allergies, medication allergies, food allergies -->
 
 Information about known allergic reactions and sensitivities.
 
@@ -740,9 +793,11 @@ Information about known allergic reactions and sensitivities.
 |----------|----------|-----------|----------|-------|
 | Penicillin | severe | `1992-03-15` | Hives, Difficulty breathing | Avoid all penicillin-derived antibiotics |
 | Peanuts | mild | `2005-11-08` | Skin rash | Can be in the same room but avoid consumption |
+<!-- ALLERGIES_SUMMARY John has 2 known allergies: Penicillin (severe), Peanuts (mild). -->
 
 
 ### Medical Conditions
+<!-- SEMANTIC_SEARCH_KEYWORDS: medical conditions, health problems, illnesses, diseases, diagnoses, chronic conditions, health issues -->
 
 Information about diagnosed health conditions and their management.
 
@@ -750,6 +805,7 @@ Information about diagnosed health conditions and their management.
 |-----------|-----------|--------|------------|------------|-------|
 | Mild asthma | `1997-05-20` | Controlled | Albuterol inhaler as needed | Dr. Amelia Washington | Triggered by vigorous exercise and pollen |
 | Occasional migraine headaches | `2010-04-12` | Managed | Sumatriptan 50mg as needed | Dr. Robert Jenkins (Neurologist) | Usually triggered by stress and lack of sleep |
+<!-- MEDICAL_SUMMARY John has the following medical conditions: Mild asthma (Controlled), Occasional migraine headaches (Managed). -->
 
 
 ### Healthcare Providers
@@ -918,12 +974,19 @@ Information about eye health and corrective measures.
 ## Residence
 
 
+<!-- METADATA: SECTION_TYPE=residence SEARCH_KEYWORDS=home,residence,live,address,location,city,state,zip,house,apartment,condo -->
+
 ### Residence Information
+<!-- SEMANTIC_SEARCH_KEYWORDS: current residence, living situation, home address, where John lives, current location, residence information, home location -->
 
 
 | Property Type | Occupancy | Address | Since |
 |--------------|-----------|---------|-------|
 | Single Family House | Owned | 123 Maple Street, Allentown, PA 18101 | `2018-07-15` |
+
+<!-- ADDRESS_SUMMARY John lives at 123 Maple Street, Allentown, PA 18101 since 2018-07-15. -->
+
+<!-- LOCATION_CONTEXT John's current home is in Allentown, PA. His residence is a single family house that he owns. -->
 
 #### Property Details
 
@@ -1111,9 +1174,11 @@ Information about eye health and corrective measures.
 
 
 ## Transportation
+<!-- METADATA: SECTION_TYPE=transportation SEARCH_KEYWORDS=transportation,vehicles,cars,driving,commute,travel,automobile,public transit,rideshare,flights,travel documents -->
 
 
 ### Vehicles
+<!-- SEMANTIC_SEARCH_KEYWORDS: cars, vehicles, automobile, driving, personal vehicles, car details, car insurance, car maintenance -->
 
 
 #### Personal Vehicles
@@ -1122,6 +1187,8 @@ Information about eye health and corrective measures.
 |------|-------------|------|--------------|---------------|
 | Car | Toyota RAV4 Hybrid | 2023 | ABC-1234 | John Edwards Doe |
 | Car | Honda Civic | 2018 | XYZ-5678 | Susan Marie Doe |
+<!-- VEHICLES_SUMMARY John owns 2 vehicles: 2023 Toyota RAV4 Hybrid, 2018 Honda Civic. -->
+
 ##### Vehicle Details
 
 **Toyota RAV4 Hybrid (2023)**
@@ -1142,6 +1209,7 @@ Information about eye health and corrective measures.
 
 
 #### Bicycles
+<!-- SEMANTIC_SEARCH_KEYWORDS: bicycles, bikes, cycling, bicycle maintenance, bike accessories -->
 
 | Make & Model | Year | Primary User | Serial Number |
 |-------------|------|-------------|---------------|
@@ -1162,8 +1230,11 @@ Information about eye health and corrective measures.
 
 
 ### Public Transportation
+<!-- SEMANTIC_SEARCH_KEYWORDS: public transit, bus, train, subway, metro, commuting options, transportation passes -->
 
 **Primary City:** Allentown
+
+<!-- PUBLIC_TRANSIT_SUMMARY John primarily uses public transportation in Allentown, favoring Bus and Train. -->
 
 #### Preferred Options
 **Bus - LANTA**
@@ -1180,11 +1251,14 @@ Information about eye health and corrective measures.
 
 
 ### Commute Information
+<!-- SEMANTIC_SEARCH_KEYWORDS: daily commute, commute time, distance to work, commuting options, travel to work -->
 
 | Destination | Primary Method | Distance | Time | Alternative Method | Alt. Time |
 |-------------|---------------|----------|------|-------------------|----------|
 | Work | Car | 12.5 miles | 25 min | Bus | 45 min |
 | Shopping | Car | 3.2 miles | 10 min | Bicycle | 20 min |
+
+<!-- COMMUTE_SUMMARY John's commute to work is 12.5 miles using Car which typically takes 25 minutes. -->
 
 
 
@@ -1247,11 +1321,13 @@ Information about eye health and corrective measures.
 
 
 ## Calendar
+<!-- METADATA: SECTION_TYPE=calendar SEARCH_KEYWORDS=calendar,schedule,appointments,meetings,events,agenda,dates,reminders,plans,schedule -->
 
 Information about scheduled events, meetings and appointments for past, present and future dates.
 
 
 ### Today's Schedule (`2025-04-09`, Wednesday)
+<!-- SEMANTIC_SEARCH_KEYWORDS: today's schedule, today's events, today's meetings, today's agenda, today's appointments, what's happening today -->
 
 A list of today's scheduled activities, appointments, and meetings.
 
@@ -1263,6 +1339,8 @@ A list of today's scheduled activities, appointments, and meetings.
 | 14:30 - 15:30 | Doctor's appointment | Dr. Chen's office | Health | Confirmed |
 | 16:30 - 17:30 | Project review | Microsoft Teams | Work | Confirmed |
 
+
+<!-- TODAYS_SCHEDULE_SUMMARY John has 5 events scheduled for today (2025-04-09): Morning review at 08:30, Team standup at 10:00, Lunch break at 12:00, Doctor's appointment at 14:30, Project review at 16:30. -->
 
 #### Morning review (08:30)
 
@@ -1290,6 +1368,7 @@ A list of today's scheduled activities, appointments, and meetings.
 
 
 ### Upcoming Schedule
+<!-- SEMANTIC_SEARCH_KEYWORDS: upcoming events, future events, scheduled appointments, upcoming meetings, future schedule, coming up, next few days -->
 
 Events and appointments scheduled in the near future.
 
@@ -1300,6 +1379,8 @@ Events and appointments scheduled in the near future.
 | 09:00 - 09:30 | Morning workout | Home gym | Personal | Tentative |
 | 12:00 - 13:30 | Lunch with David | The Bistro | Social | Confirmed |
 
+
+<!-- UPCOMING_DAY_1_SUMMARY On 2025-04-10 (Thursday), John has 2 events: Morning workout at 09:00, Lunch with David at 12:00. -->
 
 
 ##### Lunch with David Details
@@ -1319,6 +1400,8 @@ Events and appointments scheduled in the near future.
 | 17:30 - 19:00 | Happy hour | Downtown Brewery | Social | Tentative |
 
 
+<!-- UPCOMING_DAY_2_SUMMARY On 2025-04-11 (Friday), John has 2 events: Weekly team review at 14:00, Happy hour at 17:30. -->
+
 
 
 
@@ -1329,6 +1412,8 @@ Events and appointments scheduled in the near future.
 |------|-------|----------|------|--------|
 | 09:00 - 12:00 | Quarterly planning meeting | Conference room B | Work | Confirmed |
 
+
+<!-- UPCOMING_DAY_3_SUMMARY On 2025-04-15 (Tuesday), John has 1 event: Quarterly planning meeting at 09:00. -->
 
 ##### Quarterly planning meeting Details
 
@@ -1345,6 +1430,8 @@ Events and appointments scheduled in the near future.
 | All day | Mom's birthday |  | Family | Scheduled |
 
 
+<!-- UPCOMING_DAY_4_SUMMARY On 2025-04-20 (Sunday), John has 1 event: Mom's birthday at All day. -->
+
 
 
 
@@ -1354,6 +1441,8 @@ Events and appointments scheduled in the near future.
 |------|-------|----------|------|--------|
 | 09:00 - 17:00 | Annual industry conference | Convention Center | Work | Registered |
 
+
+<!-- UPCOMING_DAY_5_SUMMARY On 2025-05-15 (Thursday), John has 1 event: Annual industry conference at 09:00. -->
 
 
 
@@ -1418,10 +1507,12 @@ Regular events that occur on a repeating schedule.
 
 
 ## Recent Messages
+<!-- METADATA: SECTION_TYPE=messages SEARCH_KEYWORDS=messages,email,inbox,communication,emails,unread,correspondence,contacts,sent messages -->
 
 Last updated: 2025-04-09T08:30:00-04:00
 
 ### Inbox Summary
+<!-- SEMANTIC_SEARCH_KEYWORDS: inbox status, email counts, unread emails, unread messages, important emails, email summary -->
 
 This section provides an overview of your current email inbox status including unread message counts and total messages.
 
@@ -1431,7 +1522,10 @@ This section provides an overview of your current email inbox status including u
 | Important Unread | 2 |
 | Total in Inbox | 145 |
 
+<!-- INBOX_SUMMARY John has 5 unread messages in his inbox, 2 of which are marked as important. -->
+
 ### Messages Needing Response
+<!-- SEMANTIC_SEARCH_KEYWORDS: urgent emails, action required, reply needed, pending response, email follow-up, unanswered messages -->
 
 These messages require your attention and response, ordered by priority and deadline.
 
@@ -1440,7 +1534,10 @@ These messages require your attention and response, ordered by priority and dead
 | **Q2 Project Planning Review** | Victoria Martinez | 2025-04-08T10:45:00-04:00 | 2025-04-10T17:00:00-04:00 | high |
 | **Mom's birthday planning** | Elias Doe | 2025-04-06T14:20:00-04:00 | 2025-04-15T00:00:00-04:00 | medium |
 
+<!-- PENDING_RESPONSES John has 2 messages needing a response. -->
+
 ### Recent Incoming Messages
+<!-- SEMANTIC_SEARCH_KEYWORDS: recent emails, latest messages, incoming mail, received emails, new messages -->
 
 This section shows your most recent received emails with their status and metadata.
 
@@ -1463,10 +1560,12 @@ This section displays messages you have sent recently with their recipients and 
 | Re: Dinner plans | Susan Doe (spouse) | 2025-04-08T12:30:00-04:00 | None | Family | No | I should be home by 6pm. Let's do Italian tonight. I can pick up some wine on the way home. |
 
 ## News Digest
+<!-- METADATA: SECTION_TYPE=news SEARCH_KEYWORDS=news,current events,headlines,updates,articles,world news,local news,breaking news -->
 
 This section contains recent news categorized by geographic impact level that may be relevant to your interests and needs.
 
 ### Global News
+<!-- SEMANTIC_SEARCH_KEYWORDS: world news, international news, global headlines, worldwide events, international affairs -->
 
 This category includes worldwide news events and developments with international significance.
 
@@ -1475,7 +1574,10 @@ This category includes worldwide news events and developments with international
 | [World Bank announces new climate change initiative](https://www.reuters.com/business/environment/world-bank-launches-new-climate-change-initiative-2023-10-01/) | 2023-10-01 | Reuters | The World Bank has launched a new initiative to combat climate change, focusing on sustainable development and renewable energy. |
 | [Global stock markets rally amid economic recovery signs](https://www.bloomberg.com/news/articles/2023-10-02/global-stock-markets-rally-amid-economic-recovery-signs) | 2023-10-02 | Bloomberg | Global stock markets have shown signs of recovery as economic indicators suggest a rebound in growth. |
 
+<!-- GLOBAL_NEWS_SUMMARY Recent global headlines include World Bank announces new climate change initiative (Reuters), Global stock markets rally amid economic recovery signs (Bloomberg). -->
+
 ### National News
+<!-- SEMANTIC_SEARCH_KEYWORDS: national news, country news, domestic news, nationwide headlines, national headlines -->
 
 This category includes news events and developments relevant at the country level.
 
@@ -1484,7 +1586,10 @@ This category includes news events and developments relevant at the country leve
 | [US unemployment rate drops to 3.5%](https://www.cnn.com/2023/10/03/economy/us-unemployment-rate/index.html) | 2023-10-03 | CNN | The US unemployment rate has dropped to 3.5%, the lowest level in over a decade, signaling a strong labor market. |
 | [Congress passes new infrastructure bill](https://www.nytimes.com/2023/10/04/us/congress-infrastructure-bill.html) | 2023-10-04 | The New York Times | Congress has passed a new infrastructure bill aimed at improving transportation and broadband access across the country. |
 
+<!-- NATIONAL_NEWS_SUMMARY Recent national headlines include US unemployment rate drops to 3.5% (CNN), Congress passes new infrastructure bill (The New York Times). -->
+
 ### Regional News
+<!-- SEMANTIC_SEARCH_KEYWORDS: regional news, state news, provincial news, area news, nearby events -->
 
 This category includes news events and developments relevant to your specific region or state.
 
@@ -1494,7 +1599,10 @@ This category includes news events and developments relevant to your specific re
 | [Regional Drought Monitor reports worsening conditions](https://www.localweathernews.com/2023/10/06/regional-drought-monitor-reports-worsening-conditions/) | 2023-10-06 | Local Weather News | The Regional Drought Monitor has reported worsening drought conditions in several states, prompting concerns for agriculture and water supply. |
 | [Region Electric Company announces power outages](https://www.electricitytoday.com/2023/10/07/region-electric-company-announces-power-outages/) | 2023-10-07 | Electricity Today | The Region Electric Company has announced planned power outages for maintenance work, affecting several neighborhoods. |
 
+<!-- REGIONAL_NEWS_SUMMARY Recent regional headlines include Severe weather warning issued for the Midwest (Weather Channel), Regional Drought Monitor reports worsening conditions (Local Weather News), Region Electric Company announces power outages (Electricity Today). -->
+
 ### Local News
+<!-- SEMANTIC_SEARCH_KEYWORDS: local news, community news, city news, neighborhood news, local events -->
 
 This category includes news events and developments specific to your city or local community.
 
@@ -1503,11 +1611,15 @@ This category includes news events and developments specific to your city or loc
 | [Local school district announces new safety measures](https://www.localnewsnetwork.com/2023/10/05/local-school-district-announces-new-safety-measures/) | 2023-10-05 | Local News Network | The local school district has announced new safety measures in response to recent events, including increased security personnel and updated emergency protocols. |
 | [City council approves new park development plan](https://www.citygazette.com/2023/10/06/city-council-approves-new-park-development-plan/) | 2023-10-06 | City Gazette | The city council has approved a new development plan for a public park, which will include walking trails, playgrounds, and picnic areas. |
 
+<!-- LOCAL_NEWS_SUMMARY Recent local headlines include Local school district announces new safety measures (Local News Network), City council approves new park development plan (City Gazette). -->
+
 ## Task Management
+<!-- METADATA: SECTION_TYPE=tasks SEARCH_KEYWORDS=tasks,todo,to-do,projects,priorities,due dates,reminders,appointments,action items,deadlines -->
 
 This section outlines your current tasks and to-dos across various categories and priority levels. Last updated: 2025-04-09T08:30:00-04:00.
 
 ### Task Summary
+<!-- SEMANTIC_SEARCH_KEYWORDS: task summary, task overview, task status, task statistics -->
 
 Overview of your current task status and distribution.
 
@@ -1519,7 +1631,10 @@ Overview of your current task status and distribution.
 | Overdue | 1 |
 | Completed Today | 2 |
 
+<!-- TASKS_OVERVIEW John has 15 active tasks, with 3 urgent tasks, 5 due today, and 1 overdue. -->
+
 ### Urgent Tasks
+<!-- SEMANTIC_SEARCH_KEYWORDS: urgent tasks, high priority tasks, important tasks, critical tasks, immediate attention -->
 
 High-priority tasks requiring immediate attention.
 
@@ -1528,6 +1643,8 @@ High-priority tasks requiring immediate attention.
 | **Finalize Q4 budget proposal** | 2025-04-09T17:00:00-04:00 | Work | High | In Progress | 75% |
 | **Call plumber about leak in guest bathroom** | 2025-04-09T12:00:00-04:00 | Home | High | Not Started | 0% |
 | **Submit health insurance claim** | 2025-04-10T23:59:59-04:00 | Health | High | Not Started | 0% |
+
+<!-- URGENT_TASKS_SUMMARY John has 3 urgent tasks: Finalize Q4 budget proposal (due 2025-04-09T17:00:00-04:00), Call plumber about leak in guest bathroom (due 2025-04-09T12:00:00-04:00), Submit health insurance claim (due 2025-04-10T23:59:59-04:00). -->
 
 #### Finalize Q4 budget proposal Details
 
@@ -1542,6 +1659,7 @@ Water leaking from shower, need professional assessment
 Need to submit receipts from last doctor's visit before deadline
 
 ### Today's Tasks
+<!-- SEMANTIC_SEARCH_KEYWORDS: today's tasks, today's schedule, tasks due today, what to do today, daily agenda -->
 
 Tasks scheduled or due for completion today.
 
@@ -1603,10 +1721,12 @@ Regularly scheduled tasks and events.
 | **Gym workout** | Monday, Wednesday, Friday at 6:00 AM | Health | Medium |
 
 ## Weather Information
+<!-- METADATA: SECTION_TYPE=weather SEARCH_KEYWORDS=weather,forecast,temperature,conditions,rain,snow,precipitation,humidity,wind,climate -->
 
 Weather information for Boston, Massachusetts as of 2025-04-09T08:30:00-04:00. This data provides current conditions and forecasts to help plan your activities.
 
 ### Current Weather Conditions
+<!-- SEMANTIC_SEARCH_KEYWORDS: current weather, weather right now, today's weather, current temperature, outside weather, current conditions -->
 
 This section shows the current weather conditions and key meteorological metrics.
 
@@ -1614,13 +1734,18 @@ This section shows the current weather conditions and key meteorological metrics
 |-----------|-------------|------------|----------|------|----------|----------|------------|--------------------|
 | Partly cloudy | 68°F | 70°F | 65% | 8 mph NE | 1015 hPa | 4 | 10 miles | 20% |
 
+<!-- CURRENT_WEATHER_SUMMARY It's currently 68°F and Partly cloudy in Boston, Massachusetts. It feels like 70°F with 65% humidity and winds at 8 mph. -->
+
 ### Today's Forecast (2025-04-09)
+<!-- SEMANTIC_SEARCH_KEYWORDS: today's forecast, weather today, high temperature, low temperature, sunrise, sunset, rain chance -->
 
 Overview of today's weather with high and low temperatures, sun times, and general conditions.
 
 | Summary | High | Low | Sunrise | Sunset | Precipitation Chance | Humidity |
 |---------|------|-----|---------|--------|---------------------|----------|
 | Partly cloudy becoming mostly sunny | 75°F | 62°F | 06:15:00 | 19:32:00 | 20% | 65% |
+
+<!-- TODAY_FORECAST_SUMMARY The forecast for today is Partly cloudy becoming mostly sunny with a high of 75°F and a low of 62°F. There's a 20% chance of precipitation. -->
 
 ### Today's Hourly Forecast
 

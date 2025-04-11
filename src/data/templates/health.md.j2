@@ -1,13 +1,16 @@
 ## Health
+<!-- METADATA: SECTION_TYPE=health SEARCH_KEYWORDS=health,medical,doctor,condition,medication,treatment,wellness,healthcare,illness,symptoms,diagnosis -->
 
 Information about medical history, conditions, healthcare providers, and wellness practices.
 
 {% if health is defined and health.blood_type is defined -%}
 **Blood Type:** {{ health.blood_type }}
+<!-- BLOOD_TYPE_INFO John's blood type is {{ health.blood_type }}. -->
 {% endif %}
 
 {% if health is defined and health.allergies is defined and health.allergies -%}
 ### Allergies
+<!-- SEMANTIC_SEARCH_KEYWORDS: allergies, allergic reactions, sensitivities, allergens, medical allergies, medication allergies, food allergies -->
 
 Information about known allergic reactions and sensitivities.
 
@@ -16,12 +19,16 @@ Information about known allergic reactions and sensitivities.
 {% for allergy in health.allergies -%}
 | {{ allergy.name or 'N/A' }} | {{ allergy.severity or 'N/A' }} | `{{ allergy.diagnosed or 'N/A' }}` | {{ allergy.reactions | join(", ") if allergy.reactions is defined and allergy.reactions else 'N/A' }} | {{ allergy.notes or 'N/A' }} |
 {% endfor -%}
+
+<!-- ALLERGIES_SUMMARY John has {{ health.allergies|length }} known {{ "allergy" if health.allergies|length == 1 else "allergies" }}: {% for allergy in health.allergies %}{{ allergy.name }} ({{ allergy.severity }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
 {% else %}
+<!-- ALLERGIES_SUMMARY John has no known allergies. -->
 - No known allergies.
 {% endif %}
 
 {% if health is defined and health.medical_conditions is defined and health.medical_conditions -%}
 ### Medical Conditions
+<!-- SEMANTIC_SEARCH_KEYWORDS: medical conditions, health problems, illnesses, diseases, diagnoses, chronic conditions, health issues -->
 
 Information about diagnosed health conditions and their management.
 
@@ -30,7 +37,10 @@ Information about diagnosed health conditions and their management.
 {% for condition in health.medical_conditions -%}
 | {{ condition.name or 'N/A' }} | `{{ condition.diagnosed or 'N/A' }}` | {{ condition.status or 'N/A' }} | {{ condition.treatments | join(", ") if condition.treatments is defined and condition.treatments else 'N/A' }} | {{ condition.specialist or 'N/A' }} | {{ condition.notes or 'N/A' }} |
 {% endfor -%}
+
+<!-- MEDICAL_SUMMARY John has the following medical conditions: {% for condition in health.medical_conditions %}{{ condition.name }} ({{ condition.status }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
 {% else %}
+<!-- MEDICAL_SUMMARY John has no diagnosed medical conditions. -->
 - No medical conditions recorded.
 {% endif %}
 

@@ -1,12 +1,19 @@
 ## Residence
 
 {% if residence is defined and residence.current_residence is defined %}
+<!-- METADATA: SECTION_TYPE=residence SEARCH_KEYWORDS=home,residence,live,address,location,city,state,zip,house,apartment,condo -->
+
 ### Residence Information
+<!-- SEMANTIC_SEARCH_KEYWORDS: current residence, living situation, home address, where John lives, current location, residence information, home location -->
 
 {% set residence = residence.current_residence %}
 | Property Type | Occupancy | Address | Since |
 |--------------|-----------|---------|-------|
 | {{ residence.type|replace('_', ' ')|title }} | {{ residence.occupancy_type|title }} | {{ residence.address.street }}{% if residence.address.unit %}, {{ residence.address.unit }}{% endif %}, {{ residence.address.city }}, {{ residence.address.state }} {{ residence.address.zip }} | `{{ residence.address.move_in_date }}` |
+
+<!-- ADDRESS_SUMMARY John lives at {{ residence.address.street }}{% if residence.address.unit %}, {{ residence.address.unit }}{% endif %}, {{ residence.address.city }}, {{ residence.address.state }} {{ residence.address.zip }} since {{ residence.address.move_in_date }}. -->
+
+<!-- LOCATION_CONTEXT John's current home is in {{ residence.address.city }}, {{ residence.address.state }}. His residence is a {{ residence.type|replace('_', ' ') }} that he {{ 'owns' if residence.occupancy_type == 'owned' else 'rents' }}. -->
 
 {% if residence.property is defined and residence.property -%}
 #### Property Details

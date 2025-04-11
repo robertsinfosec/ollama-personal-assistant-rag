@@ -1,9 +1,11 @@
 ## Calendar
+<!-- METADATA: SECTION_TYPE=calendar SEARCH_KEYWORDS=calendar,schedule,appointments,meetings,events,agenda,dates,reminders,plans,schedule -->
 
 Information about scheduled events, meetings and appointments for past, present and future dates.
 
 {% if calendar is defined and calendar.today is defined %}
 ### Today's Schedule (`{{ calendar.today.date }}`, {{ calendar.today.day_of_week }})
+<!-- SEMANTIC_SEARCH_KEYWORDS: today's schedule, today's events, today's meetings, today's agenda, today's appointments, what's happening today -->
 
 A list of today's scheduled activities, appointments, and meetings.
 
@@ -13,6 +15,8 @@ A list of today's scheduled activities, appointments, and meetings.
 {% for event in calendar.today.events -%}
 | {{ event.time }}{% if event.end_time is defined %} - {{ event.end_time }}{% endif %} | {{ event.event }} | {{ event.location }} | {{ event.type|title }} | {{ event.status|title }} |
 {% endfor %}
+
+<!-- TODAYS_SCHEDULE_SUMMARY John has {{ calendar.today.events|length }} {{ "event" if calendar.today.events|length == 1 else "events" }} scheduled for today ({{ calendar.today.date }}): {% for event in calendar.today.events %}{{ event.event }} at {{ event.time }}{% if not loop.last %}, {% endif %}{% endfor %}. -->
 
 {% for event in calendar.today.events -%}
 {% if event.description is defined or event.attendees is defined or event.meeting_link is defined -%}
@@ -42,12 +46,14 @@ A list of today's scheduled activities, appointments, and meetings.
 {% endif %}
 {% endfor -%}
 {% else %}
+<!-- TODAYS_SCHEDULE_SUMMARY John has no events scheduled for today ({{ calendar.today.date }}). -->
 No events scheduled for today.
 {% endif -%}
 {% endif -%}
 
 {% if calendar is defined and calendar.upcoming is defined and calendar.upcoming %}
 ### Upcoming Schedule
+<!-- SEMANTIC_SEARCH_KEYWORDS: upcoming events, future events, scheduled appointments, upcoming meetings, future schedule, coming up, next few days -->
 
 Events and appointments scheduled in the near future.
 
@@ -60,6 +66,8 @@ Events and appointments scheduled in the near future.
 {% for event in day.events -%}
 | {% if event.time == "All day" %}All day{% else %}{{ event.time }}{% if event.end_time is defined %} - {{ event.end_time }}{% endif %}{% endif %} | {{ event.event }} | {{ event.location|default('') }} | {{ event.type|title }} | {{ event.status|default('Scheduled')|title }} |
 {% endfor %}
+
+<!-- UPCOMING_DAY_{{ loop.index }}_SUMMARY On {{ day.date }} ({{ day.day_of_week }}), John has {{ day.events|length }} {{ "event" if day.events|length == 1 else "events" }}: {% for event in day.events %}{{ event.event }} at {{ event.time }}{% if not loop.last %}, {% endif %}{% endfor %}. -->
 
 {% for event in day.events -%}
 {% if event.description is defined or event.attendees is defined or event.meeting_link is defined or event.address is defined -%}
@@ -92,6 +100,7 @@ Events and appointments scheduled in the near future.
 {% endif %}
 {% endfor -%}
 {% else %}
+<!-- UPCOMING_DAY_{{ loop.index }}_SUMMARY John has no events scheduled for {{ day.date }} ({{ day.day_of_week }}). -->
 No events scheduled.
 {% endif -%}
 {% if not loop.last %}
@@ -99,6 +108,7 @@ No events scheduled.
 {% endif -%}
 {% endfor -%}
 {% else %}
+<!-- UPCOMING_SCHEDULE_SUMMARY John has no upcoming events scheduled. -->
 No upcoming events scheduled.
 {% endif -%}
 

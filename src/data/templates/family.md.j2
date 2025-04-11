@@ -1,8 +1,10 @@
 ## Family Information
+<!-- METADATA: SECTION_TYPE=family SEARCH_KEYWORDS=family,spouse,wife,husband,marriage,children,parents,father,mother,siblings,brothers,sisters,relatives -->
 
 Below is information about the individual's family members.
 
 ### Spouses
+<!-- SEMANTIC_SEARCH_KEYWORDS: spouse, wife, husband, married, marriage, wedding, marital status -->
 
 {% if family is defined and family.spouses is defined and family.spouses -%}
 Information about the individual's current and past spouses.
@@ -12,6 +14,8 @@ Information about the individual's current and past spouses.
 {% for spouse in family.spouses -%}
 | {{ spouse.relation | capitalize }} | {{ spouse.vcard.fn or 'N/A' }} | `{{ spouse.vcard.bday or 'N/A' }}` | {{ spouse.birth.place if spouse.birth is defined and spouse.birth.place is defined else 'N/A' }} | {{ spouse.status | capitalize if spouse.status is defined else 'N/A' }} | `{{ spouse.relationship.marriage_date if spouse.relationship is defined and spouse.relationship.marriage_date is defined else 'N/A' }}` | `{{ spouse.relationship.divorce_date if spouse.relationship is defined and spouse.relationship.divorce_date is defined else 'N/A' }}` |
 {% endfor %}
+
+<!-- RELATIONSHIP_STATUS John is {{ "married to " + family.spouses[0].vcard.fn if family is defined and family.spouses is defined and family.spouses|length > 0 and family.spouses[0].status == "current" else "not currently married" }}. -->
 
 {% for spouse in family.spouses -%}
 #### {{ spouse.vcard.fn }} ({{ spouse.relation | capitalize }})
@@ -54,9 +58,11 @@ Information about the individual's current and past spouses.
 {% endfor %}
 {% else %}
 - No spouse information available.
+<!-- RELATIONSHIP_STATUS John is not married and has never been married. -->
 {% endif %}
 
 ### Children
+<!-- SEMANTIC_SEARCH_KEYWORDS: children, kids, sons, daughters, offspring -->
 
 {% if family is defined and family.children is defined and family.children -%}
 Information about the individual's children.
@@ -67,6 +73,8 @@ Information about the individual's children.
 | {{ child.relation | capitalize }} | {{ child.vcard.fn or 'N/A' }} | `{{ child.vcard.bday or 'N/A' }}` | {{ child.birth.place if child.birth is defined and child.birth.place is defined else 'N/A' }} | {{ child.parents | join(", ") if child.parents is defined and child.parents else 'N/A' }} |
 {% endfor %}
 
+<!-- CHILDREN_SUMMARY John has {{ family.children|length }} {{ "child" if family.children|length == 1 else "children" }}. {{ "Their names are " + family.children|map(attribute='vcard.fn')|join(', ') + "." if family.children|length > 0 else "" }} -->
+
 {% for child in family.children -%}
 {% if child.notes is defined and child.notes -%}
 #### {{ child.vcard.fn }}
@@ -74,10 +82,12 @@ Information about the individual's children.
 {% endif %}
 {% endfor %}
 {% else %}
+<!-- CHILDREN_SUMMARY John does not have any children. -->
 - No children information available.
 {% endif %}
 
 ### Parents
+<!-- SEMANTIC_SEARCH_KEYWORDS: parents, father, mother, dad, mom, biological parents, stepparents -->
 
 {% if family is defined and family.parents is defined and family.parents -%}
 Information about the individual's parents.
@@ -87,6 +97,8 @@ Information about the individual's parents.
 {% for parent in family.parents -%}
 | {{ parent.relation | capitalize }} | {{ parent.vcard.fn or 'N/A' }} | `{{ parent.vcard.bday or 'N/A' }}` | {{ parent.birth.place if parent.birth is defined and parent.birth.place is defined else 'N/A' }} | {{ parent.status | capitalize if parent.status is defined else 'N/A' }} | `{{ parent.death.date if parent.status is defined and parent.status == "deceased" and parent.death is defined and parent.death.date is defined else 'N/A' }}` | {{ parent.death.cause if parent.status is defined and parent.status == "deceased" and parent.death is defined and parent.death.cause is defined else 'N/A' }} |
 {% endfor %}
+
+<!-- PARENTS_SUMMARY John's father is {{ family.parents|selectattr('relation', 'equalto', 'father')|map(attribute='vcard.fn')|first if family.parents|selectattr('relation', 'equalto', 'father')|list|length > 0 else "not listed" }} and his mother is {{ family.parents|selectattr('relation', 'equalto', 'mother')|map(attribute='vcard.fn')|first if family.parents|selectattr('relation', 'equalto', 'mother')|list|length > 0 else "not listed" }}. -->
 
 {% for parent in family.parents -%}
 {% if parent.vcard is defined and (parent.vcard.tel is defined or parent.vcard.adr is defined) -%}
@@ -110,10 +122,12 @@ Information about the individual's parents.
 {% endif %}
 {% endfor %}
 {% else %}
+<!-- PARENTS_SUMMARY No information is available about John's parents. -->
 - No parent information available.
 {% endif %}
 
 ### Siblings
+<!-- SEMANTIC_SEARCH_KEYWORDS: siblings, brothers, sisters, half-brothers, half-sisters, step-siblings -->
 
 {% if family is defined and family.siblings is defined and family.siblings -%}
 Information about the individual's siblings.
@@ -123,6 +137,8 @@ Information about the individual's siblings.
 {% for sibling in family.siblings -%}
 | {{ sibling.relation | capitalize }} | {{ sibling.vcard.fn or 'N/A' }} | `{{ sibling.vcard.bday or 'N/A' }}` | {{ sibling.birth.place if sibling.birth is defined and sibling.birth.place is defined else 'N/A' }} | {{ sibling.status | capitalize if sibling.status is defined else 'N/A' }} | {{ sibling.occupation if sibling.occupation is defined else 'N/A' }} |
 {% endfor %}
+
+<!-- SIBLINGS_SUMMARY John has {{ family.siblings|length }} {{ "sibling" if family.siblings|length == 1 else "siblings" }}. {{ "Their names are " + family.siblings|map(attribute='vcard.fn')|join(', ') + "." if family.siblings|length > 0 else "" }} -->
 
 {% for sibling in family.siblings -%}
 #### {{ sibling.vcard.fn }} Details
@@ -173,10 +189,12 @@ Information about the individual's siblings.
 
 {% endfor %}
 {% else %}
+<!-- SIBLINGS_SUMMARY John does not have any siblings. -->
 - No sibling information available.
 {% endif %}
 
 ### Pets
+<!-- SEMANTIC_SEARCH_KEYWORDS: pets, animals, dogs, cats, pet ownership -->
 
 {% if family is defined and family.pets is defined -%}
 

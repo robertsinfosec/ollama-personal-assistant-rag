@@ -1,10 +1,12 @@
 ## News Digest
+<!-- METADATA: SECTION_TYPE=news SEARCH_KEYWORDS=news,current events,headlines,updates,articles,world news,local news,breaking news -->
 
 {%- if news is defined %}
 
 This section contains recent news categorized by geographic impact level that may be relevant to your interests and needs.
 
 ### Global News
+<!-- SEMANTIC_SEARCH_KEYWORDS: world news, international news, global headlines, worldwide events, international affairs -->
 
 This category includes worldwide news events and developments with international significance.
 
@@ -16,13 +18,17 @@ This category includes worldwide news events and developments with international
 | [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
 {%- endfor %}
 
+<!-- GLOBAL_NEWS_SUMMARY Recent global headlines include {% for item in news.global %}{{ item.title }} ({{ item.source }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
+
 {%- else %}
 
+<!-- GLOBAL_NEWS_SUMMARY No global news items are currently available. -->
 - No global news available.
 
 {%- endif %}
 
 ### National News
+<!-- SEMANTIC_SEARCH_KEYWORDS: national news, country news, domestic news, nationwide headlines, national headlines -->
 
 This category includes news events and developments relevant at the country level.
 
@@ -34,13 +40,17 @@ This category includes news events and developments relevant at the country leve
 | [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
 {%- endfor %}
 
+<!-- NATIONAL_NEWS_SUMMARY Recent national headlines include {% for item in news.national %}{{ item.title }} ({{ item.source }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
+
 {%- else %}
 
+<!-- NATIONAL_NEWS_SUMMARY No national news items are currently available. -->
 - No national news available.
 
 {%- endif %}
 
 ### Regional News
+<!-- SEMANTIC_SEARCH_KEYWORDS: regional news, state news, provincial news, area news, nearby events -->
 
 This category includes news events and developments relevant to your specific region or state.
 
@@ -52,13 +62,17 @@ This category includes news events and developments relevant to your specific re
 | [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
 {%- endfor %}
 
+<!-- REGIONAL_NEWS_SUMMARY Recent regional headlines include {% for item in news.regional %}{{ item.title }} ({{ item.source }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
+
 {%- else %}
 
+<!-- REGIONAL_NEWS_SUMMARY No regional news items are currently available. -->
 - No regional news available.
 
 {%- endif %}
 
 ### Local News
+<!-- SEMANTIC_SEARCH_KEYWORDS: local news, community news, city news, neighborhood news, local events -->
 
 This category includes news events and developments specific to your city or local community.
 
@@ -70,8 +84,11 @@ This category includes news events and developments specific to your city or loc
 | [{{ item.title }}]({{ item.link }}) | {{ item.date }} | {{ item.source }} | {{ item.summary }} |
 {%- endfor %}
 
+<!-- LOCAL_NEWS_SUMMARY Recent local headlines include {% for item in news.local %}{{ item.title }} ({{ item.source }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
+
 {%- else %}
 
+<!-- LOCAL_NEWS_SUMMARY No local news items are currently available. -->
 - No local news available.
 
 {%- endif %}

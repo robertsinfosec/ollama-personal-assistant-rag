@@ -1,4 +1,5 @@
 ## Recent Messages
+<!-- METADATA: SECTION_TYPE=messages SEARCH_KEYWORDS=messages,email,inbox,communication,emails,unread,correspondence,contacts,sent messages -->
 
 {%- if messages is defined %}
 
@@ -7,6 +8,7 @@ Last updated: {{ messages.last_updated }}
 {%- endif %}
 
 ### Inbox Summary
+<!-- SEMANTIC_SEARCH_KEYWORDS: inbox status, email counts, unread emails, unread messages, important emails, email summary -->
 
 This section provides an overview of your current email inbox status including unread message counts and total messages.
 
@@ -24,8 +26,11 @@ This section provides an overview of your current email inbox status including u
 | Total in Inbox | {{ messages.summary.total_inbox }} |
 {%- endif %}
 
+<!-- INBOX_SUMMARY John has {{ messages.summary.unread_count if messages.summary.unread_count is defined else 0 }} unread messages in his inbox{% if messages.summary.important_unread is defined and messages.summary.important_unread > 0 %}, {{ messages.summary.important_unread }} of which are marked as important{% endif %}. -->
+
 {%- else %}
 
+<!-- INBOX_SUMMARY John's inbox status is currently unavailable. -->
 - No inbox summary available.
 
 {%- endif %}
@@ -33,6 +38,7 @@ This section provides an overview of your current email inbox status including u
 {%- if messages.needs_response is defined and messages.needs_response|length > 0 %}
 
 ### Messages Needing Response
+<!-- SEMANTIC_SEARCH_KEYWORDS: urgent emails, action required, reply needed, pending response, email follow-up, unanswered messages -->
 
 These messages require your attention and response, ordered by priority and deadline.
 
@@ -42,9 +48,12 @@ These messages require your attention and response, ordered by priority and dead
 | **{{ thread.subject }}** | {{ thread.from.name if thread.from is defined and thread.from.name is defined else "Unknown" }} | {{ thread.last_message_date }} | {{ thread.deadline if thread.deadline is defined else "None" }} | {{ thread.priority if thread.priority is defined else "Normal" }} |
 {%- endfor %}
 
+<!-- PENDING_RESPONSES John has {{ messages.needs_response|length }} {{ "message" if messages.needs_response|length == 1 else "messages" }} needing a response{% if messages.needs_response|selectattr("priority", "equalto", "High")|list|length > 0 %}, including {{ messages.needs_response|selectattr("priority", "equalto", "High")|list|length }} high priority {{ "message" if messages.needs_response|selectattr("priority", "equalto", "High")|list|length == 1 else "messages" }}{% endif %}. -->
+
 {%- endif %}
 
 ### Recent Incoming Messages
+<!-- SEMANTIC_SEARCH_KEYWORDS: recent emails, latest messages, incoming mail, received emails, new messages -->
 
 This section shows your most recent received emails with their status and metadata.
 

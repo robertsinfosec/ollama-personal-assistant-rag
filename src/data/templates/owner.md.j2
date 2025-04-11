@@ -1,8 +1,10 @@
 ## Personal Information
+<!-- METADATA: SECTION_TYPE=personal SEARCH_KEYWORDS=personal,profile,contact,details,identity,information,owner,about me,name,birthday,age -->
 
 Below is the personal dossier of the individual you are assisting.
 
 ### About Me
+<!-- SEMANTIC_SEARCH_KEYWORDS: personal details, personal information, identity, who I am, personal profile, basic information, biographical information -->
 
 - **Full Name:** {{ owner.vcard.fn or 'N/A' }}
 - **Nickname:** {{ owner.vcard.nickname or 'N/A' }}
@@ -11,7 +13,10 @@ Below is the personal dossier of the individual you are assisting.
 - **Age:** `{{ owner.age or 'N/A' }}`
 - **Citizenship:** {{ owner.citizenship or 'N/A' }}
 
+<!-- IDENTITY_SUMMARY {{ owner.vcard.fn }}, also known as {{ owner.vcard.nickname }}, is a {{ owner.age }}-year-old {{ owner.citizenship }} citizen born in {{ owner.birthplace.city }}, {{ owner.birthplace.state }}, {{ owner.birthplace.country }} on {{ owner.vcard.bday }}. -->
+
 ### Languages
+<!-- SEMANTIC_SEARCH_KEYWORDS: languages spoken, language proficiency, multilingual, bilingual, foreign languages -->
 
 Information about spoken languages and proficiency levels.
 
@@ -21,11 +26,15 @@ Information about spoken languages and proficiency levels.
 {% for language in owner.vcard.lang -%}
 | {{ language.value }} | {{ language.type }} |
 {% endfor %}
+
+<!-- LANGUAGE_SUMMARY {{ owner.vcard.fn }} speaks {% for language in owner.vcard.lang %}{{ language.value }} ({{ language.type }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
 {% else %}
+<!-- LANGUAGE_SUMMARY {{ owner.vcard.fn }} has no languages listed. -->
 - No languages listed.
 {% endif -%}
 
 ### Contact Information
+<!-- SEMANTIC_SEARCH_KEYWORDS: contact details, email address, phone number, how to reach, contact methods, get in touch -->
 
 Below are the contact details for the individual.
 
@@ -40,7 +49,10 @@ Below are the email addresses associated with the individual.
 {% for email in owner.vcard.email -%}
 | {{ email.type.capitalize() }} | {{ email.value }} |
 {% endfor %}
+
+<!-- EMAIL_SUMMARY {{ owner.vcard.fn }}'s primary email address is {{ owner.vcard.email|selectattr('type', 'equalto', 'primary')|map(attribute='value')|first if owner.vcard.email|selectattr('type', 'equalto', 'primary')|list|length > 0 else owner.vcard.email[0].value }}. -->
 {% else %}
+<!-- EMAIL_SUMMARY {{ owner.vcard.fn }} has no email addresses on record. -->
 - No email addresses listed.
 {% endif -%}
 
@@ -99,5 +111,5 @@ Information about previous addresses of the individual.
 {% endfor %}
 {% else %}
 - No previous addresses listed.
-{% endif %}
+{% endif -%}
 

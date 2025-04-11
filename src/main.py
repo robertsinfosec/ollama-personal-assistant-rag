@@ -15,6 +15,7 @@ from api.endpoints import start_api_server
 from generation.generator import generate_personal_info
 from rag.interactive import start_interactive_session
 from config.template_config import OUTPUT_DOCUMENT
+from config.rag_config import OLLAMA_DEFAULT_MODEL
 
 
 def parse_args() -> argparse.Namespace:
@@ -42,7 +43,7 @@ def parse_args() -> argparse.Namespace:
     
     # Interactive RAG session command
     interactive_parser = subparsers.add_parser("interactive", help="Start an interactive RAG session")
-    interactive_parser.add_argument("--model", default="mistral", help="Ollama model to use")
+    interactive_parser.add_argument("--model", default=OLLAMA_DEFAULT_MODEL, help="Ollama model to use")
     interactive_parser.add_argument("--markdown-file", default=OUTPUT_DOCUMENT, 
                                    help="Markdown file with personal information")
     

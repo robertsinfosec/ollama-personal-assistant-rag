@@ -1,10 +1,12 @@
 ## Task Management
+<!-- METADATA: SECTION_TYPE=tasks SEARCH_KEYWORDS=tasks,todo,to-do,projects,priorities,due dates,reminders,appointments,action items,deadlines -->
 
 {%- if tasks is defined %}
 
 This section outlines your current tasks and to-dos across various categories and priority levels. Last updated: {{ tasks.last_updated }}.
 
 ### Task Summary
+<!-- SEMANTIC_SEARCH_KEYWORDS: task summary, task overview, task status, task statistics -->
 
 Overview of your current task status and distribution.
 
@@ -18,9 +20,12 @@ Overview of your current task status and distribution.
 | Overdue | {{ tasks.summary.overdue }} |
 | Completed Today | {{ tasks.summary.completed_today }} |
 
+<!-- TASKS_OVERVIEW John has {{ tasks.summary.total_active }} active tasks, with {{ tasks.summary.urgent }} urgent tasks, {{ tasks.summary.due_today }} due today, and {{ tasks.summary.overdue }} overdue. -->
+
 {%- endif %}
 
 ### Urgent Tasks
+<!-- SEMANTIC_SEARCH_KEYWORDS: urgent tasks, high priority tasks, important tasks, critical tasks, immediate attention -->
 
 High-priority tasks requiring immediate attention.
 
@@ -31,6 +36,8 @@ High-priority tasks requiring immediate attention.
 {%- for task in tasks.urgent %}
 | **{{ task.title }}** | {{ task.due_date }} | {{ task.category }} | {{ task.priority }} | {{ task.status }} | {{ task.percent_complete }}% |
 {%- endfor %}
+
+<!-- URGENT_TASKS_SUMMARY John has {{ tasks.urgent|length }} urgent {{ "task" if tasks.urgent|length == 1 else "tasks" }}: {% for task in tasks.urgent %}{{ task.title }} (due {{ task.due_date }}){% if not loop.last %}, {% endif %}{% endfor %}. -->
 
 {%- for task in tasks.urgent %}
 {%- if task.description is defined %}
@@ -44,11 +51,13 @@ High-priority tasks requiring immediate attention.
 
 {%- else %}
 
+<!-- URGENT_TASKS_SUMMARY John has no urgent tasks at this time. -->
 - No urgent tasks at this time.
 
 {%- endif %}
 
 ### Today's Tasks
+<!-- SEMANTIC_SEARCH_KEYWORDS: today's tasks, today's schedule, tasks due today, what to do today, daily agenda -->
 
 Tasks scheduled or due for completion today.
 

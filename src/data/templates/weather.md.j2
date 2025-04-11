@@ -1,10 +1,12 @@
 ## Weather Information
+<!-- METADATA: SECTION_TYPE=weather SEARCH_KEYWORDS=weather,forecast,temperature,conditions,rain,snow,precipitation,humidity,wind,climate -->
 
 {%- if weather is defined %}
 
 Weather information for {{ weather.location.city }}, {{ weather.location.state }} as of {{ weather.last_updated }}. This data provides current conditions and forecasts to help plan your activities.
 
 ### Current Weather Conditions
+<!-- SEMANTIC_SEARCH_KEYWORDS: current weather, weather right now, today's weather, current temperature, outside weather, current conditions -->
 
 This section shows the current weather conditions and key meteorological metrics.
 
@@ -12,13 +14,18 @@ This section shows the current weather conditions and key meteorological metrics
 |-----------|-------------|------------|----------|------|----------|----------|------------|--------------------|
 | {{ weather.current.condition }} | {{ weather.current.temperature }}°F | {{ weather.current.feels_like }}°F | {{ weather.current.humidity }}% | {{ weather.current.wind_speed }} mph {{ weather.current.wind_direction }} | {{ weather.current.pressure }} hPa | {{ weather.current.uv_index }} | {{ weather.current.visibility }} miles | {{ weather.current.precipitation }} |
 
+<!-- CURRENT_WEATHER_SUMMARY It's currently {{ weather.current.temperature }}°F and {{ weather.current.condition }} in {{ weather.location.city }}, {{ weather.location.state }}. It feels like {{ weather.current.feels_like }}°F with {{ weather.current.humidity }}% humidity and winds at {{ weather.current.wind_speed }} mph. -->
+
 ### Today's Forecast ({{ weather.today.date }})
+<!-- SEMANTIC_SEARCH_KEYWORDS: today's forecast, weather today, high temperature, low temperature, sunrise, sunset, rain chance -->
 
 Overview of today's weather with high and low temperatures, sun times, and general conditions.
 
 | Summary | High | Low | Sunrise | Sunset | Precipitation Chance | Humidity |
 |---------|------|-----|---------|--------|---------------------|----------|
 | {{ weather.today.summary }} | {{ weather.today.high_temp }}°F | {{ weather.today.low_temp }}°F | {{ weather.today.sunrise }} | {{ weather.today.sunset }} | {{ weather.today.precipitation_chance }} | {{ weather.today.humidity }}% |
+
+<!-- TODAY_FORECAST_SUMMARY The forecast for today is {{ weather.today.summary }} with a high of {{ weather.today.high_temp }}°F and a low of {{ weather.today.low_temp }}°F. There's a {{ weather.today.precipitation_chance }} chance of precipitation. -->
 
 ### Today's Hourly Forecast
 

@@ -1,7 +1,9 @@
 ## Transportation
+<!-- METADATA: SECTION_TYPE=transportation SEARCH_KEYWORDS=transportation,vehicles,cars,driving,commute,travel,automobile,public transit,rideshare,flights,travel documents -->
 
 {% if transportation is defined %}
 ### Vehicles
+<!-- SEMANTIC_SEARCH_KEYWORDS: cars, vehicles, automobile, driving, personal vehicles, car details, car insurance, car maintenance -->
 
 {% if transportation.vehicles %}
 #### Personal Vehicles
@@ -12,6 +14,8 @@
 {% for vehicle in transportation.vehicles if vehicle.type == "Car" -%}
 | {{ vehicle.type }} | {{ vehicle.make }} {{ vehicle.model }} | {{ vehicle.year }} | {{ vehicle.license_plate }} | {{ vehicle.primary_driver }} |
 {% endfor -%}
+
+<!-- VEHICLES_SUMMARY John owns {{ transportation.vehicles | selectattr("type", "equalto", "Car") | list | length }} {{ "vehicle" if (transportation.vehicles | selectattr("type", "equalto", "Car") | list | length) == 1 else "vehicles" }}: {% for vehicle in transportation.vehicles if vehicle.type == "Car" %}{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}{% if not loop.last %}, {% endif %}{% endfor %}. -->
 
 ##### Vehicle Details
 
@@ -33,6 +37,7 @@
 
 {% if transportation.vehicles | selectattr("type", "equalto", "Bicycle") | list | length > 0 -%}
 #### Bicycles
+<!-- SEMANTIC_SEARCH_KEYWORDS: bicycles, bikes, cycling, bicycle maintenance, bike accessories -->
 
 | Make & Model | Year | Primary User | Serial Number |
 |-------------|------|-------------|---------------|
@@ -59,13 +64,17 @@
 {% endfor -%}
 {% endif -%}
 {% else %}
+<!-- VEHICLES_SUMMARY John does not own any vehicles. -->
 No vehicle information available.
 {% endif %}
 
 {% if transportation.public_transport is defined and transportation.public_transport %}
 ### Public Transportation
+<!-- SEMANTIC_SEARCH_KEYWORDS: public transit, bus, train, subway, metro, commuting options, transportation passes -->
 
 **Primary City:** {{ transportation.public_transport.primary_city }}
+
+<!-- PUBLIC_TRANSIT_SUMMARY John primarily uses public transportation in {{ transportation.public_transport.primary_city }}{% if transportation.public_transport.preferred_options is defined and transportation.public_transport.preferred_options %}, favoring {{ transportation.public_transport.preferred_options|map(attribute='type')|join(' and ') }}{% endif %}. -->
 
 {% if transportation.public_transport.preferred_options is defined and transportation.public_transport.preferred_options -%}
 #### Preferred Options
@@ -89,6 +98,7 @@ No vehicle information available.
 
 {% if transportation.commute is defined and transportation.commute %}
 ### Commute Information
+<!-- SEMANTIC_SEARCH_KEYWORDS: daily commute, commute time, distance to work, commuting options, travel to work -->
 
 | Destination | Primary Method | Distance | Time | Alternative Method | Alt. Time |
 |-------------|---------------|----------|------|-------------------|----------|
@@ -101,6 +111,8 @@ No vehicle information available.
 {%- if transportation.commute.school is defined %}
 | School | {{ transportation.commute.school.primary_method }} | {{ transportation.commute.school.distance_miles }} miles | {{ transportation.commute.school.typical_time_minutes }} min | {{ transportation.commute.school.alternate_method }} | {{ transportation.commute.school.alternate_time_minutes }} min |
 {%- endif %}
+
+<!-- COMMUTE_SUMMARY John's commute to work is {{ transportation.commute.work.distance_miles if transportation.commute.work is defined else "unknown" }} miles using {{ transportation.commute.work.primary_method if transportation.commute.work is defined else "unknown" }} which typically takes {{ transportation.commute.work.typical_time_minutes if transportation.commute.work is defined else "an unknown amount of" }} minutes. -->
 {% endif %}
 
 {% if transportation.rideshare is defined and transportation.rideshare.preferred_services %}

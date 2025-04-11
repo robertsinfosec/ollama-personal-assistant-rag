@@ -1,9 +1,11 @@
 ## Finance
+<!-- METADATA: SECTION_TYPE=finance SEARCH_KEYWORDS=finance,money,banking,accounts,investments,retirement,bills,expenses,credit,financial,budget -->
 
 Information about financial accounts, credit cards, retirement plans, and recurring bills.
 
 {% if finance is defined and finance.accounts is defined and finance.accounts -%}
 ### Bank Accounts
+<!-- SEMANTIC_SEARCH_KEYWORDS: bank accounts, checking account, savings account, banking, account numbers, financial institutions -->
 
 Information about checking, savings, and investment accounts.
 
@@ -12,12 +14,16 @@ Information about checking, savings, and investment accounts.
 {% for account in finance.accounts -%}
 | {{ account.type }} | {{ account.institution or 'N/A' }} | {{ account.account_number or 'N/A' }} | {% if account.primary is defined and account.primary %}Primary{% else %}Secondary{% endif %} | `{{ account.opened_date or 'N/A' }}` |
 {% endfor %}
+
+<!-- BANK_ACCOUNTS_SUMMARY John maintains {{ finance.accounts|length }} bank {{ "account" if finance.accounts|length == 1 else "accounts" }}, including {% for account in finance.accounts %}a {{ account.type }} account at {{ account.institution }}{% if not loop.last %}, {% endif %}{% endfor %}. -->
 {% else %}
+<!-- BANK_ACCOUNTS_SUMMARY John does not have any bank accounts on record. -->
 - No bank account information available.
 {% endif %}
 
 {% if finance is defined and finance.credit_cards is defined and finance.credit_cards -%}
 ### Credit Cards
+<!-- SEMANTIC_SEARCH_KEYWORDS: credit cards, debit cards, card payments, credit limit, card balances, payments due, due date -->
 
 Information about credit cards and their payment details.
 
@@ -26,12 +32,16 @@ Information about credit cards and their payment details.
 {% for card in finance.credit_cards -%}
 | {{ card.issuer or 'N/A' }} | {{ card.type or 'N/A' }} | {{ card.last_four or 'N/A' }} | `{{ card.expiration or 'N/A' }}` | `{{ card.opened_date or 'N/A' }}` | {% if card.primary is defined and card.primary %}Primary{% else %}Secondary{% endif %} | {{ card.payment_due or 'N/A' }} |
 {% endfor %}
+
+<!-- CREDIT_CARDS_SUMMARY John has {{ finance.credit_cards|length }} credit {{ "card" if finance.credit_cards|length == 1 else "cards" }} from {{ finance.credit_cards|map(attribute='issuer')|join(', ') }}. -->
 {% else %}
+<!-- CREDIT_CARDS_SUMMARY John does not have any credit cards on record. -->
 - No credit card information available.
 {% endif %}
 
 {% if finance is defined and finance.retirement is defined and finance.retirement -%}
 ### Retirement Accounts
+<!-- SEMANTIC_SEARCH_KEYWORDS: retirement accounts, 401k, IRA, pension, retirement savings, retirement planning, retirement funds -->
 
 Information about retirement savings and investment accounts.
 
@@ -46,6 +56,7 @@ Information about retirement savings and investment accounts.
 
 {% if finance is defined and finance.bills is defined and finance.bills -%}
 ### Bills & Recurring Payments
+<!-- SEMANTIC_SEARCH_KEYWORDS: bills, recurring payments, monthly expenses, utilities, subscriptions, payment due dates, autopay -->
 
 Information about regular financial obligations and scheduled payments.
 

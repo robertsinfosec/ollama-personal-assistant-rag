@@ -1,7 +1,9 @@
 ## Education
+<!-- METADATA: SECTION_TYPE=education SEARCH_KEYWORDS=education,school,university,college,degree,graduation,academic,learning,major,studies,student,alma mater -->
 
 {% if education is defined and education.degrees is defined and education.degrees -%}
 ### Degrees
+<!-- SEMANTIC_SEARCH_KEYWORDS: degrees, diplomas, college degrees, academic credentials, bachelor's, master's, PhD, graduation, major, university degrees -->
 
 Information about formal academic degrees obtained.
 
@@ -10,12 +12,16 @@ Information about formal academic degrees obtained.
 {% for degree in education.degrees -%}
 | **{{ degree.type }}** | {{ degree.institution }} | {{ degree.years }} |
 {% endfor %}
+
+<!-- EDUCATION_SUMMARY John holds {{ education.degrees|length }} {{ "degree" if education.degrees|length == 1 else "degrees" }}: {{ education.degrees|map(attribute='type')|join(', ') }} from {{ education.degrees|map(attribute='institution')|join(', ') }}. -->
 {% else %}
 - No degree information available.
+<!-- EDUCATION_SUMMARY John does not have any formal academic degrees on record. -->
 {% endif %}
 
 {% if education is defined and education.certifications is defined and education.certifications -%}
 ### Certifications
+<!-- SEMANTIC_SEARCH_KEYWORDS: certifications, professional certifications, credentials, qualifications, certificates, professional development -->
 
 Information about professional certifications and their validity periods.
 
@@ -24,8 +30,11 @@ Information about professional certifications and their validity periods.
 {% for certification in education.certifications -%}
 | **{{ certification.name }}** | {{ certification.expiration }} |
 {% endfor %}
+
+<!-- CERTIFICATIONS_SUMMARY John holds {{ education.certifications|length }} professional {{ "certification" if education.certifications|length == 1 else "certifications" }}, including {{ education.certifications|map(attribute='name')|join(', ') }}. -->
 {% else %}
 - No certification information available.
+<!-- CERTIFICATIONS_SUMMARY John does not have any professional certifications on record. -->
 {% endif %}
 
 {% if education is defined and education.continuing_education is defined and education.continuing_education -%}
