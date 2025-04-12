@@ -164,3 +164,51 @@ The LLM generates a response that directly addresses your question using the pro
 The final answer is returned to you, enriched with relevant details from your personal data, while keeping the underlying retrieval process abstract.
 
 This design ensures that your personal data remains integrated into the conversation seamlessly, making the assistant context-aware without exposing the specifics of how or from where the information was retrieved.
+
+### Custom LLM vs RAG System Prompt
+
+The RAG functionality supports a "System Prompt", so couldn't you just have your assistant's personality injected through the RAG system? Let me break down both approaches:
+
+#### Option 1: Custom Ollama Model with Modelfile (Current Approach)
+
+This approach "bakes in" the personality at the model level:
+
+- Creates a standalone assistant identity
+- Ensures consistent personality across all interaction points
+- Separates personality (model) from knowledge (RAG)
+
+#### Option 2: Generic LLM + System Prompt via RAG
+
+This approach would inject personality through the RAG system:
+
+- More flexible for personality changes without model rebuilds
+- Model-agnostic (could use any LLM)
+
+#### Current Implementation Analysis
+
+This was (for this iteration), an architectural decision:
+
+1. In `config/rag_config.py`, there's a comment:
+
+```python
+# Note: We've removed the RAG_SYSTEM_PROMPT and RAG_PROMPT_TEMPLATE
+# as we want to use the built-in personality of the oliver-assistant model
+```
+
+2. In `rag/assistant.py`, the `system_prompt` parameter exists but is commented as "not used, here for backward compatibility":
+
+```python
+system_prompt: Optional[str] = None  # Not used, here for backward compatibility
+```
+
+3. The prompt construction in `get_answer` includes minimal personality instructions compared to the full `Modelfile`.
+
+#### Using RAG-Only over any LLM
+
+You might choose differently for your different use cases:
+
+1. **Custom Ollama Model (current approach)**: Better for production deployment where you want consistent personality behavior across all interfaces and simplified RAG prompts. The downside is you have to rebuild your custom model for any "personality" or formatting changes.
+
+2. **RAG System Prompt**: Useful for experimentation and flexibility when you want to try different persona styles without rebuilding models. This also let's you be LLM Model agnostic, so you could use any LLM that supports RAG.
+
+You could modify the code to support both approaches by un-deprecating and implementing the `system_prompt` parameter in the `get_answer` method, making it optional but functional when provided.

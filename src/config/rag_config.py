@@ -4,7 +4,7 @@ Configuration settings for the RAG assistant and Ollama integration.
 
 # Ollama API configuration
 OLLAMA_API_HOST = "http://192.168.1.124:11434"  # Default Ollama API URL
-OLLAMA_DEFAULT_MODEL = "oliver-assistant"            # Default model to use
+OLLAMA_DEFAULT_MODEL = "oliver-assistant"       # Default model to use
 
 # RAG configuration
 DEFAULT_MARKDOWN_FILE = "data/personal_info.md"  # Default personal info file
