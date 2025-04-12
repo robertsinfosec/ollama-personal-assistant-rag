@@ -2,6 +2,11 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+# Set environment variables with defaults that can be overridden
+ENV HOST="0.0.0.0"
+ENV PORT="8901"
+ENV OLLAMA_API_HOST="http://host.docker.internal:11434"
+
 # Copy requirements first for better caching
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -9,18 +14,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code
 COPY . .
 
-# Create necessary directories
-RUN mkdir -p data/templates data/generated data/static
+# Generate the personal information markdown
+RUN python main.py generate
 
-# Copy template and static data (these should exist in your source)
-COPY data/templates/personal_info_template.md.j2 data/templates/
-COPY data/personal_info_static.yaml data/static/
-
-# Generate the personal info
-RUN python -m generation.personal_info
+# Create a volume mount point for easy updates to data files
+VOLUME ["/app/data"]
 
 # Expose the API port
 EXPOSE 8901
 
-# Run the uvicorn server
-CMD ["python", "main.py", "api", "--host", "0.0.0.0", "--port", "8901"]
+# Run the API server with environment variable configuration
+CMD python main.py api --host ${HOST} --port ${PORT}

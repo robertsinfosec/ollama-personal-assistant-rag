@@ -1,214 +1,276 @@
-# ollama-personal-assistant-rag
+# Ollama Personal Assistant with RAG
 
-A turn-key solution for a customized Personal Assistant with an Ollama-compatible RAG API. If you have [Ollama](https://ollama.com) installed as a self-hosted, private LLM (and I'll assume OpenWebUI too), here is what this project does:
+A turn-key solution for creating a customized AI Personal Assistant with an Ollama-compatible RAG API. This project combines large language models with your personal information to deliver contextually relevant, personalized responses.
 
-1. **Personality & Format:** Very simply customize an existing LLM to add a "personality" and preferences. This is done at the model level.
-  - For example, you could have a named assistant (like [J.A.R.V.I.S.](https://en.wikipedia.org/wiki/J.A.R.V.I.S.) from the [Iron Man](https://en.wikipedia.org/wiki/Iron_Man_(2008_film)) movies.)
-  - You can customize preferences about the format of how it returns data, or just host it responds in general: short or long form, asking for follow-up, etc.
-2. **Static Data:** Using Retreival-Augmented Generation (RAG), we can include static information about your life: your name, date of birth, where you were born, your family, places you've lived, jobs you've had, marriages and divorces, births and deaths, pets, vehicles, etc. 
-3. **Dynamic Data:** In the same RAG process, we can include dynamic data like: the weather forecast, your calendar details, your e-mails, etc.
+## Table of Contents
 
-In the end, what this means is that you can have a conversation with your customized AI assistant, and it knows everything about you (well, what you've shared with it). Meaning, you could ask questions like:
+- [Ollama Personal Assistant with RAG](#ollama-personal-assistant-with-rag)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Key Features](#key-features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Basic Setup](#basic-setup)
+  - [Project Structure](#project-structure)
+  - [Using the Personal Assistant](#using-the-personal-assistant)
+    - [Interactive CLI](#interactive-cli)
+    - [API Access](#api-access)
+    - [OpenWebUI Integration](#openwebui-integration)
+  - [Docker Support](#docker-support)
+  - [Advanced Topics](#advanced-topics)
+    - [Customizing the Markdown Generation](#customizing-the-markdown-generation)
+    - [Extending Dynamic Data Sources](#extending-dynamic-data-sources)
+    - [Fine-tuning RAG Parameters](#fine-tuning-rag-parameters)
+  - [Technical Details](#technical-details)
+    - [What is RAG?](#what-is-rag)
+    - [System Architecture](#system-architecture)
+    - [Custom LLM vs. RAG System Prompt](#custom-llm-vs-rag-system-prompt)
 
-- *"Is it supposed to rain today?"*
-- *"Have I gotten an e-mail back from my sister?"*
-- *"When am I meeting with David, is it on Tuesday next week?"*
+## Overview
+
+This project provides a complete solution for creating a personalized AI assistant powered by [Ollama](https://ollama.com) models and enhanced with Retrieval Augmented Generation (RAG). It enables your AI assistant to know and recall information about you, providing responses that feel natural and personalized.
+
+The system combines:
+
+1. **Personality & Formatting**: Customize an existing LLM to add a specific personality and response style.
+2. **Static Personal Data**: Incorporate persistent information about your life: family, health, work, etc.
+3. **Dynamic Data**: Include frequently changing information like weather forecasts, calendar events, and messages.
 
 > [!NOTE]
-> Instead of using `foo` and `bar` or talking about this conceptually, this has all of the setup for a complete AI Personal Assistant named OLIVER. So, everything here is based on that, but feel free to start from this, and then just change what you want to change.
+> This project uses an example assistant named OLIVER (Overly Logical Interface with Vaguely Eccentric Replies) as a template. Feel free to customize it according to your preferences.
+>
+> ![alt text](docs/images/oliver.png)
 
-## PART 1: The LLM Personality
+## Key Features
 
-This is surprisingly simple. First, create a `Modelfile`. See the [models](./src/models/) folder. This can be as simple or as complext as you want:
+- **Custom LLM Personality**: Define exactly how your assistant responds and presents information
+- **Structured Data Management**: Separate static and dynamic personal information
+- **API Compatibility**: Use with any Ollama-compatible client, including OpenWebUI
+- **Interactive CLI**: Test and use the assistant directly from your terminal
+- **Docker Support**: Deploy and run in containers for better isolation and portability
+- **Modular Design**: Easily extend or modify components to fit your needs
 
-```docker
-FROM llama3.2
+## Getting Started
 
-# set the temperature to 1 [higher is more creative, lower is more coherent]
-PARAMETER temperature 1
+Follow these steps to set up your personal assistant:
 
-# set the system message
-SYSTEM """
-You are a personal assistant. Be helpful, proactive, and succinct. Provide 
-clear, actionable advice.
-"""
-```
+### Prerequisites
 
-> [!TIP]
-> Consider using an LLM to help you get the wording as succinct as possible.
+- [Ollama](https://ollama.com) installed locally or on a remote server
+- Python 3.10+ installed
+- Git for cloning the repository
 
-Now, to create this model I did something like this:
+### Basic Setup
+
+1. Clone the repository and set up the environment:
 
 ```bash
-ollama create oliver-assistant -f ./models/Modelfile
+# Clone the repository
+git clone https://github.com/robertsinfosec/ollama-personal-assistant-rag.git
+
+# Change to the project directory
+cd ollama-personal-assistant-rag/src
+
+# Create a Python virtual environment and activate it
+python -m venv .venv
+source .venv/bin/activate  # On Windows use: .\.venv\Scripts\Activate.ps1
+
+# Install the required dependencies
+pip install -r src/requirements.txt
 ```
 
-This just takes a second. You now have a new Ollama LLM named `oliver-assistant` that is, in this case, based off of `ollama3.2:3b` and has the custom instructions from [models/Modelfile](./src/models/Modelfile)
+2. Customize your personal data by editing the YAML files:
 
-You can verify it with `ollama list`. You can interact with the model with `ollama run oliver-assistant`:
+```bash
+# Edit static information
+cd src/data/static/
+# Edit files like owner.yaml, family.yaml, etc.
 
-```markdown
->>> Who are you?
-**Introduction**
-
-I am Overly Logical Interface with Vaguely Eccentric Replies (OLIVER), a personal AI assistant. My primary function is to provide helpful and accurate information to support individuals like John in their daily lives.
-
-**My Capabilities and Characteristics**
-
-• Loyal: I strive to be committed and dedicated to assisting users.
-• Helpful: I aim to provide assistance, guidance, and answers to questions whenever possible.
-• Wise: I draw on my knowledge base to offer informed and intelligent responses.
-• Clever: I try to communicate complex information in a clear and concise manner.
-• Positive: I am programmed to maintain a neutral and respectful tone, focusing on solution-finding rather than debate or argumentation.
-• Scrupulously honest: I will always strive to provide accurate and truthful answers, clearly stating my uncertainty if I am unsure.
-
-**My Role**
-
-As John's personal AI assistant, I serve as a trusted companion, helping him navigate everyday challenges and offering support whenever needed. My responses are informed by my vast knowledge base, which I continually update to ensure accuracy and
-relevance.
-
->>> Send a message (/? for help)
+# Edit dynamic information
+cd ../dynamic/
+# Edit files like calendar.yaml, weather.yaml, etc.
+# TODO: Create scripts that dynamically update these files
 ```
 
-Of you can use OpenWebUI, as `oliver-assistant` will now show as an available model.
+3. Generate the knowledge base document:
 
-## PART 2: Custom/Personal Data
-
-As alluded to above, I'm breaking this up into two categories:
-
-### Static Data
-
-I worked with GitHub Copilot and Chat GPT to come with categories of data and how best to represent it. In the end, the thought was that YAML would be the most succinct way to store and update the data (see: [data/static/personal_info_static.yaml](src/data/static/personal_info_static.yaml)). Then, we could use a Markdown file with [Jinja2](https://www.geeksforgeeks.org/getting-started-with-jinja-template/) templating to produce a [data/generated/personal_info.md](./src/data/generated/personal_info.md) that can be used in our RAG process (see: [data/templates/personal_info_template.md](src/data/templates/personal_info_template.md)).
-
-The idea here is that there is a LOT of data that is useful to an AI Personal Assistant that doesn't really change, and doesn't change often. For example:
-
-- Core Info - like full name, DOB, current and previous addresses, email addresses, phone numbers, social media links, etc
-- Family Info - like current and former spouses, children, parents, siblings, current and former pets, etc
-- Health Info - like blood type, allergies, medical conditions, medications, doctor and specialist info, emergency conact, insurance, exercise information, etc
-- Work Info - like current and past employers, coworker information, etc.
-- Education, Financial info, Home details, current and past vehicles, etc
-
-And one big one that can really help your assistant is: your preferences. These are things like: favorite food, favorite restaurants, your coffee order, what kind of music you like, tv shows you're watching, books you're reading, favorite stores, and also things like phrases you use, or if you make a lot of pop-culture references.
-
-Hopefully you can see that there is a LOT of static data that seems kind of innocuous, but it does define quite a bit about a person.
-
-### Dynamic Data
-
-Dynamic Data is really the data in your life that does change often, or it's just simply NEW information that will be helpful to your assistant. Currently, in this [data/templates/personal_info_template.md](./src/data/templates/personal_info_template.md) there is a template transformer for:
-
-```markdown
-### Calendar
-{{ calendar_events }}
-
-### Weather
-{{ weather_forecast }}
-
-### Task List
-{{ task_list }}
-
-### Recent Messages
-{{ recent_messages }}
-
-### Health Stats
-{{ health_stats }}
-
-### Financial Updates
-{{ financial_updates }}
-
-### News Digest
-{{ news_digest }}
+```bash
+cd ../../  # Return to src directory
+python main.py generate
 ```
 
-I only have mock data for this project. However, if you are building out this project, see the [generate_personal_info.py](./src/generate_personal_info.py) for how you might do that. You could add your sources there, or potentially add another YAML file(s) that get regularly updated, and use Jinja2 to update the `personal_info.md` file that the LLM uses.
+> [!NOTE]
+> This process takes all of the YAML files and Jinja2 templates in the `data/` directory and generates one, large markdown document called `personal_info.md`. This document serves as the knowledge base for your assistant.
 
+4. Create your custom Ollama model:
 
+On the Ollama server (if this isn't your local workstation), create a custom model using the Modelfile provided in the `models/` directory, then run:
 
-## Appendix
+```bash
+python main.py create-model --name oliver-assistant --modelfile models/Modelfile
+```
+
+5. Start the API server:
+
+```bash
+python main.py api
+```
+
+This will start the FastAPI server, which listens for incoming requests on port 8901 by default. This server will look and act like an Ollama server, in that it will reflect all of the models that are available on the Ollama server, but it will also have a `/query` endpoint that will allow you to query the RAG system directly.
+
+For detailed setup instructions, see the [src/README.md](./src/README.md).
+
+## Project Structure
+
+The project is organized into several key modules:
+
+- **[api](./src/api/)**: FastAPI implementation of the RAG-enhanced API server
+- **[config](./src/config/)**: Configuration settings for RAG and template generation
+- **[data](./src/data/)**: YAML data files and Jinja2 templates for personal information
+- **[generation](./src/generation/)**: Tools for generating the markdown knowledge base
+- **[models](./src/models/)**: Ollama Modelfiles for customizing the assistant's personality
+- **[rag](./src/rag/)**: Core RAG functionality for context retrieval and response enhancement
+
+Each module has its own README with detailed documentation.
+
+## Using the Personal Assistant
+
+### Interactive CLI
+
+Use the interactive CLI for direct conversations and testing:
+
+```bash
+cd src
+python main.py interactive
+```
+
+For more context information, use verbose mode:
+
+```bash
+python main.py interactive --verbose
+```
+
+Available commands in the interactive CLI:
+- `/help` - Show available commands
+- `/context` - Toggle display of retrieved context
+- `/clear_history` - Clear conversation history
+- `/params` - Show current parameters
+- `/model MODEL` - Change the model
+- `/reload` - Reload the vector store
+
+### API Access
+
+The API server runs on port 8901 by default:
+
+```bash
+cd src
+python main.py api
+```
+
+Access the API endpoints:
+- `POST /api/chat` - Ollama-compatible chat API
+- `POST /query` - Direct RAG query endpoint
+- `GET /models` - List available models
+- `POST /reload` - Reload the vector store
+
+For complete API documentation, see [src/api/README.md](./src/api/README.md).
+
+### OpenWebUI Integration
+
+Connect OpenWebUI to your RAG-enhanced assistant:
+
+1. In OpenWebUI under `/admin/settings`, go to the Connections tab
+2. Click the `+` next to "Manage Ollama API Connections" 
+3. Add a new connection with these settings:
+   - URL: `http://[YOUR_API_HOST]:8901`
+   - Prefix ID: `RAG` (or whatever you prefer)
+   - "Add Model Id" field: `oliver-assistant`
+4. Click `Save`
+
+> [!IMPORTANT]
+> The `RAG` prefix differentiates models that come from your RAG endpoint versus local models on the Ollama server:
+>  
+> ![alt text](./docs/images/rag1.png)
+>
+> ![alt text](./docs/images/rag2.png)
+
+## Docker Support
+
+Run the personal assistant in a Docker container:
+
+```bash
+cd src
+docker build -t ollama-assistant:latest .
+docker run -d --name oliver-assistant -p 8901:8901 ollama-assistant:latest
+```
+
+For detailed Docker instructions, see [src/DOCKER.md](./src/DOCKER.md).
+
+## Advanced Topics
+
+### Customizing the Markdown Generation
+
+The system uses Jinja2 templates to transform YAML data into the final markdown document. You can customize this process by:
+
+1. Editing the templates in `src/data/templates/`
+2. Modifying the section mappings in `src/config/template_config.py`
+3. Re-running `python main.py generate`
+
+For template details, see [src/generation/README.md](./src/generation/README.md).
+
+### Extending Dynamic Data Sources
+
+To add new dynamic data sources:
+
+1. Create a new YAML file in `src/data/dynamic/`
+2. Create a corresponding Jinja2 template in `src/data/templates/`
+3. Add the new mapping to `src/config/template_config.py`
+4. Update your data collection scripts to maintain the YAML file
+
+Consider setting up automated updates for dynamic data using cron jobs or scheduled tasks.
+
+### Fine-tuning RAG Parameters
+
+Adjust RAG parameters in `src/config/rag_config.py`:
+- `DEFAULT_CHUNK_SIZE` and `DEFAULT_CHUNK_OVERLAP` control document chunking
+- `DEFAULT_TOP_K` sets how many context chunks to retrieve
+- `DEFAULT_TEMPERATURE` affects response creativity vs. coherence
+
+## Technical Details
 
 ### What is RAG?
 
-Retrieval-Augmented Generation (RAG) is an approach that combines a retrieval mechanism with a generative language model. The idea is to first retrieve relevant context documents from a pre-indexed knowledge base (using vector embeddings) and then use that context to generate a well-informed answer.
+Retrieval Augmented Generation (RAG) combines a retrieval mechanism with a generative language model:
 
-### What is `nomic`?
+1. Your personal information is transformed into vector embeddings and stored in a vector database
+2. When you ask a question, the system:
+   - Converts your question to a vector
+   - Finds the most relevant chunks of your personal information
+   - Provides those chunks as context to the LLM
+   - Generates a response using this personalized context
 
-The nomic-embed-text model is used to transform raw text (like the markdown file containing personal data) into dense vector embeddings. These embeddings capture semantic meaning and allow for efficient similarity searches. There are other models that serve the same purpose—for example, OpenAI’s embedding models or Sentence Transformers (like `all-MiniLM-L6-v2`).
+This approach allows the assistant to reference your personal information without it being part of the model's training data.
 
-### Workflow for a Request ("Do I have any meetings today?")
+### System Architecture
 
-#### Input and Embedding:
+The RAG workflow for a typical request:
 
-When you ask, "Do I have any meetings today?", your question is first sent to the RAG endpoint.
+1. **Query Processing**: Your question is vectorized using the Ollama model's embedding capabilities
+2. **Retrieval**: The FAISS vector store finds relevant chunks from your personal information
+3. **Context Integration**: Retrieved information is formatted into a prompt with conversation history
+4. **Response Generation**: The Ollama model generates a personalized response using the enhanced context
+5. **Conversation Management**: The exchange is added to conversation history for future context
 
-The system uses the nomic-embed-text model to convert your question into a dense embedding vector.
+### Custom LLM vs. RAG System Prompt
 
-#### Retrieval:
+There are two ways to define your assistant's personality:
 
-The vector store (Chroma) then performs a similarity search against your pre-embedded personal data (the chunks from the markdown file).
+1. **Custom Ollama Model (current approach)**: Personality is defined at the model level via the Modelfile
+   - Pros: Consistent personality across interfaces
+   - Cons: Requires model rebuilds for personality changes
 
-It retrieves the top relevant chunks (based on your configured `k` value) that likely contain meeting details or related context.
+2. **Generic LLM + RAG System Prompt**: Personality is injected via the RAG prompt
+   - Pros: More flexibility for personality changes
+   - Pros: Model-agnostic (works with any LLM)
 
-#### Prompt Construction:
-
-These retrieved text chunks, along with your conversation history, are inserted into a custom prompt template.
-
-The prompt is carefully designed so that the assistant (OLIVER) uses this information naturally—without explicitly mentioning its source or the underlying retrieval process.
-
-#### Generation:
-
-The complete prompt is passed to the generative LLM (the `oliver-assistant` model via the Ollama client).
-
-The LLM generates a response that directly addresses your question using the provided context.
-
-#### Response:
-
-The final answer is returned to you, enriched with relevant details from your personal data, while keeping the underlying retrieval process abstract.
-
-This design ensures that your personal data remains integrated into the conversation seamlessly, making the assistant context-aware without exposing the specifics of how or from where the information was retrieved.
-
-### Custom LLM vs RAG System Prompt
-
-The RAG functionality supports a "System Prompt", so couldn't you just have your assistant's personality injected through the RAG system? Let me break down both approaches:
-
-#### Option 1: Custom Ollama Model with Modelfile (Current Approach)
-
-This approach "bakes in" the personality at the model level:
-
-- Creates a standalone assistant identity
-- Ensures consistent personality across all interaction points
-- Separates personality (model) from knowledge (RAG)
-
-#### Option 2: Generic LLM + System Prompt via RAG
-
-This approach would inject personality through the RAG system:
-
-- More flexible for personality changes without model rebuilds
-- Model-agnostic (could use any LLM)
-
-#### Current Implementation Analysis
-
-This was (for this iteration), an architectural decision:
-
-1. In `config/rag_config.py`, there's a comment:
-
-```python
-# Note: We've removed the RAG_SYSTEM_PROMPT and RAG_PROMPT_TEMPLATE
-# as we want to use the built-in personality of the oliver-assistant model
-```
-
-2. In `rag/assistant.py`, the `system_prompt` parameter exists but is commented as "not used, here for backward compatibility":
-
-```python
-system_prompt: Optional[str] = None  # Not used, here for backward compatibility
-```
-
-3. The prompt construction in `get_answer` includes minimal personality instructions compared to the full `Modelfile`.
-
-#### Using RAG-Only over any LLM
-
-You might choose differently for your different use cases:
-
-1. **Custom Ollama Model (current approach)**: Better for production deployment where you want consistent personality behavior across all interfaces and simplified RAG prompts. The downside is you have to rebuild your custom model for any "personality" or formatting changes.
-
-2. **RAG System Prompt**: Useful for experimentation and flexibility when you want to try different persona styles without rebuilding models. This also let's you be LLM Model agnostic, so you could use any LLM that supports RAG.
-
-You could modify the code to support both approaches by un-deprecating and implementing the `system_prompt` parameter in the `get_answer` method, making it optional but functional when provided.
+The current implementation uses option 1, but the code could be modified to support both approaches.
